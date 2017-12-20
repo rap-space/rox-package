@@ -1,0 +1,9 @@
+{
+  "presets": [
+    "es2015",
+    "rax"
+  ],
+  "plugins": [
+    "export-default-module-exports"
+  ]
+}

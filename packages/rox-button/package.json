@@ -1,0 +1,12 @@
+{
+  "name": "rox-button",
+  "version": "0.0.0",
+  "description": "",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "MIT"
+}

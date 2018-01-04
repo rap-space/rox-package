@@ -5,6 +5,10 @@ const fs = require('fs-extra');
 const PACKAGES_DIR = path.join(__dirname, '../packages');
 const TEMPLATE_PACKAGE_DIR = path.join(__dirname, '../templates/package');
 
+
+const EXAMPLES_DIR = path.join(__dirname, '../examples');
+const TEMPLATE_EXAMPLE_DIR = path.join(__dirname, '../templates/example');
+
 function copyTo(dir, dest, paths, filter) {
   const files = fs.readdirSync(dir);
 
@@ -42,18 +46,27 @@ inquirer.prompt([{
   const componentName = answer.name;
   const componentDir = path.join(PACKAGES_DIR, componentName);
 
-  if (fs.existsSync(componentDir)) {
+  const componentExampleDir = path.join(EXAMPLES_DIR, componentName);
+
+  if (fs.existsSync(componentDir) || fs.existsSync(componentExampleDir)) {
     console.error(`组件 ${componentName} 已存在！`);
     return process.exit(1);
   }
 
   fs.ensureDirSync(componentDir);
+  fs.ensureDirSync(componentExampleDir);
 
   copyTo(TEMPLATE_PACKAGE_DIR, componentDir, [], (content) => {
     return content.replace(/\{\{name\}\}/g, componentName);
   });
 
+  copyTo(TEMPLATE_EXAMPLE_DIR, componentExampleDir, [], (content) => {
+    return content.replace(/\{\{name\}\}/g, componentName);
+  });
+
   console.log(`组件 ${componentName} 已创建！`);
+  console.log(`组件 ${componentName} example 已创建！`);
+}).catch(e => {
 }).catch(e => {
   console.log(e.stack);
 });

@@ -96,27 +96,20 @@ export default {
 
   // ------------------------ font ------------------------ //
 
+  // 字重
   'font-weight-1': 'light',
   'font-weight-2': 'normal',
   'font-weight-3': 'bold',
+  // 字体大小
   'font-size-display-3': 56 * 2,
-
   'font-size-display-2': 48 * 2,
-
   'font-size-display-1': 36 * 2,
-
   'font-size-headline': 18 * 2,
-
   'font-size-title': 18 * 2,
-
   'font-size-subhead': 16 * 2,
-
   'font-size-body-2': 14 * 2,
-
   'font-size-body-1': 14 * 2,
-
   'font-size-caption': 12 * 2,
-
   'font-size-footnote': 10 * 2,
 
   // 'font-lineheight-1': 1,
@@ -133,9 +126,7 @@ export default {
   // ------------------------ line ------------------------ //
 
   'line-1': 1,
-
   'line-2': 2,
-
   'line-3': 4,
 
   // ------------------------ size ------------------------ //
@@ -145,11 +136,10 @@ export default {
   // ----------- 线条 unconfig ----------- //
 
   'line-solid': 'solid',
-
   'line-dashed': 'dashed',
-
   'line-dotted': 'dotted',
 
+  // Icon 大小
   'icon-xxs': 8 * 2,
   'icon-xs': 12 * 2,
   'icon-s': 16 * 2,

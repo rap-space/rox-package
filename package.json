@@ -55,7 +55,8 @@
     "rax": "latest",
     "r-bridge": "latest",
     "rox-button": "latest",
-    "rox-theme": "latest"
+    "rox-theme": "latest",
+    "rox-theme-provider": "latest"
   },
   "jest": {
     "collectCoverage": true,

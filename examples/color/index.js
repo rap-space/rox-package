@@ -1,7 +1,6 @@
 import { createElement, render, Component } from 'rax';
 // eslint-disable-next-line
-import RoxStyleProvider from 'rox-theme-provider';
-import Button from 'rox-button';
+import { StyleProvider } from 'nuke-theme-provider';
 import Theme from 'rox-theme';
 // eslint-disable-next-line
 import Page from 'nuke-page';
@@ -11,7 +10,10 @@ import View from 'nuke-view';
 let App = class NukeDemoIndex extends Component {
   render() {
     return (
-      <RoxStyleProvider>
+      <StyleProvider
+        style={Theme}
+        androidConfigs={{ materialDesign: false }}
+      >
         <Page title="Button">
           <Page.Intro main="primary" />
           <View style={styles.btnWithMargin} >
@@ -36,7 +38,7 @@ let App = class NukeDemoIndex extends Component {
             <Button style={styles.btn} type="primary" size="small" onPress={this.press}>primary</Button>
           </View>
         </Page>
-      </RoxStyleProvider>
+      </StyleProvider>
     );
   }
 };

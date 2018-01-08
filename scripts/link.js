@@ -2,7 +2,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const spawnSync = require('child_process').spawnSync;
+const exec = require('child_process').exec;
 
 const PACKAGES_DIR = path.resolve(__dirname, '../packages');
 
@@ -29,5 +29,9 @@ getPackages().forEach((p) => {
   // if (p.endsWith('rax-components')) linkArgv.push('--production');
   console.log('npm', linkArgv.join(' '));
 
-  spawnSync('npm', linkArgv);
+  exec('npm ' + linkArgv.join(' '), (e) => {
+    if (e) {
+      console.log(e);
+    }
+  });
 });

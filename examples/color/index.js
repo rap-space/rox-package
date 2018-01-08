@@ -17,7 +17,7 @@ const Palette = (props) => {
     alignItems: 'center',
     justifyContent: 'center'
   };
-  const tokenStyle= {
+  const tokenStyle = {
     color: darkText ? '#333' : '#FFF',
     fontSize: 32
   };
@@ -90,43 +90,43 @@ let App = class NukeDemoIndex extends Component {
             <Palette token="N1_4" color={Core['color-fill1-3']} description="深" darkText />
             <Palette token="N1_5" color={Core['color-fill1-4']} description="重" darkText />
           </View>
-          <Page.Intro sub="中立色 - 文字" />
+          <Page.Intro main="中立色 - 文字" />
           <View style={styles.btnWithMargin} >
             <Palette token="N2_1" color={Core['color-text1-1']} description="轻" />
             <Palette token="N2_2" color={Core['color-text1-2']} description="浅" />
             <Palette token="N2_3" color={Core['color-text1-3']} description="较浅" />
             <Palette token="N2_4" color={Core['color-text1-4']} description="深" />
           </View>
-          <Page.Intro sub="中立色 - 文字" />
+          <Page.Intro main="中立色 - 文字" />
           <View style={styles.btnWithMargin}>
             <Palette token="N1_1" color={Core['color-white']} darkText description="纯白" />
             <Palette token="N1_9" color={Core['color-black']} description="纯黑" />
           </View>
-          <Page.Intro sub="功能色 - 警示" />
+          <Page.Intro main="功能色 - 警示" />
           <View style={styles.btnWithMargin}>
             <Palette token="F1_1" color={Core['color-warning-1']} darkText />
             <Palette token="F1_2" color={Core['color-warning-2']} />
             <Palette token="F1_3" color={Core['color-warning-3']} />
           </View>
-          <Page.Intro sub="功能色 - 报错" />
+          <Page.Intro main="功能色 - 报错" />
           <View style={styles.btnWithMargin}>
             <Palette token="F2_1" color={Core['color-error-1']} darkText />
             <Palette token="F2_2" color={Core['color-error-2']} />
             <Palette token="F2_3" color={Core['color-error-3']} />
           </View>
-          <Page.Intro sub="功能色 - 成功" />
+          <Page.Intro main="功能色 - 成功" />
           <View style={styles.btnWithMargin}>
             <Palette token="F2_1" color={Core['color-success-1']} darkText />
             <Palette token="F2_2" color={Core['color-success-2']} />
             <Palette token="F2_3" color={Core['color-success-3']} />
           </View>
-          <Page.Intro sub="功能色 - 链接色" />
+          <Page.Intro main="功能色 - 链接色" />
           <View style={styles.btnWithMargin}>
             <Palette token="B1_6" color={Core['color-link-1']} />
             <Palette token="N2_3" color={Core['color-link-2']} />
             <Palette token="N2_4" color={Core['color-link-3']} />
           </View>
-          <Page.Intro sub="功能色 - 提示色" />
+          <Page.Intro main="功能色 - 提示色" />
           <View style={styles.btnWithMargin}>
             <Palette token="F5_1" color={Core['color-notice-1']} darkText />
             <Palette token="F5_2" color={Core['color-notice-2']} />

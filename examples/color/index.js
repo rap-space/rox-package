@@ -95,8 +95,7 @@ let App = class NukeDemoIndex extends Component {
             <Palette token="N2_1" color={Core['color-text1-1']} description="轻" />
             <Palette token="N2_2" color={Core['color-text1-2']} description="浅" />
             <Palette token="N2_3" color={Core['color-text1-3']} description="较浅" />
-            <Palette token="N2_4" color={Core['color-text1-4']} description="常规" />
-            <Palette token="N2_5" color={Core['color-text1-5']} description="深" />
+            <Palette token="N2_4" color={Core['color-text1-4']} description="深" />
           </View>
           <Page.Intro sub="中立色 - 文字" />
           <View style={styles.btnWithMargin}>

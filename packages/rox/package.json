@@ -1,0 +1,28 @@
+{
+  "name": "rox",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "rox-button": "^0.0.1",
+    "rox-checkbox": "^0.0.1",
+    "rox-icon": "^0.0.1",
+    "rox-input": "^0.0.1",
+    "rox-number-picker": "^0.0.1",
+    "rox-progress": "^0.0.1",
+    "rox-search-bar": "^0.0.1",
+    "rox-slip": "^0.0.1",
+    "rox-switch": "^0.0.1",
+    "rox-theme": "^0.0.1",
+    "rox-theme-provider": "^0.0.1"
+  },
+  "peerDependencies": {
+    "rax": "0.x"
+  }
+}

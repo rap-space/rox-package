@@ -42,6 +42,7 @@
     "minimatch": "^3.0.4",
     "minimist": "^1.2.0",
     "nuke-page": "^1.0.1",
+    "nuke-text": "^0.0.12",
     "nuke-theme-provider": "^1.0.7",
     "nuke-view": "^1.0.7",
     "rax": "^0.5.0",

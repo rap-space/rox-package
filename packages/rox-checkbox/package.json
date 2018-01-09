@@ -1,13 +1,19 @@
 {
-  "name": "{{name}}",
+  "name": "rox-checkbox",
   "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
   "files": [
     "lib"
   ],
-  "keywords": [ "rox", "rox-components" ],
+  "keywords": [
+    "rox",
+    "rox-components"
+  ],
   "peerDependencies": {
     "rax": "0.x"
+  },
+  "dependencies": {
+    "nuke-checkbox": "^1.0.16"
   }
 }

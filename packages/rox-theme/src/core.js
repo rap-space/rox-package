@@ -29,11 +29,15 @@ export default {
   'color-transparent': 'transparent',
   // 品牌色 1
   'color-brand1-1': '#FFEFE5',
+  'color-brand1-2': '#FFDFCC',
   'color-brand1-3': '#FFC8A6',
   'color-brand1-4': '#FFA873',
   'color-brand1-5': '#FF8F4C',
   'color-brand1-6': '#FF6000',
-  'color-brand1-9': '#F05A00',
+  'color-brand1-7': '#F05A00',
+  'color-brand1-8': '#E35500',
+  'color-brand1-9': '#D55000',
+  'color-brand1-10': '#B94500',
   // 品牌色 2
   'color-brand2-1': '#F7F8FA',
   'color-brand2-2': '#E6F2FF',
@@ -46,8 +50,8 @@ export default {
   'color-brand2-9': '#0163CC',
   'color-brand2-10': '#0150A6',
   // 错误色
-  'color-error-1': '#FF0000',
-  'color-error-2': '#FFE6E6',
+  'color-error-1': '#FFE6E6',
+  'color-error-2': '#FF0000',
   'color-error-3': '#DA1010',
   // 填充色
   'color-fill1-1': '#F8F8F8',
@@ -68,21 +72,20 @@ export default {
   'color-link-3': '#333333',
   // 通知色
   'color-notice-1': '#DAEEFF',
-  'color-notice-2': '#2196F3',
+  'color-notice-2': '#0089FD',
   'color-notice-3': '#306AC9',
   // 成功色
-  'color-success-1': '#E8F9E8',
-  'color-success-2': '#4CAF50',
-  'color-success-3': '#0DA80D',
+  'color-success-1': '#E7F8E5',
+  'color-success-2': '#25BE13',
+  'color-success-3': '#19AA08',
   // 文本色
-  'color-text1-1': '#AAAAAA',
+  'color-text1-1': '#BFBFBF',
   'color-text1-2': '#999999',
   'color-text1-3': '#666666',
   'color-text1-4': '#333333',
-  'color-text1-5': '#222222',
   // 警告色
-  'color-warning-1': '#F5BE23',
-  'color-warning-2': '#F9F1DA',
+  'color-warning-1': '#F9F1DA',
+  'color-warning-2': '#F5BE23',
   'color-warning-3': '#E0A90E',
 
   // ------------------------ corner ------------------------ //

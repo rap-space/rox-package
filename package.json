@@ -41,6 +41,7 @@
     "lerna": "^2.5.1",
     "minimatch": "^3.0.4",
     "minimist": "^1.2.0",
+    "nuke-layout": "^1.0.0",
     "nuke-page": "^1.0.1",
     "nuke-text": "^0.0.12",
     "nuke-theme-provider": "^1.0.7",
@@ -57,7 +58,9 @@
     "r-bridge": "latest",
     "rox-button": "latest",
     "rox-theme": "latest",
-    "rox-theme-provider": "latest"
+    "rox-theme-provider": "latest",
+    "rox-icon": "latest",
+    "rox-search-bar": "latest"
   },
   "jest": {
     "collectCoverage": true,

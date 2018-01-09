@@ -29,11 +29,15 @@ let App = class NukeDemoIndex extends Component {
           <View style={styles.btnWithMargin}>
             <Button block type="primary" shape="warning">primary</Button>
           </View>
-          <Page.Intro sub="size" />
+          <Page.Intro main="size" />
           <View style={styles.btnWithMargin} >
             <Button style={styles.btn} type="primary" size="large" onPress={this.press}>primary</Button>
             <Button style={styles.btn} type="primary" onPress={this.press}>primary</Button>
             <Button style={styles.btn} type="primary" size="small" onPress={this.press}>primary</Button>
+          </View>
+          <Page.Intro main="独占一行" />
+          <View style={Object.assign({}, styles.btnWithMargin, { flexDirection: 'column' })} >
+            <Button style={styles.btn} block type="primary" size="large" onPress={this.press}>primary</Button>
           </View>
         </Page>
       </RoxStyleProvider>
@@ -44,7 +48,6 @@ let App = class NukeDemoIndex extends Component {
 const styles = {
   btnWithMargin: {
     flexDirection: 'row',
-
     marginTop: 30,
     minHeight: 100,
     marginBottom: 50,

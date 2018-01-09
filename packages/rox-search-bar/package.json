@@ -1,5 +1,5 @@
 {
-  "name": "rox-number-picker",
+  "name": "rox-search-bar",
   "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
@@ -14,6 +14,6 @@
     "rax": "0.x"
   },
   "dependencies": {
-    "nuke-number-picker": "^1.0.8"
+    "nuke-search-bar": "^1.0.3"
   }
 }

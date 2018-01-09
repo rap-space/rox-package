@@ -59,10 +59,16 @@
     "rax": "latest",
     "r-bridge": "latest",
     "rox-button": "latest",
-    "rox-theme": "latest",
-    "rox-theme-provider": "latest",
+    "rox-checkbox": "latest",
     "rox-icon": "latest",
-    "rox-search-bar": "latest"
+    "rox-input": "latest",
+    "rox-number-picker": "latest",
+    "rox-progress": "latest",
+    "rox-search-bar": "latest",
+    "rox-slip": "latest",
+    "rox-switch": "latest",
+    "rox-theme": "latest",
+    "rox-theme-provider": "latest"
   },
   "jest": {
     "collectCoverage": true,

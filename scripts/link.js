@@ -2,14 +2,14 @@
 
 const fs = require('fs');
 const path = require('path');
-const spawnSync = require('child_process').spawnSync;
+const exec = require('child_process').exec;
 
 const PACKAGES_DIR = path.resolve(__dirname, '../packages');
 
 function getPackages() {
   return fs.readdirSync(PACKAGES_DIR)
-    .map(file => path.resolve(PACKAGES_DIR, file))
-    .filter(f => fs.lstatSync(path.resolve(f)).isDirectory());
+    .map(f => path.resolve(PACKAGES_DIR, f))
+    .filter(f => fs.lstatSync(f).isDirectory());
 }
 
 const linkSkipPackages = [
@@ -29,5 +29,9 @@ getPackages().forEach((p) => {
   // if (p.endsWith('rax-components')) linkArgv.push('--production');
   console.log('npm', linkArgv.join(' '));
 
-  spawnSync('npm', linkArgv);
+  exec('npm ' + linkArgv.join(' '), (e) => {
+    if (e) {
+      console.log(e);
+    }
+  });
 });

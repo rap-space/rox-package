@@ -21,9 +21,9 @@ const Event = {
         param: {
           eventName: event.name
         }
-      }, function(notify) {
+      }, function(info) {
         // 这里预处理一些信息
-        callback &&　callback(notify);
+        callback &&　callback(info);
       });
     }
 

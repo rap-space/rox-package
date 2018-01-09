@@ -1,5 +1,5 @@
 {
-  "name": "rox-switch",
+  "name": "number-picker",
   "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
@@ -14,6 +14,6 @@
     "rax": "0.x"
   },
   "dependencies": {
-    "nuke-switch": "^1.0.5"
+    "nuke-number-picker": "^1.0.8"
   }
 }

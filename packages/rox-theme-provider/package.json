@@ -1,6 +1,6 @@
 {
   "name": "rox-theme-provider",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -15,6 +15,6 @@
   },
   "dependencies": {
     "nuke-theme-provider": "^1.0.7",
-    "rox-theme": "^0.0.1"
+    "rox-theme": "^0.0.2"
   }
 }

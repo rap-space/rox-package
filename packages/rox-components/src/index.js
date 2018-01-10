@@ -1,5 +1,6 @@
 export Button from 'rox-button';
 export Checkbox from 'rox-checkbox';
+export Dialog from 'rox-dialog';
 export Icon from 'rox-icon';
 export Input from 'rox-input';
 export NumberPicker from 'rox-number-picker';

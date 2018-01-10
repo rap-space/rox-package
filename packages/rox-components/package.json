@@ -12,6 +12,7 @@
   "dependencies": {
     "rox-button": "^0.0.2",
     "rox-checkbox": "^0.0.2",
+    "rox-dialog": "^0.0.1",
     "rox-icon": "^0.0.2",
     "rox-input": "^0.0.2",
     "rox-number-picker": "^0.0.2",

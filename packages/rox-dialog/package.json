@@ -1,20 +1,23 @@
 {
   "name": "rox-dialog",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "",
   "main": "lib/index.js",
   "files": [
     "lib"
   ],
-  "keywords": [ "rox", "rox-components" ],
+  "keywords": [
+    "rox",
+    "rox-components"
+  ],
   "peerDependencies": {
     "rax": "0.x"
   },
   "dependencies": {
-    "nuke-dialog": "^1.0.2",
     "nuke-button": "^1.0.10",
-    "nuke-view": "^1.0.7",
+    "nuke-dialog": "^1.0.2",
+    "nuke-scroll-view": "*",
     "nuke-text": "^0.0.12",
-    "nuke-scroll-view": "*"
+    "nuke-view": "^1.0.7"
   }
 }

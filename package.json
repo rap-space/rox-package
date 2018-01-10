@@ -67,8 +67,10 @@
     "rox-search-bar": "latest",
     "rox-slip": "latest",
     "rox-switch": "latest",
+    "rox-text": "latest",
     "rox-theme": "latest",
-    "rox-theme-provider": "latest"
+    "rox-theme-provider": "latest",
+    "rox-view": "latest"
   },
   "jest": {
     "collectCoverage": true,

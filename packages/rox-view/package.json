@@ -1,0 +1,19 @@
+{
+  "name": "rox-view",
+  "version": "0.0.1",
+  "description": "",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "rox",
+    "rox-components"
+  ],
+  "peerDependencies": {
+    "rax": "0.x"
+  },
+  "dependencies": {
+    "nuke-view": "^1.0.7"
+  }
+}

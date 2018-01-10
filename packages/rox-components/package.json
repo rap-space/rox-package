@@ -19,8 +19,10 @@
     "rox-search-bar": "^0.0.2",
     "rox-slip": "^0.0.2",
     "rox-switch": "^0.0.2",
+    "rox-text": "^0.0.1",
     "rox-theme": "^0.0.2",
-    "rox-theme-provider": "^0.0.2"
+    "rox-theme-provider": "^0.0.2",
+    "rox-view": "^0.0.1"
   },
   "peerDependencies": {
     "rax": "0.x"

@@ -42,11 +42,11 @@ let App = class NukeDemoIndex extends Component {
   render() {
     return (
       <RoxStyleProvider>
-        <Page title="Progress">
+        <Page title="Dialog">
           <Page.Intro main="Dialog" />
           <View style={{ height: '2000rem' }}>
             <Button type="primary" onPress={this.showModal}>点击打开对话框，可以点击遮罩层关闭</Button>
-            <Text>Confirm</Text>
+            <Page.Intro main="Dialog.Confirm" />
             <Button type="primary" onPress={() => {
               this.showConfirm();
             }}>点击打开 对话框</Button>

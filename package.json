@@ -97,5 +97,6 @@
     }
   },
   "dependencies": {
+    "nuke-scroll-view": "^1.0.4"
   }
 }

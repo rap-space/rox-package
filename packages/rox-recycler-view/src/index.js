@@ -1,3 +1,3 @@
-import RecyclerView from 'nuke-recyclerview';
+import RecyclerView from 'rax-recyclerview';
 
 export default RecyclerView;

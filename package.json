@@ -97,6 +97,8 @@
     }
   },
   "dependencies": {
+    "nuke-button": "^1.0.10",
+    "nuke-image": "^1.0.0",
     "nuke-scroll-view": "^1.0.4"
   }
 }

@@ -52,7 +52,7 @@ let App = class NukeDemoIndex extends Component {
             <Text>浙江省</Text>
           </View>
 
-          <BizPage.Intro sub="Radio 内部自由切换，不受外部 state 控制"></BizPage.Intro>
+          <Page.Intro sub="Radio 内部自由切换，不受外部 state 控制"></Page.Intro>
           <View style={styles.demo_item}>
             <Radio
               ref="xx"

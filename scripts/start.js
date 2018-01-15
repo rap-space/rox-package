@@ -21,7 +21,7 @@ function getEntry() {
     .forEach(file => {
       let f = path.resolve(EXAMPLES_DIR, file);
       if (fs.lstatSync(f).isDirectory()) {
-        fs.readdirSync(f).forEach((name) => {
+        fs.readdirSync(f).filter(name => path.extname(name) === '.js').forEach((name) => {
           const demoFile = path.join(f, name);
           entry[`${file}.${path.basename(name, '.js')}.bundle`] = demoFile;
         });

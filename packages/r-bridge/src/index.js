@@ -1,15 +1,27 @@
+import Rap from './rap';
 import { on, off, emit } from './event';
 import navigator from './navigator';
-import toast from './toast';
-import device from './device';
+
 import localstore from './localstore';
+import device from './device';
 
 import user from './user';
 import mtop from './mtop';
+
 import aop from './aop';
+import Toast from 'universal-toast';
+import { showLoading, hideLoading } from './loading';
 
-const Rox = {
+import { isWeex, isWeb } from './env';
+import app from './app';
+import util from './util';
+// 这里要设计 保护，不被外部 误干扰
 
+const RAP = {
+  app: app,
+  env: {
+    isWeex, isWeb
+  },
   // Event
   on,
   off,
@@ -19,11 +31,19 @@ const Rox = {
   localstore,
 
   user,
+
+  fetch,
   mtop,
+  aop,
 
   device,
-  toast,
-  aop
+  toast: Toast,
+  showLoading,
+  hideLoading,
+  util
 };
 
-export default Rox;
+RAP.app.invoke = Rap.call;
+
+ 
+export default RAP;

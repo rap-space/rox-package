@@ -1,19 +1,24 @@
-import RapBridge from './rap';
-
+import Rap from './rap';
+const CLASS_NAME = 'ui';
 let Loading = {
-  showLoading(param) {
-    return RapBridge.call({
-      className: 'ui',
+  showLoading(options) {
+    options = options || {};
+    let param = {};
+    if (options.iconImage) {
+      param.iconImage = options.iconImage
+    }
+    if (options.text) {
+      param.text = options.text;
+    }
+    return Rap.call({
+      className: CLASS_NAME,
       methodName: 'showLoading',
-      param: {
-        iconImage: param.iconImage,
-        text: param.text
-      }
+      param: param
     });
   },
   hideLoading() {
-    return RapBridge.call({
-      className: 'ui',
+    return Rap.call({
+      className: CLASS_NAME,
       methodName: 'hideLoading',
       param: {}
     });

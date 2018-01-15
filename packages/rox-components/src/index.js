@@ -8,6 +8,7 @@ export Progress from 'rox-progress';
 export SearchBar from 'rox-search-bar';
 export Slip from 'rox-slip';
 export Switch from 'rox-switch';
+export Tag from 'rox-tag';
 export Text from 'rox-text';
 export Theme from 'rox-theme';
 export ThemeProvider from 'rox-theme-provider';

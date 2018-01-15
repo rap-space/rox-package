@@ -2,10 +2,15 @@
 
 const path = require('path');
 const webpack = require('webpack');
-const WebpackDevServer = require('webpack-dev-server');
+const express = require('express');
+const webpackDevMiddleware = require('webpack-dev-middleware');
 const RaxWebpackPlugin = require('rax-webpack-plugin');
 const fs = require('fs');
 const colors = require('chalk');
+
+const app = express();
+app.set('views', path.join(__dirname, './templates'));
+app.set('view engine', 'xtpl');
 
 const EXAMPLES_DIR = path.resolve(__dirname, '../examples');
 
@@ -15,8 +20,11 @@ function getEntry() {
   fs.readdirSync(EXAMPLES_DIR)
     .forEach(file => {
       let f = path.resolve(EXAMPLES_DIR, file);
-      if (fs.lstatSync(path.resolve(f)).isDirectory()) {
-        entry[file + '.bundle'] = f;
+      if (fs.lstatSync(f).isDirectory()) {
+        fs.readdirSync(f).forEach((name) => {
+          const demoFile = path.join(f, name);
+          entry[`${file}.${path.basename(name, '.js')}.bundle`] = demoFile;
+        });
       }
     });
 
@@ -55,7 +63,16 @@ const config = {
 };
 
 const compiler = webpack(config);
-const server = new WebpackDevServer(compiler, {
+
+app.use('/examples/:name/:section', (req, res) => {
+  const name = req.params.name;
+  const section = req.params.section;
+
+  res.render('index', {
+    name, section
+  });
+});
+app.use(webpackDevMiddleware(compiler, {
   publicPath: config.output.publicPath,
   public: '0.0.0.0',
   disableHostCheck: true,
@@ -63,10 +80,9 @@ const server = new WebpackDevServer(compiler, {
     colors: true,
     chunks: false,
     errorDetails: true,
-  },
-});
+  }
+}));
 
-
-server.listen(9999, function() {
+app.listen(9999, function() {
   console.log(colors.green('\n  Open http://localhost:9999/examples/ and select example\n'));
 });

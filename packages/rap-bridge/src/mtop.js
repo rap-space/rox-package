@@ -3,16 +3,15 @@
 // 2. weex 降级的 主客容器下
 // 3. H5下
 import { requireModule } from './rap/weex-module';
-import { isWeex } from './env';
-let mtop;
+import { isWeex, isWeb} from './env';
 
+let mtop;
 function mtop(params) {
   // return Windvane.call();
-  let windvane = 
   if (isWeex) {
-    requireModule('windvane');
+    mtop = requireModule('windvane');
   } else if (isWeb) {
-    
+    mtop = {};
   }
- 
+}
 export default mtop;

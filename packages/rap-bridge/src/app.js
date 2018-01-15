@@ -1,4 +1,6 @@
-import version from './version'
+import Version from './version';
+import { isWeex } from './env';
+
 let ua = navigator.userAgent;
 let match = ua.match(/AliApp\(([^\/]+)\/([\d\.]+)\)/i);
 
@@ -9,13 +11,11 @@ let os = {
   ios: false,
 };
 
-let match;
-
-let rIOS = runtime.weex ?
+let rIOS = isWeex ?
   /ios\/([\w\.]+)*/i :
   /ip[honead]+(?:.*os\s([\w]+)*\slike\smac|;\sopera)/i;
 
-  let rAndroid = /android[\/\s-]?([\w\.]+)*/i;
+let rAndroid = /android[\/\s-]?([\w\.]+)*/i;
 
 // iPhone8,2(iOS/10.1.1) AliApp(QN/5.5.0) Weex/0.9.1 1242x2208
 // Mozilla/5.0 (iPhone; CPU iPhone OS 8_1_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12B466 AliApp(QN/3.2.1)  QNIOS/201200@tbsellerworkbench_iphone_1.0.0
@@ -39,5 +39,5 @@ export default {
   isAndroid: isAndroid,
   version: new Version(match ? match[2] : ''),
   // osVersion: new Version(match ? match[2] : ''),
-  ua : navigator.userAgent
-}
+  ua: navigator.userAgent
+};

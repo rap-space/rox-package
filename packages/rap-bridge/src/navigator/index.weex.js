@@ -1,11 +1,15 @@
-import RapBridge from './rap';
+import RapBridge from '../rap';
 import isString from 'lodash/isString';
 import isObject from 'lodash/isObject';
+
+const CLASS_NAME = 'navigator';
 
 function formatURL(url) {
   return url;
 };
+
 function formatTitle(options) {
+  options = options || '';
   if (isString(options)) {
     options = {
       text: options
@@ -32,10 +36,11 @@ function formatTitle(options) {
 let Navigator = {
   push(param) {
     // 如果直接传一个String
+    
     param = param || {};
     let url = param.url;
     if (!url) {
-      console.error('must pass a url');
+      console.error('param.url');
     }
 
     let title = formatTitle(param.title);
@@ -43,7 +48,7 @@ let Navigator = {
     let clearTop = param.clearTop || false;
     let animate = param.animate || true;
     return RapBridge.call({
-      className: 'naviagtor',
+      className: CLASS_NAME,
       methodName: 'push',
       param: {
         url: formatURL(url),
@@ -58,7 +63,7 @@ let Navigator = {
   pop(param) {
     param = param || { index: 1, animate: true};
     return RapBridge.call({
-      className: 'naviagtor',
+      className: CLASS_NAME,
       methodName: 'pop',
       param: {
         index: param.index,
@@ -69,7 +74,7 @@ let Navigator = {
 
   popTo(param) {
     return RapBridge.call({
-      className: 'naviagtor',
+      className: CLASS_NAME,
       methodName: 'popTo',
       param: {
         index: param.index,
@@ -80,7 +85,7 @@ let Navigator = {
 
   setTitle(param) {
     return RapBridge.call({
-      className: 'naviagtor',
+      className: CLASS_NAME,
       methodName: 'popTo',
       param: formatTitle(param)
     });
@@ -98,7 +103,7 @@ let Navigator = {
       param.iconImage = options.iconImage;
     }
     return RapBridge.call({
-      className: 'naviagtor',
+      className: CLASS_NAME,
       methodName: 'popTo',
       param: param
     });

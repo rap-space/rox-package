@@ -1,15 +1,14 @@
 {
-  "name": "r-bridge",
+  "name": "rap-bridge",
   "version": "0.0.0",
   "description": "",
-  "main": "lib/index.js",
-  "files": [
-    "lib"
-  ],
+  "files": ["lib"],
   "keywords": [],
   "author": "",
   "dependencies": {
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "universal-env": "^0.5.0",
+    "universal-toast": "^0.5.0"
   },
   "peerDependencies": {
     "rax": "0.x"

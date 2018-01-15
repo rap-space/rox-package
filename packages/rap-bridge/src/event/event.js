@@ -1,8 +1,8 @@
 
-import RapBridge from './rap';
+import RapBridge from '../rap';
 import { buildEventCenterByName, EventEmitter} from './emmiter';
 
-let eventEmitter = new Event.EventEmitter();
+let eventEmitter = new EventEmitter();
 let onPromises = {
   // page.balabala: Promise,
   // app.haha: Promise,

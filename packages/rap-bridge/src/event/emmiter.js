@@ -18,9 +18,9 @@ function each(obj, iterator, context = null) {
 
 
 const EVENT_CENTER_TYPE = {
-  page: 'RAPPageEventCenter',
-  app: 'RAPAppEventCenter',
-  global: 'RAPGlobalEventCenter',
+  page: 'PageEventCenter',
+  app: 'AppEventCenter',
+  global: 'GlobalEventCenter',
 };
 
 /**

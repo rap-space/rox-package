@@ -1,6 +1,6 @@
 
 import RapBridge from './rap';
-
+const CLASS_NAME = 'device';
 let device = getDeviceMsg();
 function getDeviceMsg() {
   let device = {
@@ -13,7 +13,7 @@ function getDeviceMsg() {
     getInfo(options = {}) {
       // 这里可能是同步调用；
       return RapBridge.call({
-        className: 'device',
+        className: CLASS_NAME,
         methodName: 'getInfo'
       });
     },

@@ -27,9 +27,6 @@ function tagStyle(theme = {}) {
         backgroundColor: variables['tag-primary-background-color'],
         color: variables['tag-primary-color']
       }
-    },
-    TagItem: {
-      
     }
   };
 }

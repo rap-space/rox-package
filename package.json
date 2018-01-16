@@ -115,6 +115,7 @@
     }
   },
   "lint-staged": {
-    "*.js": [ "eslint --fix" ]
+    "packages/*/src/**/*.js": [ "eslint --fix" ],
+    "examples/**/*.js": [ "eslint --fix" ]
   }
 }

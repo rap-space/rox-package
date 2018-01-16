@@ -2,7 +2,9 @@
   "name": "rap-sdk",
   "version": "0.0.1",
   "description": "",
-  "files": ["lib"],
+  "files": [
+    "lib"
+  ],
   "keywords": [],
   "author": "",
   "dependencies": {

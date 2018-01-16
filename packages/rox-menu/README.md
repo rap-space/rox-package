@@ -16,10 +16,10 @@
 ```js
 <Menu.List dataSource={[{
   label: '测试1',
-  value: '测试1-value',
-  icon: '',
-  iconSelected: '',
-  postion: 'left',
+  value: '测试1-value', // 可选
+  icon: '', // 默认空
+  iconSelected: '', // 默认 'https://gw.alicdn.com/tfs/TB1q.k4kyqAXuNjy1XdXXaYcVXa-40-28.png'
+  postion: 'left', // 默认 right
 }]} />
 ```
 

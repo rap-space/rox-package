@@ -9,8 +9,8 @@ import Page from 'nuke-page';
 import View from 'nuke-view';
 // eslint-disable-next-line
 import Text from 'nuke-text';
-import Image from 'nuke-image';
-import Button from 'nuke-button';
+import Image from 'rox-image';
+import Button from 'rox-button';
 import Slider from 'rox-slider';
 
 const pics = [

@@ -9,7 +9,6 @@ import Page from 'nuke-page';
 import View from 'nuke-view';
 // eslint-disable-next-line
 import Text from 'nuke-text';
-import Touchable from 'nuke-touchable';
 import Layout, { Grid, Col, MultiRow } from 'rox-layout';
 
 let gridData = [];
@@ -28,9 +27,9 @@ let App = class NukeDemoIndex extends Component {
   }
   renderGridCell = (item, index) => {
 
-    return <Touchable style={styles.gridcell}>
+    return <View style={styles.gridcell}>
       <Text style={styles.funTitle}>{item.name}</Text>
-    </Touchable>
+    </View>
   }
 
   render() {

@@ -1,6 +1,6 @@
 {
-  "name": "rox-snackbar",
-  "version": "0.0.4",
+  "name": "rox-scrollview",
+  "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -14,7 +14,6 @@
     "rax": "0.x"
   },
   "dependencies": {
-    "nuke-text": "^0.0.14",
-    "nuke-view": "^1.0.7"
+    "nuke-scroll-view": "^1.0.4"
   }
 }

@@ -1,5 +1,6 @@
 
 import RapBridge from './rap';
+
 const CLASS_NAME = 'device';
 let device = getDeviceMsg();
 function getDeviceMsg() {

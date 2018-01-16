@@ -36,7 +36,6 @@ function formatTitle(options) {
 let Navigator = {
   push(param) {
     // 如果直接传一个String
-    
     param = param || {};
     let url = param.url;
     if (!url) {

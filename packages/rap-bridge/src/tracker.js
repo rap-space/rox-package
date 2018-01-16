@@ -1,3 +1,3 @@
-import Tracker from '@ali/universal-tracker';
+let Tracker = {};
 
 export default Tracker;

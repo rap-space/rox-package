@@ -1,11 +1,12 @@
 import Rap from './rap';
+
 const CLASS_NAME = 'ui';
 let Loading = {
   showLoading(options) {
     options = options || {};
     let param = {};
     if (options.iconImage) {
-      param.iconImage = options.iconImage
+      param.iconImage = options.iconImage;
     }
     if (options.text) {
       param.text = options.text;

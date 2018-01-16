@@ -1,4 +1,5 @@
 import { requireModule } from './weex-module';
+
 function call(params) {
   if (window.WindVane && window.WindVane.call) {
 

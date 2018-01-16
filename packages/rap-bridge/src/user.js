@@ -24,8 +24,8 @@ export default {
       User.login((ret) => {
         ret = handleToJSON(ret);
         ret.isLogin = false;
-
-        if (ret && String(ret.status) === 'success') {
+        let status = ret && String(ret.status);
+        if (status === 'true' || status === 'success') {
           ret.isLogin = true;
         }
         callback && callback(ret);

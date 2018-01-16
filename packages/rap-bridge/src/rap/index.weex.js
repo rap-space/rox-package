@@ -14,10 +14,12 @@ let call = function(options, callback) {
 
   let deferred = defer();
   RBridge.call && RBridge.call(className, methodName, params, function(success) {
-    console.log('rapcaller.call: ' + `[${className}.${methodName}]--success, message${success}`);
+    success = JSON.stringify(success);
+    console.log('rapcaller.call:: ' + `[${className}.${methodName}]--success,  \n message:: ${success}`);
     deferred.resolve(success);
   }, function(error) {
-    console.error('rapcaller.call: ' + `[${className}.${methodName}]--failure, message: ${error}`);
+    error = JSON.stringify(error);
+    console.error('rapcaller.call:: ' + `[${className}.${methodName}]--failure, \n message:: ${error}`);
     deferred.reject(error);
   }, function(notify) {
     // console.log('notify:' + notify);
@@ -29,5 +31,6 @@ let call = function(options, callback) {
 
 export default {
   call,
+  invoke: call,
   requireModule
 };

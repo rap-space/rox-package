@@ -3,6 +3,8 @@ import isNumber from 'lodash/isNumber';
 import isObject from 'lodash/isObject';
 import isArray from 'lodash/isArray';
 import Version from './version';
+import log from './log';
+
 function defer() {
   let deferred = {
     always(...args) {
@@ -31,4 +33,4 @@ function each(obj, iterator, context = null) {
   }
 }
 
-export default { defer, each , Version };
+export default { defer, each, Version, log };

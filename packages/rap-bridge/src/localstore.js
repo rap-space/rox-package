@@ -1,4 +1,5 @@
 import RapBridge from './rap';
+
 const CLASS_NAME = 'localstore';
 let localstore = {
   getItem(key) {
@@ -12,7 +13,7 @@ let localstore = {
   },
   setItem(key) {
     if (!key) {
-      console.error('must pass key')
+      console.error('must pass key');
     }
     return RapBridge.call({
       className: CLASS_NAME,
@@ -24,7 +25,7 @@ let localstore = {
   },
   removeItem(key) {
     if (!key) {
-      console.error('must pass key')
+      console.error('must pass key');
     }
     return RapBridge.call({
       className: CLASS_NAME,

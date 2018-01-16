@@ -3,7 +3,7 @@ function requireModule(moduleName) {
   if (window.require) {
     weexModule = window.require('@weex-module/' + moduleName);
   }
-  return weexModule
+  return weexModule;
 }
 
 export default { requireModule };

@@ -1,6 +1,7 @@
 /** @jsx createElement */
 
 'use strict';
+
 import { createElement, Component, findDOMNode, PropTypes } from 'rax';
 import View from 'nuke-view';
 import Env from 'nuke-env';
@@ -9,6 +10,7 @@ import Text from 'nuke-text';
 import Button from 'nuke-button';
 import Link from 'nuke-link';
 import stylesProvider from './styles';
+
 const { isWeex, isWeb } = Env;
 
 const IMG_LIST = {
@@ -27,13 +29,14 @@ const IMG_LIST = {
   'paySuccess': '//gw.alicdn.com/tfs/TB1Gh8fmY_I8KJjy1XaXXbsxpXa-340-340.png',
   'payProcessing': '//gw.alicdn.com/tfs/TB12gUxmNrI8KJjy0FpXXb5hVXa-340-340.png'
 };
-console.log(IMG_LIST['404']);
-class Empty extends Component {
+
+class Emotion extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       innerWidth: 0,
-    }
+    };
   }
 
   onPress() {
@@ -42,9 +45,11 @@ class Empty extends Component {
 
   render() {
     let type = this.props.type || '404';
-    if(this.props.height) {
+
+    if (this.props.height) {
       styles.container.height = +this.props.height;
     }
+
     return (
       <View style={styles.container}>
         <Image src={IMG_LIST[type]} style={{
@@ -92,17 +97,17 @@ const styles = {
     marginTop: 24
   }
 };
-Empty.propTypes = {
+Emotion.propTypes = {
   rate: PropTypes.number,
   style: PropTypes.any,
   barStyle: PropTypes.any
 };
 
-Empty.defaultProps = {
+Emotion.defaultProps = {
   rate: 1,
   style: {},
   barStyle: {}
 };
-Empty.displayName = 'Empty';
+Emotion.displayName = 'Emotion';
 
-export default Empty;
+export default Emotion;

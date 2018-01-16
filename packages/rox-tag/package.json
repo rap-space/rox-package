@@ -13,8 +13,8 @@
   "dependencies": {
     "nuke-core": "^1.0.5",
     "nuke-theme-provider": "^1.0.7",
-    "rox-text": "^0.0.2",
-    "rox-view": "^0.0.2"
+    "rox-text": "^0.0.3",
+    "rox-view": "^0.0.3"
   },
   "peerDependencies": {
     "rax": "0.x"

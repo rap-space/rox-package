@@ -2,14 +2,14 @@ import { createElement, render, Component } from 'rax';
 // eslint-disable-next-line
 import RoxStyleProvider from 'rox-theme-provider';
 import Button from 'rox-button';
-import Empty from 'rox-empty-page';
+import Empty from 'rox-emotion';
 import Theme from 'rox-theme';
 // eslint-disable-next-line
 import Page from 'nuke-page';
 // eslint-disable-next-line
 import View from 'nuke-view';
-import Image from 'nuke-image';
-import Text from 'nuke-text';
+import Image from 'rox-image';
+import Text from 'rox-text';
 
 let App = class NukeDemoIndex extends Component {
   render() {

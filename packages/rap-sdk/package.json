@@ -1,6 +1,6 @@
 {
-  "name": "rap-bridge",
-  "version": "0.0.0",
+  "name": "rap-sdk",
+  "version": "0.0.1",
   "description": "",
   "files": ["lib"],
   "keywords": [],

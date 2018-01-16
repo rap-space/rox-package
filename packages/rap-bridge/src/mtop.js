@@ -113,7 +113,7 @@ function requestByMtop(params, successCallback, failureCallback) {
 // 失败
 // 失败-网络异常
 // 失败-网关服务异常
-let mtop = {
+mtop = {
   request(options, successCallback, failureCallback) {
     let defered = defer();
     let bizType = '3';

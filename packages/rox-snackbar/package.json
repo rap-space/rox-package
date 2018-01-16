@@ -14,6 +14,7 @@
     "rax": "0.x"
   },
   "dependencies": {
-    "nuke-biz-snack-bar": "^0.0.3"
+    "nuke-text": "^0.0.14",
+    "nuke-view": "^1.0.7"
   }
 }

@@ -78,9 +78,13 @@ const styles = {
     fontSize: 28
   },
   action: {
+    height: 80,
     backgroundColor: 'transparent',
     borderColor: 'transparent',
     position: 'absolute',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
     right: 32,
     color: '#666666',
     fontSize: 28

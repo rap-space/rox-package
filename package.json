@@ -41,6 +41,7 @@
     "inquirer": "^4.0.1",
     "jest": "^22.0.3",
     "lerna": "^2.5.1",
+    "lint-staged": "^6.0.0",
     "minimatch": "^3.0.4",
     "minimist": "^1.2.0",
     "nuke-input": "^1.0.40",
@@ -107,10 +108,14 @@
   },
   "config": {
     "ghooks": {
-      "commit-msg": "node ./scripts/validate-commit-msg.js"
+      "commit-msg": "node ./scripts/validate-commit-msg.js && lint-staged"
     },
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
+  },
+  "lint-staged": {
+    "packages/*/src/**/*.js": [ "eslint" ],
+    "examples/**/*.js": [ "eslint" ]
   }
 }

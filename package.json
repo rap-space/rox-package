@@ -15,11 +15,12 @@
     "clean:dist": "rm -rf ./packages/*/dist",
     "clean:compile": "rm -rf ./packages/*/lib",
     "clean:coverage": "rm -rf ./coverage",
-    "clean:modules": "rm -rf ./packages/*/node_modules"
+    "clean:modules": "rm -rf ./packages/*/node_modules",
+    "publish": "npm run build:compile && lerna publish --skip-git"
   },
   "devDependencies": {
     "babel-core": "^6.26.0",
-    "babel-eslint": "^8.0.3",
+    "babel-eslint": "^7.2.3",
     "babel-jest": "^22.0.3",
     "babel-loader": "^7.1.2",
     "babel-plugin-export-default-module-exports": "^0.0.4",
@@ -32,6 +33,7 @@
     "eslint": "^4.13.1",
     "eslint-plugin-import": "^2.8.0",
     "eslint-plugin-react": "^7.5.1",
+    "express": "^4.16.2",
     "findup": "^0.1.5",
     "fs-extra": "^5.0.0",
     "ghooks": "^2.0.2",
@@ -41,37 +43,52 @@
     "lerna": "^2.5.1",
     "minimatch": "^3.0.4",
     "minimist": "^1.2.0",
+    "nuke-input": "^1.0.40",
     "nuke-layout": "^1.0.0",
     "nuke-page": "^1.0.1",
+    "nuke-scroll-view": "^1.0.4",
+    "nuke-slip": "^1.0.5",
     "nuke-text": "^0.0.12",
     "nuke-theme-provider": "^1.0.7",
     "nuke-view": "^1.0.7",
-    "nuke-slip": "^1.0.5",
-    "nuke-input": "^1.0.40",
     "rax": "^0.5.0",
     "rax-webpack-plugin": "^0.5.0",
     "rimraf": "^2.6.2",
     "semver-regex": "^1.0.0",
     "webpack": "^3.10.0",
-    "webpack-dev-server": "^2.9.7"
+    "webpack-dev-middleware": "^2.0.4",
+    "xtemplate": "^4.6.1",
+    "xtpl": "^3.4.0"
   },
   "peerDependencies": {
     "rax": "latest",
-    "r-bridge": "latest",
+    "rap-bridge": "latest",
     "rox-button": "latest",
     "rox-checkbox": "latest",
     "rox-dialog": "latest",
+    "rox-emotion": "latest",
     "rox-icon": "latest",
+    "rox-image": "latest",
     "rox-input": "latest",
+    "rox-layout": "latest",
+    "rox-link": "latest",
     "rox-number-picker": "latest",
+    "rox-picker": "latest",
     "rox-progress": "latest",
+    "rox-radio": "latest",
+    "rox-recycler-view": "latest",
+    "rox-refresh-control": "latest",
     "rox-search-bar": "latest",
+    "rox-slider": "latest",
     "rox-slip": "latest",
+    "rox-snackbar": "latest",
     "rox-switch": "latest",
+    "rox-tag": "latest",
     "rox-text": "latest",
     "rox-theme": "latest",
     "rox-theme-provider": "latest",
-    "rox-view": "latest"
+    "rox-view": "latest",
+    "rox-web": "latest"
   },
   "jest": {
     "collectCoverage": true,
@@ -95,10 +112,5 @@
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
     }
-  },
-  "dependencies": {
-    "nuke-button": "^1.0.10",
-    "nuke-image": "^1.0.0",
-    "nuke-scroll-view": "^1.0.4"
   }
 }

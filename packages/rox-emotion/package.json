@@ -1,0 +1,22 @@
+{
+  "name": "rox-emotion",
+  "version": "0.0.5",
+  "description": "",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "rox",
+    "rox-components"
+  ],
+  "peerDependencies": {
+    "rax": "0.x"
+  },
+  "dependencies": {
+    "nuke-button": "^1.0.10",
+    "nuke-image": "^1.0.0",
+    "nuke-link": "^1.0.1",
+    "nuke-text": "^0.0.14"
+  }
+}

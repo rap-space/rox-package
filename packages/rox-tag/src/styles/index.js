@@ -11,6 +11,14 @@ function tagStyle(theme = {}) {
     paddingLeft: 2,
     paddingRight: 2
   };
+  const tagItemBaseStyle = {
+    minWidth: variables['tagitem-min-width'],
+    height: variables['tagitem-height'],
+    paddingLeft: variables['tagitem-padding'],
+    paddingRight: variables['tagitem-padding'],
+    fontSize: variables['tagitem-font-size'],
+    borderWidth: 1
+  };
 
   return {
     // 只读类型的 Tag 展示
@@ -27,6 +35,29 @@ function tagStyle(theme = {}) {
         backgroundColor: variables['tag-primary-background-color'],
         color: variables['tag-primary-color']
       }
+    },
+    TagItem: {
+      normal: {
+        ...tagItemBaseStyle,
+        borderColor: variables['tagitem-normal-border-color'],
+        backgroundColor: variables['tagitem-normal-background-color'],
+        color: variables['tagitem-normal-color']
+      },
+      press: {
+        ...tagItemBaseStyle,
+        borderColor: variables['tagitem-press-border-color'],
+        backgroundColor: variables['tagitem-press-background-color'],
+        color: variables['tagitem-press-color']
+      },
+      selected: {
+        ...tagItemBaseStyle,
+        borderColor: variables['tagitem-selected-border-color'],
+        backgroundColor: variables['tagitem-selected-background-color'],
+        color: variables['tagitem-selected-color']
+      }
+    },
+    TagSelector: {
+
     }
   };
 }

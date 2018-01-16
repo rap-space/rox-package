@@ -6,16 +6,16 @@ import styles from '../styles';
 
 class TagItem extends PureComponent {
   static propTypes = {
-    type: T.oneOf(['primary', 'normal'])
+    selected: T.bool
   };
 
   static defaultProps = {
-    type: 'normal'
+
   };
 
   render() {
-    const { themeStyle, style = {}, type, children } = this.props;
-    const tagStyle = Object.assign({}, themeStyle[type], style);
+    const { themeStyle, style = {}, children } = this.props;
+    const tagStyle = Object.assign({}, themeStyle, style);
 
     return (
       <View style={tagStyle}>
@@ -29,28 +29,34 @@ class TagItem extends PureComponent {
   }
 }
 
-const StyledTag = connectStyle(styles)(TagItem);
+const StyledTagItem = connectStyle(styles)(TagItem);
 
-export class TagList extends PureComponent {
+const selectorStyles = {
+  paddingLeft: 0
+};
+
+export class TagSelector extends PureComponent {
+  static propTypes = {
+    dataSource: T.arrayOf(T.shape({
+      label: T.node,
+      value: T.any
+    }))
+  }
+
   render() {
     const baseStyle = {
       flexDirection: 'row'
     };
     const { style = {}, dataSource = [], type } = this.props;
 
-    let children = this.props.children;
-    if (!Array.isArray(children)) {
-      children = [ children ];
-    }
-
     return (
-      <View style={Object.assign({}, baseStyle, style)}>
+      <View style={selectorStyles}>
         {dataSource.map((val, i) => {
-          return <StyledTag style={{ marginRight: i === dataSource.length - 1 ? 0 : 4 }} type={type}>{val}</StyledTag>;
+          return <StyledTagItem style={{ marginRight: i === dataSource.length - 1 ? 0 : 4 }} type={type}>{val}</StyledTagItem>;
         })}
       </View>
     );
   }
 }
 
-export default StyledTag;
+export default TagSelector;

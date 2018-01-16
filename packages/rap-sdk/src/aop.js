@@ -8,6 +8,8 @@ let aop = {
     options.appKey = param.appKey;
     options.type = param.type;
     options.timeout = param.options;
+
+    //
     Rap.invoke({
       className: 'aop',
       methodName: 'request',

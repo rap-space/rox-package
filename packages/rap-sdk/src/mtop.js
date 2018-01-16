@@ -140,9 +140,8 @@ mtop = {
       data.namespace = options.namespace;
       data.apiName = options.apiName;
       data.apiVersion = options.apiVersion;
-      // 这里最好可以获取到, 一般从 URL上获取;
-      // data.appKey = options.appKey;
       data.params = options.params;
+
       if (isWeex) {
         params = {
           api: 'mtop.1688.wireless.openapi.gateway',

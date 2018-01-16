@@ -21,7 +21,7 @@ class MenuList extends Component {
       return selected(item, index);
     }
 
-    return selected.find(index) !== -1;
+    return selected.findIndex(i => i === index) !== -1;
   }
 
   render() {
@@ -34,15 +34,18 @@ class MenuList extends Component {
 
 
     return dataSource.map((item, index) => {
+      item.position = item.position || 'right';
+      item.iconSelected = item.iconSelected || 'https://gw.alicdn.com/tfs/TB1q.k4kyqAXuNjy1XdXXaYcVXa-40-28.png';
+
       if (this.isSelected(item, index)) {
         return (
           <Touchable style={styles.itemGroup} onPress={() => this._onSelect(index, item, dataSource)}>
             {
-              item.iconSelected && item.position === 'left' && <Image source={{ uri: item.iconSelected }} />
+              item.iconSelected && item.position === 'left' && <Image source={{ uri: item.iconSelected }} style={{...styles.checkIcon, ...styleIcon}} />
             }
-            <Text style={{...styles.defaultStyleText, ...styleText}}>{item.label}</Text>
+            <Text style={{...styles.defaultStyleText, ...styles.defaultStyleTextActive, ...styleTextActive}}>{item.label}</Text>
             {
-              item.iconSelected && item.position === 'right' && <Image source={{ uri: item.iconSelected }} />
+              item.iconSelected && item.position === 'right' && <Image source={{ uri: item.iconSelected }} style={{...styles.checkIcon, ...styleIcon}} />
             }
           </Touchable>
         );
@@ -51,11 +54,11 @@ class MenuList extends Component {
       return (
         <Touchable style={styles.itemGroup} onPress={() => this._onSelect(index, item, dataSource)}>
           {
-            item.icon && item.position === 'left' && <Image source={{ uri: item.icon }} />
+            item.icon && item.position === 'left' && <Image source={{ uri: item.icon }} style={{...styles.checkIcon, ...styleIcon}} />
           }
-          <Text style={{...styles.defaultStyleText, ...styleTextActive}}>{item.label}</Text>
+          <Text style={{...styles.defaultStyleText, ...styleText}}>{item.label}</Text>
           {
-            item.icon && item.position === 'right' && <Image source={{ uri: item.icon }} />
+            item.icon && item.position === 'right' && <Image source={{ uri: item.icon }} style={{...styles.checkIcon, ...styleIcon}} />
           }
         </Touchable>
       );
@@ -105,16 +108,18 @@ var styles = {
   },
   defaultStyleText: {
     fontSize: 32,
-    color: '#FF6000',
-    lineHeight: '40rem',
+    color: '#333333',
+    lineHeight: 40,
     lines: 1,
     fontWeight: 400,
     flex: 1,
   },
+  defaultStyleTextActive: {
+    color: '#FF6000',
+  },
   checkIcon: {
     width: 20,
     height: 13,
-    marginTop: 13
   },
   borderTop: {
     width: 750,

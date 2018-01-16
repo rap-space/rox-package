@@ -5,27 +5,38 @@ import Text from 'nuke-text';
 
 import Menu from '../../packages/rox-menu';
 
+const mock = [
+  {
+    label: '测试1',
+    value: '测试1-value',
+    icon: '',
+    iconSelected: 'https://gw.alicdn.com/tfs/TB1q.k4kyqAXuNjy1XdXXaYcVXa-40-28.png',
+    position: 'right',
+  },
+  {
+    label: '测试1',
+    value: '测试1-value',
+    icon: '',
+    iconSelected: 'https://gw.alicdn.com/tfs/TB1q.k4kyqAXuNjy1XdXXaYcVXa-40-28.png',
+    position: 'right',
+  },
+  {
+    label: '测试1',
+    value: '测试1-value',
+    icon: '',
+    iconSelected: 'https://gw.alicdn.com/tfs/TB1q.k4kyqAXuNjy1XdXXaYcVXa-40-28.png',
+    position: 'right',
+  }
+];
+
 class App extends Component {
-  state = {
-    selectedIndex: 1,
-  }
-
-  onSelect = (selectedIndex) => {
-
-    this.setState({
-      selectedIndex,
-    })
-  }
-
   render() {
-    const { selectedIndex } = this.state;
-
     return (
       <View style={styles.root}>
 
         <Menu
-          list={['货品名', '订单号', '测试1', '测试2']}
-          selectedIndex={selectedIndex}
+          dataSource={mock}
+          selected={[1, 2]}
           onSelect={this.onSelect}
           style={{
             width: 500,

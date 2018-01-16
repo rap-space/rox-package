@@ -6,8 +6,8 @@ import Theme from 'rox-theme';
 // eslint-disable-next-line
 import Page from 'nuke-page';
 // eslint-disable-next-line
-import View from 'nuke-view';
-import Image from 'nuke-image';
+import View from 'rox-view';
+import Image from 'rox-image';
 import RoxStyleProvider from 'rox-theme-provider';
 
 
@@ -35,41 +35,37 @@ let App = class NukeDemoIndex extends Component {
     });
   }
 
-  closeHandler(){
-    console.log('bar closed');
+  closeHandler() {
     this.setState({
       showSnackBar: false
     });
   }
 
-  hideBar(){
+  hideBar() {
   }
 
   render() {
     let actionTpl = <Image src="https://gw.alicdn.com/tfs/TB150aEkyqAXuNjy1XdXXaYcVXa-18-18.png" style={{
       width: 18,
       height: 18
-    }} />
+    }} />;
     return (
       <RoxStyleProvider>
         <Page title="Snackbar">
           <Page.Intro main="有交互" />
           <Button style={styles.btn} onPress={this.showBar} type="primary">click me</Button>
-          <Snackbar 
-            message="测试提示文本" 
+          <Snackbar
+            message="测试提示文本"
             actionTpl={actionTpl}
             visibile={this.state.showSnackBar}
             onAction={() => {
-              this.closeHandler()
-            }}
-             />
-
+              this.closeHandler();
+            }} />
           <Page.Intro main="无交互" />
           <Button style={styles.btn} onPress={this.showBar1} type="primary">click me</Button>
-          <Snackbar 
+          <Snackbar
             message="测试提示文本"
-            visibile={this.state.showSnackBar1}
-             />
+            visibile={this.state.showSnackBar1} />
         </Page>
       </RoxStyleProvider>
     );

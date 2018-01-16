@@ -1,3 +1,3 @@
-import Input from 'nuke-Input';
+import Input from 'nuke-input';
 
 export default Input;

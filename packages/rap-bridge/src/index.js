@@ -10,6 +10,7 @@ import localstore from './localstore';
 // biz
 import device from './device';
 import user from './user';
+import share from './biz/share';
 
 // request
 import mtop from './mtop';
@@ -44,7 +45,7 @@ const RAP = {
   fetch,
   mtop,
   aop,
-
+  share,
   device,
   toast: Toast,
   showLoading,

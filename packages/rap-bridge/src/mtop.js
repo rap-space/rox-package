@@ -5,6 +5,7 @@
 // import {report} from '@ali/universal-tracker';
 import Rap from './rap';
 import { isWeex, isWeb } from './env';
+import { defer } from './util';
 
 
 function report() {};
@@ -114,12 +115,18 @@ function requestByMtop(params, successCallback, failureCallback) {
 // 失败-网关服务异常
 let mtop = {
   request(options, successCallback, failureCallback) {
+    let defered = defer();
     let bizType = '3';
     // 这里有
     let _failureCallback = (retJson) => {
       failureCallback = failureCallback || successCallback;
       failureCallback && failureCallback(retJson);
       // reportError(params, retJson);
+      defered.reject(retJson);
+    };
+    let _successCallback = (retJson) => {
+      successCallback && successCallback(retJson);
+      defered.resolve(retJson);
     };
     let params = {};
     // 获取插件信息; 根据bizType【是否是三方】来决定使用哪个 MTOP，还是只作为MTOP通道
@@ -148,10 +155,12 @@ let mtop = {
     }
     if (Windvane) {
       // 这里服务固定
-      requestByWindvane(params, successCallback, _failureCallback);
+      requestByWindvane(params, _successCallback, _failureCallback);
     } else if (Mtop) {
-      requestByMtop(params, successCallback, _failureCallback);
+      requestByMtop(params, _successCallback, _failureCallback);
     }
+
+    return defered;
   }
 };
 export default mtop;

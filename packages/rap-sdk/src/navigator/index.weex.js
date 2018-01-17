@@ -105,6 +105,11 @@ let Navigator = {
   },
 
   setTitle(param) {
+    if (!param) {
+      param = {
+        text: ''
+      };
+    }
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'setTitle',

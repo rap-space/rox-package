@@ -1,6 +1,6 @@
 import RapBridge from './rap';
 
-const CLASS_NAME = 'localstore';
+const CLASS_NAME = 'LocalStorage';
 let localstore = {
   getItem(key) {
     return RapBridge.call({

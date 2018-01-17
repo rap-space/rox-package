@@ -5,7 +5,8 @@ import { on, off, emit } from './event';
 
 // navigator
 import navigator from './navigator';
-import localstore from './localstore';
+
+import localStorage from './localstorage';
 
 // biz
 import device from './device';
@@ -36,12 +37,9 @@ const RAP = {
   on,
   off,
   emit,
-
   navigator,
-  localstore,
-
+  localStorage,
   user,
-
   fetch,
   mtop,
   aop,

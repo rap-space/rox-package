@@ -13,6 +13,7 @@
     "rax": "0.x"
   },
   "dependencies": {
+    "nuke-image": "^1.0.0",
     "nuke-input": "^1.0.40"
   }
 }

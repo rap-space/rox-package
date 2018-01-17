@@ -10,7 +10,7 @@ function formatURL(url) {
 };
 
 function formatTitle(options) {
-  options = options || '';
+  options = options || {};
   if (isString(options)) {
     options = {
       text: options
@@ -23,7 +23,7 @@ function formatTitle(options) {
       textColor: options.textColor || '#333333',
       iconImage: options.iconImage,
 
-      subText: options.subText || '',
+      subText: options.subText,
       subUrl: url,
       subTextColor: options.subTextColor || '#999999',
       subIconImages: options.subIconImages || []
@@ -142,6 +142,7 @@ let Navigator = {
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'addRightItem',
+      param: param
     }, callback);
   },
   removeRightItem(tagName) {
@@ -149,7 +150,7 @@ let Navigator = {
       className: CLASS_NAME,
       methodName: 'addRightItem',
       param: {
-        tagName: tagName
+        tag: tagName
       }
     });
   }

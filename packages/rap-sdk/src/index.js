@@ -11,7 +11,7 @@ import localstore from './localstore';
 import device from './device';
 import user from './user';
 import share from './biz/share';
-
+import aliwangwang from './biz/aliwangwang';
 // request
 import mtop from './mtop';
 import aop from './aop';
@@ -48,6 +48,7 @@ const RAP = {
   share,
   device,
   toast: Toast,
+  aliwangwang,
   showLoading,
   hideLoading,
   clipboard,

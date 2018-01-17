@@ -51,7 +51,7 @@ let Navigator = {
     let title = formatTitle(param.title);
     let backgroundColor = param.backgroundColor;
     let clearTop = param.clearTop || false;
-    let animate = param.animate || true;
+    let animate = param.animated || true;
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'push',
@@ -81,7 +81,7 @@ let Navigator = {
       methodName: 'pop',
       param: {
         index: index,
-        animated: animated
+        animate: animated
       }
     });
   },
@@ -99,7 +99,7 @@ let Navigator = {
       methodName: 'popTo',
       param: {
         index: index,
-        animated: animated
+        animate: animated
       }
     });
   },

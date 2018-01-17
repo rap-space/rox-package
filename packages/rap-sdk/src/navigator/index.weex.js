@@ -81,7 +81,7 @@ let Navigator = {
       methodName: 'pop',
       param: {
         index: index,
-        animate: animated
+        animated: animated
       }
     });
   },
@@ -99,7 +99,7 @@ let Navigator = {
       methodName: 'popTo',
       param: {
         index: index,
-        animate: animated
+        animated: animated
       }
     });
   },

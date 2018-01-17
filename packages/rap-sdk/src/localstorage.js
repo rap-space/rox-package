@@ -3,7 +3,7 @@ import RapBridge from './rap';
 const CLASS_NAME = 'LocalStorage';
 let localstore = {
   getItem(key) {
-    return RapBridge.call({
+    return RapBridge.invoke({
       className: CLASS_NAME,
       methodName: 'get',
       param: {
@@ -15,19 +15,17 @@ let localstore = {
     if (!key) {
       console.error('must pass key');
     }
-    return RapBridge.call({
+    return RapBridge.invoke({
       className: CLASS_NAME,
       methodName: 'set',
-      param: {
-        key: key
-      }
+      param: key
     });
   },
   removeItem(key) {
     if (!key) {
       console.error('must pass key');
     }
-    return RapBridge.call({
+    return RapBridge.invoke({
       className: CLASS_NAME,
       methodName: 'remove',
       param: {
@@ -36,7 +34,7 @@ let localstore = {
     });
   },
   getKeys() {
-    return RapBridge.call({
+    return RapBridge.invoke({
       className: CLASS_NAME,
       methodName: 'getKeys',
       param: {}

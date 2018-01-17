@@ -148,7 +148,7 @@ let Navigator = {
   removeRightItem(tagName) {
     return RapBridge.call({
       className: CLASS_NAME,
-      methodName: 'addRightItem',
+      methodName: 'removeRightItem',
       param: {
         tag: tagName
       }

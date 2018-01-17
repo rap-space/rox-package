@@ -90,6 +90,14 @@ let Navigator = {
     });
   },
 
+  clear(param) {
+    return RapBridge.call({
+      className: CLASS_NAME,
+      methodName: 'close',
+      param: {}
+    });
+  },
+
   addRightItem(options) {
     let param = {};
     // 长度待确认

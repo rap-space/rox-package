@@ -85,7 +85,7 @@ let Navigator = {
   setTitle(param) {
     return RapBridge.call({
       className: CLASS_NAME,
-      methodName: 'popTo',
+      methodName: 'setTitle',
       param: formatTitle(param)
     });
   },
@@ -103,7 +103,7 @@ let Navigator = {
     }
     return RapBridge.call({
       className: CLASS_NAME,
-      methodName: 'popTo',
+      methodName: 'addRightItem',
       param: param
     });
   }

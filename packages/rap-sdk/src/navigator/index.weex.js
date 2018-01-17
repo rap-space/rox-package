@@ -97,8 +97,7 @@ let Navigator = {
       param: {}
     });
   },
-
-  addRightItem(options) {
+  addRightItem(options, callback) {
     let param = {};
     // 长度待确认
     if (options.text) {
@@ -109,10 +108,22 @@ let Navigator = {
     if (options.iconImage) {
       param.iconImage = options.iconImage;
     }
+
+    if (options.onPress) {
+      callback = options.onPress;
+    };
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'addRightItem',
-      param: param
+    }, callback);
+  },
+  removeRightItem(tagName) {
+    return RapBridge.call({
+      className: CLASS_NAME,
+      methodName: 'addRightItem',
+      param: {
+        tagName: tagName
+      }
     });
   }
 };

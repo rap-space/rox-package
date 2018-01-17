@@ -1,5 +1,6 @@
 import RapBridge from '../rap';
 import isString from 'lodash/isString';
+import isNumber from 'lodash/isNumber';
 import isObject from 'lodash/isObject';
 
 const CLASS_NAME = 'navigator';
@@ -36,6 +37,11 @@ function formatTitle(options) {
 let Navigator = {
   push(param) {
     // 如果直接传一个String
+    if (isString(param)) {
+      param = {
+        url: param
+      };
+    }
     param = param || {};
     let url = param.url;
     if (!url) {
@@ -59,25 +65,41 @@ let Navigator = {
     });
   },
 
-  pop(param) {
-    param = param || { index: 1, animate: true};
+  pop(num) {
+    let index = 1;
+    let animated = true;
+    if (isNumber(+num)) {
+      index = num;
+    }
+    if (isObject(num)) {
+      index = num.index;
+      animated = num.animated;
+    }
+
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'pop',
       param: {
-        index: param.index,
-        animate: param.animate
+        index: index,
+        animated: animated
       }
     });
   },
 
   popTo(param) {
+    let index;
+    if (param && param.index) {
+      index = param.index;
+    } else {
+      index = index;
+    }
+    let animated = param && param.animated;
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'popTo',
       param: {
-        index: param.index,
-        animate: param.animate
+        index: index,
+        animated: animated
       }
     });
   },

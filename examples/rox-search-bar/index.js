@@ -11,26 +11,22 @@ let App = class NukeDemoIndex extends Component {
     super();
     this.state = {
       value: '',
-      value2: '',
-      value3: ''
+      value2: ''
     };
   }
 
-  search = (data, e) => {
+  search = data => {
     this.setState({
-      value: data.value
+      value: data.value && data.value.value
     });
   };
+
   searchOnReturn2 = data => {
     this.setState({
-      value2: data.value
+      value: data.value && data.value.value
     });
   };
-  searchOnReturn3 = data => {
-    this.setState({
-      value3: data.value
-    });
-  };
+
   render() {
     return (
       <Page title="SearchBar">
@@ -51,9 +47,6 @@ let App = class NukeDemoIndex extends Component {
         />
         <View style={styles.relatedView}>
           <Text style={styles.result}>要搜索的值：{this.state.value2}</Text>
-        </View>
-        <View style={styles.relatedView}>
-          <Text style={styles.result}>要搜索的值：{this.state.value3}</Text>
         </View>
       </Page>
     );

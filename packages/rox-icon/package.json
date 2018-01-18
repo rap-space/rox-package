@@ -14,6 +14,11 @@
     "rax": "0.x"
   },
   "dependencies": {
-    "nuke-icon": "^1.0.6"
+    "nuke-icon": "^1.0.6",
+    "nuke-iconfont": "^1.0.0",
+    "nuke-image": "^1.0.0",
+    "nuke-text": "^0.0.14",
+    "nuke-theme-provider": "^1.0.7",
+    "nuke-touchable": "^1.0.0"
   }
 }

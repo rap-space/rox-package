@@ -1,10 +1,10 @@
 export default {
   default: {
-    fontName: '1688MobileIcons',
+    fontName: 'RoxIcons',
     url: '//at.alicdn.com/t/font_8788_lhanan4oxkj7cik9.ttf',
     codes: {
-      icon_close: '\ue630',
-      'warning-circle': '\ue6f9',
+      icon_close: '',
+      'warning-circle': '',
       check_disable: '',
       'success-circle': '',
       'shopping bag': '',

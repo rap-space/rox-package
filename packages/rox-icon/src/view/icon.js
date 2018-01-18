@@ -51,7 +51,7 @@ class Icon extends Component {
     const type = this.getType();
     if (type === 'iconfont') {
       const textStyle = Object.assign({}, styles[`iconfont-${size}`], style, {
-        fontFamily: `"${iconConfig.fontName}"`
+        fontFamily: iconConfig.fontName
       });
 
       return (

@@ -14,8 +14,8 @@ urllib.request(ICONFONT_OPENAPI_URL, {
 }).then((res) => {
   if (res.status === 200) {
     const data = res.data;
-    const fontName = '1688MobileIcons';
-    const url = getIn(data, 'data.font.woff_file', '');
+    const fontName = 'RoxIcons';
+    const url = getIn(data, 'data.font.ttf_file', '');
     const codes = getIn(data, 'data.icons', []).reduce((ret, iconInfo) => {
       ret[iconInfo.name] = `${String.fromCharCode(Number(iconInfo.unicode))}`;
       return ret;

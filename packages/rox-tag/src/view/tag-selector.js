@@ -1,4 +1,4 @@
-import { createElement, PureComponent, PropTypes as T, cloneElement } from 'rax';
+import { createElement, PureComponent, PropTypes as T, cloneElement, setNativeProps } from 'rax';
 import { connectStyle } from 'nuke-theme-provider';
 import { Core } from 'rox-theme';
 import View from 'rox-view';
@@ -14,12 +14,34 @@ class TagItem extends PureComponent {
     selected: false
   };
 
+  handleTouchStart = () => {
+    const { themeStyle, selected } = this.props;
+
+    if (!selected) {
+      setNativeProps(this.itemRef, {
+        style: themeStyle.press
+      });
+    }
+  };
+
+  handleTouchEnd = () => {
+    const { themeStyle, selected } = this.props;
+
+    if (!selected) {
+      setNativeProps(this.itemRef, {
+        style: themeStyle.selected
+      });
+    }
+  };
+
   render() {
     const { themeStyle, style = {}, selected, children, onClick } = this.props;
     const tagStyle = Object.assign({}, selected ? themeStyle.selected : themeStyle.normal, style);
 
     return (
-      <View style={tagStyle} onClick={onClick}>
+      <View ref={item => {
+        this.itemRef = item;
+      }} style={tagStyle} onClick={onClick} onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd}>
         {typeof children === 'string' ? (
           <Text style={{ color: tagStyle.color, fontSize: tagStyle.fontSize }}>{children}</Text>
         ) :
@@ -45,13 +67,15 @@ export class TagSelector extends PureComponent {
       label: T.node,
       value: T.any
     })),
+    multiple: T.bool,
     defaultValue: T.any,
     value: T.any,
     onChange: T.func
   }
 
   static defaultProps = {
-    onChange: () => {}
+    onChange: () => {},
+    multiple: false
   }
 
   constructor(props, context) {
@@ -71,27 +95,54 @@ export class TagSelector extends PureComponent {
   }
 
   handleClick = val => e => {
-    this.props.onChange(val);
+    const { onChange, multiple } = this.props;
+    let finalValue = val;
+
+    if (multiple) {
+      const values = this.getValue();
+
+      if (values.indexOf(val) > -1) {
+        values.splice(values.indexOf(val), 1);
+      } else {
+        values.push(val);
+      }
+
+      finalValue = [ ...values ];
+
+      onChange(values);
+    } else {
+      onChange(val);
+    }
 
     if (typeof this.props.value === 'undefined') {
       this.setState({
-        value: val
+        value: finalValue
       });
     }
+  }
+
+  getValue = () => {
+    const val = this.state.value;
+
+    if (!Array.isArray(val)) {
+      return [ val ];
+    }
+
+    return val;
   }
 
   render() {
     const baseStyle = {
       flexDirection: 'row'
     };
-    const { style = {}, dataSource = [], type } = this.props;
-    const { value } = this.state;
+    const { style = {}, dataSource = [], type, multiple } = this.props;
+    const value = this.getValue();
 
     return (
       <View style={Object.assign({}, selectorStyles, style)}>
         {dataSource.map((val, i) => {
           const label = val.label;
-          const selected = value === val.value;
+          const selected = value.indexOf(val.value) >= 0;
 
           return (
             <StyledTagItem onClick={this.handleClick(val.value)} style={{ marginRight: i === dataSource.length - 1 ? 0 : Core.s2 }}

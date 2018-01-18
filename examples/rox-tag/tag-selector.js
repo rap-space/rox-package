@@ -9,13 +9,32 @@ import Page from 'nuke-page';
 import View from 'nuke-view';
 
 const App = class NukeDemoIndex extends Component {
+  state = {
+    value: 3
+  }
+
+  handleChange = (value) => {
+    console.log('value', value)
+  }
+
+  handleChange1 = (value) => {
+    console.log('value', value)
+    this.setState({
+      value
+    })
+  }
+
   render() {
     return (
       <RoxStyleProvider>
-        <Page title="Tag">
-          <Page.Intro main="normal" />
+        <Page title="TagSelector">
+          <Page.Intro main="非受控" />
           <View style={styles.btnWithMargin}>
-            <TagSelector dataSource={[{ label: '手机专享', value: 0 }, { label: '零售利润：40%-60%', value: 1 }, { label: '黑暗料理', value: 2 }, { label: '土耳其烤肉', value: 3 }]} />
+            <TagSelector onChange={this.handleChange} defaultValue={3} dataSource={[{ label: '手机专享', value: 0 }, { label: '零售利润：40%-60%', value: 1 }, { label: '黑暗料理', value: 2 }, { label: '土耳其烤肉', value: 3 }]} />
+          </View>
+          <Page.Intro main="受控" />
+          <View style={styles.btnWithMargin}>
+            <TagSelector onChange={this.handleChange1} value={this.state.value} dataSource={[{ label: '手机专享', value: 0 }, { label: '零售利润：40%-60%', value: 1 }, { label: '黑暗料理', value: 2 }, { label: '土耳其烤肉', value: 3 }]} />
           </View>
         </Page>
       </RoxStyleProvider>

@@ -11,15 +11,15 @@ class TagItem extends PureComponent {
   };
 
   static defaultProps = {
-
+    selected: false
   };
 
   render() {
-    const { themeStyle, style = {}, children } = this.props;
-    const tagStyle = Object.assign({}, themeStyle.normal, style);
+    const { themeStyle, style = {}, selected, children, onClick } = this.props;
+    const tagStyle = Object.assign({}, selected ? themeStyle.selected : themeStyle.normal, style);
 
     return (
-      <View style={tagStyle}>
+      <View style={tagStyle} onClick={onClick}>
         {typeof children === 'string' ? (
           <Text style={{ color: tagStyle.color, fontSize: tagStyle.fontSize }}>{children}</Text>
         ) :
@@ -45,8 +45,39 @@ export class TagSelector extends PureComponent {
       label: T.node,
       value: T.any
     })),
+    defaultValue: T.any,
     value: T.any,
     onChange: T.func
+  }
+
+  static defaultProps = {
+    onChange: () => {}
+  }
+
+  constructor(props, context) {
+    super(props, context);
+
+    this.state = {
+      value: typeof props.value === 'undefined' ? props.defaultValue : props.value
+    };
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (typeof this.props.defaultValue === 'undefined' && nextProps.value !== this.props.value) {
+      this.setState({
+        value: nextProps.value
+      })
+    }
+  }
+
+  handleClick = val => e => {
+    this.props.onChange(val);
+
+    if (typeof this.props.value === 'undefined') {
+      this.setState({
+        value: val
+      });
+    }
   }
 
   render() {
@@ -54,12 +85,18 @@ export class TagSelector extends PureComponent {
       flexDirection: 'row'
     };
     const { style = {}, dataSource = [], type } = this.props;
+    const { value } = this.state;
 
     return (
       <View style={Object.assign({}, selectorStyles, style)}>
         {dataSource.map((val, i) => {
           const label = val.label;
-          return <StyledTagItem style={{ marginRight: i === dataSource.length - 1 ? 0 : Core.s2 }} type={type}>{label}</StyledTagItem>;
+          const selected = value === val.value;
+
+          return (
+            <StyledTagItem onClick={this.handleClick(val.value)} style={{ marginRight: i === dataSource.length - 1 ? 0 : Core.s2 }}
+              type={type} selected={selected}>{label}</StyledTagItem>
+          );
         })}
       </View>
     );

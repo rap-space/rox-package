@@ -1,5 +1,5 @@
-import Rap from './rap';
-import { each } from './util';
+import Rap from '../rap';
+import { each } from '../util';
 
 let className = 'biz';
 let methodName = 'openShareComponent';
@@ -8,6 +8,7 @@ let share = function(options) {
   let share = Rap.requireModule('share');
   if (!share.doShare) {
     console.error('no support share');
+    return;
   }
   options = options || {};
 
@@ -67,5 +68,4 @@ function formatTemplate(str, isUserToken) {
 let url = 'http://cui.m.1688.com/weex/weex_dacu/3139.html?__positionId__=weex_dacu&__pageId__=3139&__weex__=true';
 let picUrl = 'https://gw.alicdn.com/tfs/TB1isFOcgMPMeJjy1XcXXXpppXa-750-473.jpg_10000x340q60.jpg';
 
-share.doShare();
 export default share;

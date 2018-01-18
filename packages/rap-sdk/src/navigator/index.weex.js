@@ -1,5 +1,6 @@
 import RapBridge from '../rap';
 import isString from 'lodash/isString';
+import isNumber from 'lodash/isNumber';
 import isObject from 'lodash/isObject';
 
 const CLASS_NAME = 'navigator';
@@ -9,7 +10,7 @@ function formatURL(url) {
 };
 
 function formatTitle(options) {
-  options = options || '';
+  options = options || {};
   if (isString(options)) {
     options = {
       text: options
@@ -22,7 +23,7 @@ function formatTitle(options) {
       textColor: options.textColor || '#333333',
       iconImage: options.iconImage,
 
-      subText: options.subText || '',
+      subText: options.subText,
       subUrl: url,
       subTextColor: options.subTextColor || '#999999',
       subIconImages: options.subIconImages || []
@@ -36,6 +37,11 @@ function formatTitle(options) {
 let Navigator = {
   push(param) {
     // 如果直接传一个String
+    if (isString(param)) {
+      param = {
+        url: param
+      };
+    }
     param = param || {};
     let url = param.url;
     if (!url) {
@@ -45,7 +51,7 @@ let Navigator = {
     let title = formatTitle(param.title);
     let backgroundColor = param.backgroundColor;
     let clearTop = param.clearTop || false;
-    let animate = param.animate || true;
+    let animate = param.animated || true;
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'push',
@@ -59,52 +65,97 @@ let Navigator = {
     });
   },
 
-  pop(param) {
-    param = param || { index: 1, animate: true};
+  pop(num) {
+    let index = 1;
+    let animated = true;
+    if (isNumber(+num)) {
+      index = num;
+    }
+    if (isObject(num)) {
+      index = num.index;
+      animated = num.animated;
+    }
+
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'pop',
       param: {
-        index: param.index,
-        animate: param.animate
+        index: index,
+        animated: animated
       }
     });
   },
 
   popTo(param) {
+    let index;
+    if (param && param.index) {
+      index = param.index;
+    } else {
+      index = index;
+    }
+    let animated = param && param.animated;
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'popTo',
       param: {
-        index: param.index,
-        animate: param.animate
+        index: index,
+        animated: animated
       }
     });
   },
 
   setTitle(param) {
+    if (!param) {
+      param = {
+        text: ''
+      };
+    }
     return RapBridge.call({
       className: CLASS_NAME,
-      methodName: 'popTo',
+      methodName: 'setTitle',
       param: formatTitle(param)
     });
   },
 
-  addRightItem(options) {
-    let param = {};
-    // 长度待确认
-    if (options.text) {
-      param.text = options.text;
-    };
-
-    // 尺寸待固定;
-    if (options.iconImage) {
-      param.iconImage = options.iconImage;
-    }
+  clear(param) {
     return RapBridge.call({
       className: CLASS_NAME,
-      methodName: 'popTo',
-      param: param
+      methodName: 'close',
+      param: {}
+    });
+  },
+  addRightItem(options, callback) {
+    // let param = {};
+    // 长度待确认
+    // if (options.text) {
+    //   param.text = options.text;
+    // };
+
+    // // 尺寸待固定;
+    // if (options.iconImage) {
+    //   param.iconImage = options.iconImage;
+    // }
+
+    // if (options.tag) {
+    //   options.tag = options.tag;
+    // }
+
+    // if (options.onPress) {
+    //   callback = options.onPress;
+    // };
+    return RapBridge.call({
+      className: CLASS_NAME,
+      methodName: 'addRightItem',
+      param: options
+    }, callback);
+  },
+  removeRightItem(tagName) {
+    return RapBridge.call({
+      className: CLASS_NAME,
+      methodName: 'removeRightItem',
+      param: {
+        tag: tagName
+      }
     });
   }
 };

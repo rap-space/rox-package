@@ -5,13 +5,14 @@ import { on, off, emit } from './event';
 
 // navigator
 import navigator from './navigator';
-import localstore from './localstore';
+
+import localStorage from './localstorage';
 
 // biz
 import device from './device';
 import user from './user';
 import share from './biz/share';
-
+import aliwangwang from './biz/aliwangwang';
 // request
 import mtop from './mtop';
 import aop from './aop';
@@ -36,18 +37,16 @@ const RAP = {
   on,
   off,
   emit,
-
   navigator,
-  localstore,
-
+  localStorage,
   user,
-
   fetch,
   mtop,
   aop,
   share,
   device,
   toast: Toast,
+  aliwangwang,
   showLoading,
   hideLoading,
   clipboard,

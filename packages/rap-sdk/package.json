@@ -1,7 +1,8 @@
 {
   "name": "rap-sdk",
-  "version": "0.0.1",
+  "version": "0.0.12",
   "description": "",
+  "main": "lib/index.js",
   "files": [
     "lib"
   ],

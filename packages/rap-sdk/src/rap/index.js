@@ -7,4 +7,5 @@ if (isWeex) {
   Rap = require('./index.web');
 }
 
-module.exports = Rap;
+export default Rap;
+// module.exports = Rap;

@@ -1,7 +1,6 @@
-import localstore from './../localstore';
+import localstore from './localstorage';
 
 // localstore.getItem('_rapDebugMode_');
-
 const log = {
   log: function() {
     console.log();

@@ -1,5 +1,6 @@
 import { createElement, PureComponent, PropTypes as T, cloneElement } from 'rax';
 import { connectStyle } from 'nuke-theme-provider';
+import { Core } from 'rox-theme';
 import View from 'rox-view';
 import Text from 'rox-text';
 import styles from '../styles';
@@ -15,7 +16,7 @@ class TagItem extends PureComponent {
 
   render() {
     const { themeStyle, style = {}, children } = this.props;
-    const tagStyle = Object.assign({}, themeStyle, style);
+    const tagStyle = Object.assign({}, themeStyle.normal, style);
 
     return (
       <View style={tagStyle}>
@@ -32,7 +33,10 @@ class TagItem extends PureComponent {
 const StyledTagItem = connectStyle(styles)(TagItem);
 
 const selectorStyles = {
-  paddingLeft: 0
+  paddingLeft: 0,
+  flex: 1,
+  flexDirection: 'row',
+  flexWrap: 'wrap'
 };
 
 export class TagSelector extends PureComponent {
@@ -40,7 +44,9 @@ export class TagSelector extends PureComponent {
     dataSource: T.arrayOf(T.shape({
       label: T.node,
       value: T.any
-    }))
+    })),
+    value: T.any,
+    onChange: T.func
   }
 
   render() {
@@ -50,9 +56,10 @@ export class TagSelector extends PureComponent {
     const { style = {}, dataSource = [], type } = this.props;
 
     return (
-      <View style={selectorStyles}>
+      <View style={Object.assign({}, selectorStyles, style)}>
         {dataSource.map((val, i) => {
-          return <StyledTagItem style={{ marginRight: i === dataSource.length - 1 ? 0 : 4 }} type={type}>{val}</StyledTagItem>;
+          const label = val.label;
+          return <StyledTagItem style={{ marginRight: i === dataSource.length - 1 ? 0 : Core.s2 }} type={type}>{label}</StyledTagItem>;
         })}
       </View>
     );

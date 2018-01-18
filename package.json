@@ -19,6 +19,7 @@
     "publish": "npm run build:compile && lerna publish"
   },
   "devDependencies": {
+    "babel-cli": "^6.26.0",
     "babel-core": "^6.26.0",
     "babel-eslint": "^7.2.3",
     "babel-jest": "^22.0.3",

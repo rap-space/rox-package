@@ -17,7 +17,10 @@ function tagStyle(theme = {}) {
     paddingLeft: variables['tagitem-padding'],
     paddingRight: variables['tagitem-padding'],
     fontSize: variables['tagitem-font-size'],
-    borderWidth: 1
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderWidth: 1,
+    marginBottom: variables['tagitem-margin-bottom']
   };
 
   return {

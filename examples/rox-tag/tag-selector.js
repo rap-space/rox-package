@@ -15,7 +15,7 @@ const App = class NukeDemoIndex extends Component {
         <Page title="Tag">
           <Page.Intro main="normal" />
           <View style={styles.btnWithMargin}>
-            <TagSelector dataSource={[{ label: '手机专享', value: 0 }, { label: '零售利润：40%-60%', value: 1 }]} />
+            <TagSelector dataSource={[{ label: '手机专享', value: 0 }, { label: '零售利润：40%-60%', value: 1 }, { label: '黑暗料理', value: 2 }, { label: '土耳其烤肉', value: 3 }]} />
           </View>
         </Page>
       </RoxStyleProvider>

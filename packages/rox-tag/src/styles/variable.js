@@ -17,6 +17,7 @@ function variable(theme) {
     'tagitem-min-width': 56,
     'tagitem-height': vLoader(Core.s9),
     'tagitem-padding': vLoader(Core.s2),
+    'tagitem-margin-bottom': vLoader(Core.s2),
     'tagitem-font-size': vLoader(Core['font-size-subhead']),
     'tagitem-normal-background-color': vLoader(Core['color-white']),
     'tagitem-normal-border-color': vLoader(Core['color-fill1-3']),

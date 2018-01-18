@@ -66,7 +66,7 @@ export class TagSelector extends PureComponent {
     if (typeof this.props.defaultValue === 'undefined' && nextProps.value !== this.props.value) {
       this.setState({
         value: nextProps.value
-      })
+      });
     }
   }
 

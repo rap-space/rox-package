@@ -14,14 +14,15 @@ const App = class NukeDemoIndex extends Component {
   }
 
   handleChange = (value) => {
-    console.log('value', value)
+    console.log('value', value);
   }
 
   handleChange1 = (value) => {
-    console.log('value', value)
+    console.log('value', value);
+
     this.setState({
       value
-    })
+    });
   }
 
   render() {

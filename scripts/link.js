@@ -9,7 +9,10 @@ const PACKAGES_DIR = path.resolve(__dirname, '../packages');
 function getPackages() {
   return fs.readdirSync(PACKAGES_DIR)
     .map(f => path.resolve(PACKAGES_DIR, f))
-    .filter(f => fs.lstatSync(f).isDirectory());
+    .filter(f => {
+      const pkgJsonFile = path.join(f, 'package.json');
+      return fs.lstatSync(f).isDirectory() && fs.existsSync(pkgJsonFile);
+    });
 }
 
 const linkSkipPackages = [

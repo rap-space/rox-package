@@ -1,10 +1,10 @@
 import Rap from '../rap';
 
 let AliWangwang = {
-  openChart(loginId) {
+  openChat(loginId) {
     return Rap.invoke({
       className: 'aliwangwang',
-      methodName: 'openChart',
+      methodName: 'openChat',
       param: {
         loginId
       }

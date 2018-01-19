@@ -66,8 +66,8 @@
     "xtpl": "^3.4.0"
   },
   "peerDependencies": {
-    "rax": "latest",
     "rap-bridge": "latest",
+    "rax": "latest",
     "rox-button": "latest",
     "rox-checkbox": "latest",
     "rox-dialog": "latest",

@@ -8,8 +8,8 @@ import styles from '../styles';
 
 const tagItemIconStyle = {
   position: 'absolute',
-  right: 0,
-  bottom: 0,
+  right: -3,
+  bottom: -6,
   color: Core['color-brand1-6']
 };
 
@@ -53,12 +53,12 @@ class TagItem extends PureComponent {
         this.itemRef = item;
       }} style={tagStyle} onClick={onClick} onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd}>
         {typeof children === 'string' ? (
-          <Text numberOfLines={1} style={{ color: tagStyle.color, fontSize: tagStyle.fontSize }}>{children}</Text>
+          <Text numberOfLines={1} style={{ color: tagStyle.color, fontSize: tagStyle.fontSize, textOverflow: 'ellipsis' }}>{children}</Text>
         ) :
           children
         }
         {selected ? (
-          <Icon style={tagItemIconStyle} size="small" name="phone" />
+          <Icon style={tagItemIconStyle} size="small" name="tag_check" />
         ) : null}
       </View>
     );

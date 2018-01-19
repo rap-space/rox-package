@@ -1,14 +1,13 @@
-import { createElement, Component, render } from 'rax';
-import View from 'nuke-view';
-import Text from 'nuke-text';
-import Image from 'nuke-image';
-import Touchable from 'nuke-touchable';
-import Slip from 'nuke-slip';
+import { createElement, PureComponent, Component } from 'rax';
 import { connectStyle } from 'nuke-theme-provider';
+import View from 'rox-view';
+import Text from 'rox-text';
+import Touchable from 'rox-touchable';
+import Icon from 'rox-icon';
 
 import styles from '../styles';
 
-class MenuList extends Component {
+class MenuList extends PureComponent {
   static defaultProps = {
     dataSource: [],
     selected: [],
@@ -38,54 +37,33 @@ class MenuList extends Component {
   }
 
   renderList = () => {
-    const { dataSource, themeStyle } = this.props;
+    const { dataSource, themeStyle = {} } = this.props;
 
     // dataSource is empty.
     if (dataSource.length === 0) {
       return null;
     }
 
-
     return dataSource.map((item, index) => {
-      // 左侧视觉规范未定, 暂不支持
-      item.iconPosition = item.iconPosition || 'right';
-
-      item.iconSelected = item.iconSelected == undefined ? 'https://gw.alicdn.com/tfs/TB1faL2nv6H8KJjy0FjXXaXepXa-40-40.png' : '';
-
       if (this.isSelected(item, index)) {
         return (
-          <Touchable key={index} style={themeStyle.item} onPress={() => this._onSelect(index, item, dataSource)}>
-            {/* {
-              item.iconSelected && item.iconPosition === 'left' &&
-              <Image source={{ uri: item.iconSelected }} style={themeStyle.icon} />
-            } */}
+          <Touchable style={themeStyle.item} onPress={() => this._onSelect(index, item, dataSource)}>
             <Text style={themeStyle.textActive}>{item.label}</Text>
-            {
-              item.iconSelected && item.iconPosition === 'right' &&
-              <Image source={{ uri: item.iconSelected }} style={themeStyle.icon} />
-            }
+            <Icon style={themeStyle.icon} name={'check'} type="iconfont" />
           </Touchable>
         );
       }
 
       return (
-        <Touchable key={index} style={themeStyle.item} onPress={() => this._onSelect(index, item, dataSource)}>
-          {/* {
-            item.icon && item.iconPosition === 'left' &&
-            <Image source={{ uri: item.icon }} style={themeStyle.icon} />
-          } */}
+        <Touchable style={themeStyle.item} onPress={() => this._onSelect(index, item, dataSource)}>
           <Text style={themeStyle.text}>{item.label}</Text>
-          {
-            item.icon && item.iconPosition === 'right' &&
-            <Image source={{ uri: item.icon }} style={themeStyle.icon} />
-          }
         </Touchable>
       );
     });
   }
 
   render() {
-    const { themeStyle } = this.props;
+    const { themeStyle = {} } = this.props;
     return (
       <View style={themeStyle.container}>
         { this.renderList() }

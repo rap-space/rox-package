@@ -15,12 +15,10 @@
   },
   "dependencies": {
     "nuke-core": "^1.0.5",
-    "nuke-image": "^1.0.0",
-    "nuke-slip": "^1.0.6",
-    "nuke-text": "^0.0.14",
     "nuke-theme-provider": "^1.0.7",
-    "nuke-touchable": "^1.0.0",
-    "nuke-view": "^1.0.7",
-    "rax": "^0.5.0"
+    "rox-icon": "^0.0.7",
+    "rox-text": "^0.0.3",
+    "rox-touchable": "^0.0.7",
+    "rox-view": "^0.0.3"
   }
 }

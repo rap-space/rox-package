@@ -1,10 +1,9 @@
 /** @jsx createElement */
 /* eslint-disable import/no-extraneous-dependencies */
 import { createElement, Component, render } from 'rax';
+import { View, Text } from 'rox-components';
 import { MultiRow } from 'nuke-layout';
 import Page from 'nuke-page';
-import View from 'nuke-view';
-import Text from 'nuke-text';
 import Icon, { getTypeIconNames } from 'rox-icon';
 
 const App = class NukeDemoIndex extends Component {

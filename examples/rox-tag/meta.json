@@ -1,0 +1,8 @@
+{
+  "index": {
+    "description": "只读型 Tag"
+  },
+  "tag-selector": {
+    "description": "操作型 Tag"
+  }
+}

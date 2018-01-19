@@ -1,10 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { createElement, render, Component } from 'rax';
-import { StyleProvider } from 'nuke-theme-provider';
-import Theme from 'rox-theme';
+import { View, Text, Theme, ThemeProvider } from 'rox-components';
 import Page from 'nuke-page';
-import View from 'nuke-view';
-import Text from 'nuke-text';
 
 const Core = Theme.Core;
 
@@ -46,10 +43,7 @@ const Palette = (props) => {
 let App = class NukeDemoIndex extends Component {
   render() {
     return (
-      <StyleProvider
-        style={Theme}
-        androidConfigs={{ materialDesign: false }}
-      >
+      <ThemeProvider>
         <Page title="颜色 Color">
           <Page.Intro main="主品牌色" />
           <View style={styles.btnWithMargin} >
@@ -133,7 +127,7 @@ let App = class NukeDemoIndex extends Component {
             <Palette token="F5_3" color={Core['color-notice-3']} />
           </View>
         </Page>
-      </StyleProvider>
+      </ThemeProvider>
     );
   }
 };
@@ -153,4 +147,5 @@ const styles = {
     marginRight: 20
   }
 };
+
 render(<App />);

@@ -163,18 +163,13 @@ module.exports = {
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
     "import/no-unresolved": "error",
-    "import/no-extraneous-dependencies": [
-      "error",
-      {
-        "peerDependencies": true,
-        "devDependencies": [
-          "**/scripts/*.js",
-          "**/__tests__/*.js",
-          "**/__tests__/**/*.js",
-          '**/*.config.js'
-        ]
-      }
-    ],
+    // "import/no-extraneous-dependencies": [
+    //   "error",
+    //   {
+    //     "peerDependencies": true,
+    //     "devDependencies": true
+    //   }
+    // ],
 
     /**
      * React & JSX

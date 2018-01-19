@@ -1,14 +1,6 @@
 import { createElement, render, Component } from 'rax';
-// eslint-disable-next-line
-import RoxStyleProvider from 'rox-theme-provider';
-import Button from 'rox-button';
-import Text from 'nuke-text';
-import Dialog from 'rox-dialog';
-import Theme from 'rox-theme';
-// eslint-disable-next-line
+import { Theme, ThemeProvider, Button, Text, Dialog, View } from 'rox-components';
 import Page from 'nuke-page';
-// eslint-disable-next-line
-import View from 'nuke-view';
 
 let App = class NukeDemoIndex extends Component {
   constructor() {
@@ -41,7 +33,7 @@ let App = class NukeDemoIndex extends Component {
   }
   render() {
     return (
-      <RoxStyleProvider>
+      <ThemeProvider>
         <Page title="Dialog">
           <Page.Intro main="Dialog" />
           <View style={{ height: '2000rem' }}>
@@ -81,7 +73,7 @@ let App = class NukeDemoIndex extends Component {
             </View>
           </Dialog>
         </Page>
-      </RoxStyleProvider>
+      </ThemeProvider>
     );
   }
 };
@@ -167,4 +159,5 @@ var styles = {
     justifyContent: 'center'
   }
 };
+
 render(<App />);

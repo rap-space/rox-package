@@ -15,11 +15,13 @@ const tagItemIconStyle = {
 
 class TagItem extends PureComponent {
   static propTypes = {
-    selected: T.bool
+    selected: T.bool,
+    needSelectedIcon: T.bool
   };
 
   static defaultProps = {
-    selected: false
+    selected: false,
+    needSelectedIcon: false
   };
 
   handleTouchStart = () => {
@@ -45,7 +47,7 @@ class TagItem extends PureComponent {
   };
 
   render() {
-    const { themeStyle, style = {}, selected, children, onClick } = this.props;
+    const { themeStyle, style = {}, selected, children, onClick, needSelectedIcon } = this.props;
     const tagStyle = Object.assign({}, selected ? themeStyle.selected : themeStyle.normal, style);
 
     return (
@@ -57,7 +59,7 @@ class TagItem extends PureComponent {
         ) :
           children
         }
-        {selected ? (
+        {selected && needSelectedIcon ? (
           <Icon style={tagItemIconStyle} size="small" name="tag_check" />
         ) : null}
       </View>
@@ -163,7 +165,7 @@ export class TagSelector extends PureComponent {
 
           return (
             <StyledTagItem onClick={this.handleClick(val.value)} style={{ marginRight: i === dataSource.length - 1 ? 0 : Core.s2 }}
-              type={type} selected={selected}>{label}</StyledTagItem>
+              type={type} selected={selected} needSelectedIcon={multiple}>{label}</StyledTagItem>
           );
         })}
       </View>

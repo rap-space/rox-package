@@ -84,7 +84,8 @@ export class TagSelector extends PureComponent {
     multiple: T.bool,
     defaultValue: T.any,
     value: T.any,
-    onChange: T.func
+    onChange: T.func,
+    flex: T.bool
   }
 
   static defaultProps = {

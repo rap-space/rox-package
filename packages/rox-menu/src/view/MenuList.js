@@ -47,16 +47,18 @@ class MenuList extends Component {
 
 
     return dataSource.map((item, index) => {
+      // 左侧视觉规范未定, 暂不支持
       item.iconPosition = item.iconPosition || 'right';
+
       item.iconSelected = item.iconSelected == undefined ? 'https://gw.alicdn.com/tfs/TB1faL2nv6H8KJjy0FjXXaXepXa-40-40.png' : '';
 
       if (this.isSelected(item, index)) {
         return (
           <Touchable key={index} style={themeStyle.item} onPress={() => this._onSelect(index, item, dataSource)}>
-            {
+            {/* {
               item.iconSelected && item.iconPosition === 'left' &&
               <Image source={{ uri: item.iconSelected }} style={themeStyle.icon} />
-            }
+            } */}
             <Text style={themeStyle.textActive}>{item.label}</Text>
             {
               item.iconSelected && item.iconPosition === 'right' &&
@@ -68,10 +70,10 @@ class MenuList extends Component {
 
       return (
         <Touchable key={index} style={themeStyle.item} onPress={() => this._onSelect(index, item, dataSource)}>
-          {
+          {/* {
             item.icon && item.iconPosition === 'left' &&
             <Image source={{ uri: item.icon }} style={themeStyle.icon} />
-          }
+          } */}
           <Text style={themeStyle.text}>{item.label}</Text>
           {
             item.icon && item.iconPosition === 'right' &&

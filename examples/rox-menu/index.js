@@ -22,6 +22,7 @@ let App = class NukeDemoIndex extends Component {
                 },
                 {
                   label: '测试2',
+                  // iconPosition: 'left', 左侧视觉规范未定, 暂无支持
                 },
                 {
                   label: '测试3',

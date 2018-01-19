@@ -15,7 +15,8 @@
     "nuke-theme-provider": "^1.0.7",
     "rox-text": "^0.0.3",
     "rox-view": "^0.0.3",
-    "rox-theme": "^0.0.3"
+    "rox-theme": "^0.0.3",
+    "rox-icon": "^0.0.3"
   },
   "peerDependencies": {
     "rax": "0.x"

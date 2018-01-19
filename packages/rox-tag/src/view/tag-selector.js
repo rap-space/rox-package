@@ -3,7 +3,15 @@ import { connectStyle } from 'nuke-theme-provider';
 import { Core } from 'rox-theme';
 import View from 'rox-view';
 import Text from 'rox-text';
+import Icon from 'rox-icon';
 import styles from '../styles';
+
+const tagItemIconStyle = {
+  position: 'absolute',
+  right: 0,
+  bottom: 0,
+  color: Core['color-brand1-6']
+};
 
 class TagItem extends PureComponent {
   static propTypes = {
@@ -29,7 +37,9 @@ class TagItem extends PureComponent {
 
     if (!selected) {
       setNativeProps(this.itemRef, {
-        style: themeStyle.selected
+        style: {
+          backgroundColor: themeStyle.normal.backgroundColor
+        }
       });
     }
   };
@@ -43,10 +53,13 @@ class TagItem extends PureComponent {
         this.itemRef = item;
       }} style={tagStyle} onClick={onClick} onTouchStart={this.handleTouchStart} onTouchEnd={this.handleTouchEnd}>
         {typeof children === 'string' ? (
-          <Text style={{ color: tagStyle.color, fontSize: tagStyle.fontSize }}>{children}</Text>
+          <Text numberOfLines={1} style={{ color: tagStyle.color, fontSize: tagStyle.fontSize }}>{children}</Text>
         ) :
           children
         }
+        {selected ? (
+          <Icon style={tagItemIconStyle} size="small" name="phone" />
+        ) : null}
       </View>
     );
   }
@@ -55,7 +68,8 @@ class TagItem extends PureComponent {
 const StyledTagItem = connectStyle(styles)(TagItem);
 
 const selectorStyles = {
-  paddingLeft: 0,
+  paddingLeft: Core.s4,
+  paddingRight: Core.s4,
   flex: 1,
   flexDirection: 'row',
   flexWrap: 'wrap'
@@ -99,7 +113,7 @@ export class TagSelector extends PureComponent {
     let finalValue = val;
 
     if (multiple) {
-      const values = this.getValue();
+      const values = this.getMultipleValue();
 
       if (values.indexOf(val) > -1) {
         values.splice(values.indexOf(val), 1);
@@ -108,11 +122,13 @@ export class TagSelector extends PureComponent {
       }
 
       finalValue = [ ...values ];
-
-      onChange(values);
     } else {
-      onChange(val);
+      if (this.state.value === val) {
+        finalValue = null;
+      }
     }
+
+    onChange(finalValue);
 
     if (typeof this.props.value === 'undefined') {
       this.setState({
@@ -121,7 +137,7 @@ export class TagSelector extends PureComponent {
     }
   }
 
-  getValue = () => {
+  getMultipleValue = () => {
     const val = this.state.value;
 
     if (!Array.isArray(val)) {
@@ -136,7 +152,7 @@ export class TagSelector extends PureComponent {
       flexDirection: 'row'
     };
     const { style = {}, dataSource = [], type, multiple } = this.props;
-    const value = this.getValue();
+    const value = this.getMultipleValue();
 
     return (
       <View style={Object.assign({}, selectorStyles, style)}>

@@ -138,8 +138,8 @@ mtop = {
       // params
       let data = {};
       data.namespace = options.namespace;
-      data.apiName = options.apiName;
-      data.apiVersion = options.apiVersion;
+      data.apiName = options.api;
+      data.apiVersion = options.version;
       data.params = options.params;
 
       if (isWeex) {

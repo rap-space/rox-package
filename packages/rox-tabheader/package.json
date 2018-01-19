@@ -1,0 +1,25 @@
+{
+  "name": "rox-tabheader",
+  "version": "0.1.0",
+  "description": "",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "rox",
+    "rox-components"
+  ],
+  "peerDependencies": {
+    "rax": "0.x"
+  },
+  "dependencies": {
+    "universal-transition": "0.x.x",
+    "universal-env": "0.x.x",
+    "nuke-image": "^1.0.0",
+    "nuke-touchable": "^1.0.0",
+    "nuke-scroll-view": "^1.0.4",
+    "rox-text": "^0.0.3",
+    "rox-view": "^0.0.3"
+  }
+}

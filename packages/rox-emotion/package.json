@@ -15,8 +15,10 @@
   },
   "dependencies": {
     "nuke-button": "^1.0.10",
+    "nuke-env": "^1.0.1",
     "nuke-image": "^1.0.0",
     "nuke-link": "^1.0.1",
-    "nuke-text": "^0.0.14"
+    "nuke-text": "^0.0.14",
+    "nuke-view": "^1.0.7"
   }
 }

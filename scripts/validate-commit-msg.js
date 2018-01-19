@@ -40,6 +40,11 @@ var validateMessage = function(raw) {
     types = Object.keys(require(types).types);
   }
 
+  // lerna independent publish message log
+  if (/^Publish/.test(raw)) {
+    return true;
+  }
+
   var messageWithBody = (raw || '').split('\n').filter(function(str) {
     return str.indexOf('#') !== 0;
   }).join('\n');

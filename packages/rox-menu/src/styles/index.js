@@ -33,8 +33,7 @@ function tagStyle(theme = {}) {
         flex: 1,
       },
       icon: {
-        width: variables['menu-icon'],
-        height: variables['menu-icon'],
+        color: variables['menu-text-active-color'],
       },
     },
 

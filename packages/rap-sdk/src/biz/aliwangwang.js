@@ -15,14 +15,14 @@ let AliWangwang = {
       className: 'aliwangwang',
       methodName: 'sendMessage',
       param
-    }); 
+    });
   },
-  isLogin(parma) {
+  isLogin(param) {
     return Rap.invoke({
       className: 'aliwangwang',
       methodName: 'isLogin',
       param
-    }); 
+    });
   }
 };
 export default AliWangwang;

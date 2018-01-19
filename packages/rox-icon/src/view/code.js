@@ -1,8 +1,9 @@
 export default {
   default: {
     fontName: 'RoxIcons',
-    url: '//at.alicdn.com/t/font_8788_lhanan4oxkj7cik9.ttf',
+    url: '//at.alicdn.com/t/font_8788_tc5zuenulkn019k9.ttf',
     codes: {
+      tag_check: '',
       icon_close: '',
       'warning-circle': '',
       check_disable: '',

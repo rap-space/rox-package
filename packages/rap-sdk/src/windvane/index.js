@@ -40,8 +40,11 @@ WV.call = function(className, method, data) {
         deferred.resolve(result);
       });
     }
+    // eslint-disable-next-line
   } else if (isWindVane && WindVane.isAvailable) {
+    // eslint-disable-next-line
     WV.isAvailable = WindVane.isAvailable;
+    // eslint-disable-next-line
     WindVane.call(className, method, data, (result) => {
       deferred.resolve(result);
     }, (error) => {

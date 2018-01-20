@@ -26,7 +26,7 @@ import clipboard from './clipboard';
 import app from './app';
 import util from './util';
 
-//plugin manage
+// plugin manage
 import plugin from './biz/plugin-manage';
 
 // 这里要设计 保护，不被外部 误干扰

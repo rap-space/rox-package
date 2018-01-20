@@ -26,6 +26,9 @@ import clipboard from './clipboard';
 import app from './app';
 import util from './util';
 
+//plugin manage
+import plugin from './biz/plugin-manage';
+
 // 这里要设计 保护，不被外部 误干扰
 
 const RAP = {
@@ -33,6 +36,7 @@ const RAP = {
   env: {
     isWeex, isWeb
   },
+  plugin,
   // Event
   on,
   off,

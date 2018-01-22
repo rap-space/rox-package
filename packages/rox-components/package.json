@@ -1,6 +1,6 @@
 {
   "name": "rox-components",
-  "version": "0.0.11",
+  "version": "0.0.12",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -12,7 +12,7 @@
   "dependencies": {
     "rox-button": "^0.0.2",
     "rox-checkbox": "^0.0.2",
-    "rox-dialog": "^0.0.3",
+    "rox-dialog": "^0.0.4",
     "rox-icon": "^0.0.11",
     "rox-input": "^0.0.7",
     "rox-number-picker": "^0.0.2",

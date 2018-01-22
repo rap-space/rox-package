@@ -160,7 +160,7 @@ AOP = {
       requestByMtop(params, _successCallback, _failureCallback);
     }
 
-    return defered;
+    return defered.promise;
   }
 };
 export default AOP;

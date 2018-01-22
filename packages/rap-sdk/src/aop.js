@@ -141,8 +141,9 @@ AOP = {
       data.namespace = options.namespace;
       data.apiName = options.api;
       data.apiVersion = options.v || options.version || '1.0';
-      data.params = options.params;
-
+      if (typeof options.params === 'object') {
+        data.params = JSON.stringify(options.params);
+      }
       if (isWeex) {
         params = {
           api: 'mtop.1688.wireless.openapi.gateway',

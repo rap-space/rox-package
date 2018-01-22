@@ -8,4 +8,3 @@ if (isWeex) {
 }
 
 export default Rap;
-// module.exports = Rap;

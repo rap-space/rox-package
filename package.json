@@ -16,7 +16,7 @@
     "clean:compile": "rm -rf ./packages/*/lib",
     "clean:coverage": "rm -rf ./coverage",
     "clean:modules": "rm -rf ./packages/*/node_modules",
-    "release": "npm run build:compile && lerna publish"
+    "release": "npm run build:compile && lerna publish --skip-git"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -41,7 +41,7 @@
     "glob": "^7.1.2",
     "inquirer": "^4.0.1",
     "jest": "^22.0.3",
-    "lerna": "^2.5.1",
+    "lerna": "2.5.1",
     "lint-staged": "^6.0.0",
     "lodash.get": "^4.4.2",
     "minimatch": "^3.0.4",
@@ -85,11 +85,11 @@
     "rox-refresh-control": "latest",
     "rox-search-bar": "latest",
     "rox-slider": "latest",
-    "rox-tabbar": "latest",
-    "rox-tabheader": "latest",
     "rox-slip": "latest",
     "rox-snackbar": "latest",
     "rox-switch": "latest",
+    "rox-tabbar": "latest",
+    "rox-tabheader": "latest",
     "rox-tag": "latest",
     "rox-text": "latest",
     "rox-theme": "latest",

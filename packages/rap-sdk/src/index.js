@@ -47,6 +47,7 @@ const RAP = {
   fetch,
   mtop,
   aop,
+  aop,
   share,
   device,
   toast: Toast,

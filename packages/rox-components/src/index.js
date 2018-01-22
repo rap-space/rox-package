@@ -18,6 +18,8 @@ export Slider from 'rox-slider';
 export Slip from 'rox-slip';
 export Snackbar from 'rox-snackbar';
 export Switch from 'rox-switch';
+export TabBar from 'rox-tabbar';
+export TabHeader from 'rox-tabheader';
 export Tag from 'rox-tag';
 export Text from 'rox-text';
 export Theme from 'rox-theme';

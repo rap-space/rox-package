@@ -147,7 +147,7 @@ AOP = {
         params = {
           api: 'mtop.1688.wireless.openapi.gateway',
           v: '1.0',
-          data: options
+          data: data
         };
       }
     } else {

@@ -14,7 +14,6 @@ import user from './user';
 import share from './biz/share';
 import aliwangwang from './biz/aliwangwang';
 // request
-import mtop from './mtop';
 import aop from './aop';
 
 // UI
@@ -45,8 +44,6 @@ const RAP = {
   localStorage,
   user,
   fetch,
-  mtop,
-  aop,
   aop,
   share,
   device,

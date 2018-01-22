@@ -14,10 +14,10 @@
     "rax": "0.x"
   },
   "dependencies": {
-    "rox-button": "^1.0.10",
     "nuke-dialog": "^1.0.2",
-    "rox-scrollview": "*",
-    "rox-text": "^0.0.12",
-    "rox-view": "^1.0.7"
+    "rox-button": "^0.0.7",
+    "rox-scrollview": "^0.0.7",
+    "rox-text": "^0.0.7",
+    "rox-view": "^0.0.7"
   }
 }

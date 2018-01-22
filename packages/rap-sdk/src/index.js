@@ -28,6 +28,9 @@ import util from './util';
 // plugin manage
 import plugin from './biz/plugin-manage';
 
+// location
+import location from './location';
+
 // 这里要设计 保护，不被外部 误干扰
 
 const RAP = {
@@ -45,6 +48,7 @@ const RAP = {
   user,
   fetch,
   aop,
+  location,
   share,
   device,
   toast: Toast,

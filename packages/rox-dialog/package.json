@@ -15,9 +15,9 @@
   },
   "dependencies": {
     "nuke-dialog": "^1.0.2",
-    "rox-button": "^1.0.10",
-    "rox-scrollview": "*",
-    "rox-text": "^0.0.12",
-    "rox-view": "^1.0.7"
+    "rox-button": "^0.0.2",
+    "rox-scrollview": "^0.0.7",
+    "rox-text": "^0.0.3",
+    "rox-view": "^0.0.3"
   }
 }

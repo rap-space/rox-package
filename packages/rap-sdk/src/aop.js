@@ -140,7 +140,7 @@ AOP = {
       let data = {};
       data.namespace = options.namespace;
       data.apiName = options.api;
-      data.apiVersion = options.v || options.version;
+      data.apiVersion = options.v || options.version || '1.0';
       data.params = options.params;
 
       if (isWeex) {

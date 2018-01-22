@@ -2,34 +2,51 @@ import { createElement, render, Component } from 'rax';
 import { Theme, ThemeProvider, Button, Text, Dialog, View } from 'rox-components';
 import Page from 'nuke-page';
 
+
 let App = class NukeDemoIndex extends Component {
   constructor() {
     super();
     this.hideModal = this.hideModal.bind(this);
   }
   showModal = () => {
+    console.log('showModal');
+    this.refs.modal1.hide();
     this.refs.modal1.show();
   }
   hideModal() {
     // alert(10);
+    console.log('hideModal');
     this.refs.modal1.hide();
   }
-  hideModalAndConfirm = () => {
-    console.log('confirm');
+  hideModalAndConfirm() {
+    console.log('hideModalAndConfirm');
     this.refs.modal1.hide();
   }
-  onShow = () => {
+  onShow() {
     console.log('modal show');
   }
 
-  onHide = () => {
+  onHide() {
     console.log('modal hide');
   }
-  onMaskPress = () => {
+
+  onMaskPress() {
+    console.log('onMaskPress');
     this.refs.modal1.hide();
   }
-  showConfirm = () => {
+
+  showConfirm() {
+    console.log('showConfirm');
     this.refs.confirm.show();
+  }
+
+  hideConfirm() {
+    console.log('hideConfirm');
+    // this.refs.confirm.hide();
+  }
+  showAlert() {
+    console.log('showAlert');
+    this.refs.alert.show();
   }
   render() {
     return (
@@ -41,10 +58,28 @@ let App = class NukeDemoIndex extends Component {
             <Page.Intro main="Dialog.Confirm" />
             <Button type="primary" onPress={() => {
               this.showConfirm();
-            }}>点击打开 对话框</Button>
+            }}>点击打开 Confirm 对话框</Button>
+            <Page.Intro main="Dialog.Alert" />
+            <Button type="primary" onPress={() => {
+              this.showAlert();
+            }}>点击打开 Alert 对话框</Button>
           </View>
-          <Dialog.Confirm ref="confirm">  此操作不此操作不</Dialog.Confirm>
-          <Dialog ref="modal1" duration={1000} maskClosable={false} contentStyle={styles.modalStyle} onShow={this.onShow} onHide={this.onHide} onMaskPress={this.onMaskPress}>
+
+          <Dialog.Confirm ref="confirm" onCancel={() => {
+            this.hideConfirm();
+          }} onOk={() => {
+            this.hideConfirm();
+          }}>此操作不此操作不</Dialog.Confirm>
+
+          <Dialog.Alert ref="alert" okText={'1'}>删除应该</Dialog.Alert>
+
+          <Dialog ref="modal1"
+            duration={1000}
+            maskClosable={false}
+            contentStyle={styles.modalStyle}
+            onShow={this.onShow}
+            onHide={this.onHide}
+            onMaskPress={this.onMaskPress}>
             <View style={styles.body}>
               <View style={styles.head}>
                 <Text style={styles.textHead}>确定吗？</Text>
@@ -64,12 +99,16 @@ let App = class NukeDemoIndex extends Component {
                 color: '#333333',
                 borderTopWidth: 1,
                 borderBottomLeftRadius: 5,
-              }]} type="normal" size="large" onPress={this.hideModal}>取消</Button>
+              }]} type="normal" size="large" onPress={() => {
+                this.hideModal();
+              }}>取消1</Button>
               <Button style={[styles.dlgBtn, {
                 borderRadius: 0,
                 color: '#ffffff',
                 borderBottomRightRadius: 5,
-              }]} type="primary" size="large" onPress={this.hideModalAndConfirm}>确定</Button>
+              }]} type="primary" size="large" onPress={() => {
+                this.hideModalAndConfirm();
+              }}>确定2</Button>
             </View>
           </Dialog>
         </Page>

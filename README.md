@@ -11,3 +11,12 @@ npm run link
 npm run watch:compile
 npm run start
 ```
+
+访问方式
+
+```bash
+# http://localhost:9999/examples/[componentName]/FileName
+# 如下所示
+
+http://localhost:9999/examples/rox-recycler-view/index
+```

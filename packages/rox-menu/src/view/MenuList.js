@@ -8,6 +8,8 @@ import Icon from 'rox-icon';
 import styles from '../styles';
 
 class MenuList extends PureComponent {
+  static displayName = 'MenuList';
+
   static defaultProps = {
     dataSource: [],
     selected: [],

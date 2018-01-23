@@ -5,6 +5,8 @@ import Text from 'rox-text';
 import styles from '../styles';
 
 class Tag extends PureComponent {
+  static displayName = 'Tag'
+
   static propTypes = {
     type: T.oneOf(['primary', 'normal'])
   };

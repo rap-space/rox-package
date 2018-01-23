@@ -52,12 +52,12 @@ let App = class NukeDemoIndex extends Component {
       <Tabbar iconBar={true} activeKey={this.state.activeKey}>
         <Tabbar.Item
           tabKey="tab1"
-          render={() => this.renderItemWithIcon.bind(this, 'tab1')}>
+          render={() => this.renderItemWithIcon('tab1')}>
           {this.renderContent('tab1')}
         </Tabbar.Item>
         <Tabbar.Item
           tabKey="tab2"
-          render={() => this.renderItemWithIcon.bind(this, 'tab2')}>
+          render={() => this.renderItemWithIcon('tab2')}>
           {this.renderContent('tab2')}
         </Tabbar.Item>
       </Tabbar>

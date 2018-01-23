@@ -34,7 +34,7 @@ let App = class NukeDemoIndex extends Component {
           <Page.Intro main="type: paySuccess" />
           <Emotion type="paySuccess" height="500" />
           <Page.Intro main="type: payProcessing" />
-          <Emotion type="payProcessing" height="500" />
+          <Emotion type="payProcessing" height="700" />
           <Page.Intro main={'绑定事件'} />
           <Emotion type="404" feedbackText={'出错了'} btnText={'我知道了'} onPress={() => {
             alert('press');

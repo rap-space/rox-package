@@ -4,6 +4,7 @@
     "rax"
   ],
   "plugins": [
-    "export-default-module-exports"
+    "export-default-module-exports",
+    "add-react-displayname"
   ]
 }

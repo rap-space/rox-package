@@ -1,0 +1,14 @@
+{
+  "index": {
+    "description": "默认tabbar形式"
+  },
+  "embed": {
+    "description": "embed模式,用于内嵌页面"
+  },
+  "renderItem": {
+    "description": "item可以自定义渲染"
+  },
+  "topbar": {
+    "description": "tabbar在顶部的模式"
+  }
+}

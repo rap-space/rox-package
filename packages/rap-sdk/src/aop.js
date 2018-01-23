@@ -1,11 +1,10 @@
 // 需要考虑三种场景
 // 1. Weex环境下
 // 2. weex 降级的 主客容器下
-// 3. H5下
-// import {report} from '@ali/universal-tracker';
+// 3. H5下 import {report} from '@ali/universal-tracker';
 import Rap from './rap';
-import { isWeex, isWeb } from './env';
-import { defer } from './util';
+import {isWeex, isWeb} from './env';
+import {defer} from './util';
 
 const RESPONSE_TYPE = {
   /**
@@ -51,7 +50,9 @@ function reportError(params, retJson) {
       url: location.protocol + '//' + location.host + location.pathname + '/universal_mtop',
       type: 'data',
       sampling: 10,
-      message: errorMsg ? errorMsg.substring(0, 500) : params.api + ':response can not be parse'
+      message: errorMsg
+        ? errorMsg.substring(0, 500)
+        : params.api + ':response can not be parse'
     });
   } catch (e) {
     // Noop
@@ -59,20 +60,12 @@ function reportError(params, retJson) {
 }
 
 function requestByRap(options, successCallback, failureCallback) {
-  Rap.call({
-    className: 'mtop',
-    methodName: 'request',
-    options: options
-  }).then(successCallback, failureCallback);
+  return Rap
+    .call({className: 'mtop', methodName: 'request', options: options})
+    .then(successCallback, failureCallback);
 }
 
-// 这里有成功与失败的场景
-// 成功-能够调通服务
-// 成功-服务调用成功
-// 成功-服务调用失败
-// 失败
-// 失败-网络异常
-// 失败-网关服务异常
+// 这里有成功与失败的场景 成功-能够调通服务 成功-服务调用成功 成功-服务调用失败 失败 失败-网络异常 失败-网关服务异常
 function formatRetJson(retJson) {
   try {
     return retJson.data;
@@ -100,11 +93,7 @@ const AOP = {
     let params = {};
     // 获取插件信息; 根据bizType【是否是三方】来决定使用哪个 MTOP，还是只作为MTOP通道
     if (bizType === '3') {
-      // namespace
-      // apiName
-      // apiVersion
-      // appKey
-      // params
+      // namespace apiName apiVersion appKey params
       let data = {};
       data.namespace = options.namespace;
       data.apiName = options.api;

@@ -141,9 +141,6 @@ AOP = {
     };
     let _successCallback = (retJson) => {
       const result = retJson.data.data;
-
-      alert(JSON.stringify(result));
-
       successCallback && successCallback(formatRetJson(result));
       defered.resolve(result);
     };
@@ -173,17 +170,11 @@ AOP = {
     } else {
       params = options;
     }
-    let isRap = true;
-    if (isRap) {
-      return requestByRap(params, successCallback, failureCallback);
-    }
-    if (Windvane) {
-      // 这里服务固定
-      requestByWindvane(params, _successCallback, _failureCallback);
-    } else if (Mtop) {
-      requestByMtop(params, _successCallback, _failureCallback);
-    }
+
+    requestByRap(params, successCallback, failureCallback);
+
     return defered.promise;
   }
 };
+
 export default AOP;

@@ -1,6 +1,6 @@
 import Rap from '../rap';
 
-let AliWangwang = {
+const AliWangwang = {
   openChat(param) {
     if (typeof param === 'string') {
       param = {

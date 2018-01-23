@@ -1,13 +1,17 @@
 import Rap from '../rap';
 
-let AliWangwang = {
-  openChat(loginId) {
+const AliWangwang = {
+  openChat(param) {
+    if (typeof param === 'string') {
+      param = {
+        loginId: param
+      };
+    };
+
     return Rap.invoke({
       className: 'aliwangwang',
       methodName: 'openChat',
-      param: {
-        loginId
-      }
+      param
     });
   },
   sendMessage(param) {
@@ -18,6 +22,12 @@ let AliWangwang = {
     });
   },
   isLogin(param) {
+    if (typeof param === 'string') {
+      param = {
+        loginId: param
+      };
+    };
+
     return Rap.invoke({
       className: 'aliwangwang',
       methodName: 'isLogin',
@@ -25,4 +35,5 @@ let AliWangwang = {
     });
   }
 };
+
 export default AliWangwang;

@@ -3,9 +3,12 @@ import { each } from '../util';
 
 let className = 'biz';
 let methodName = 'openShareComponent';
+let url = 'http://cui.m.1688.com/weex/weex_dacu/3139.html?__positionId__=weex_dacu&__pageId__=3139&__weex__=true';
+let picUrl = 'https://gw.alicdn.com/tfs/TB1isFOcgMPMeJjy1XcXXXpppXa-750-473.jpg_10000x340q60.jpg';
 
 let share = function(options) {
   let share = Rap.requireModule('share');
+
   if (!share.doShare) {
     console.error('no support share');
     return;
@@ -44,7 +47,8 @@ function judgeTypeQr(type) {
     imgtext: 1,
     web: 1
   };
-  if (typeQr) {
+
+  if (typeQr[type]) {
     return type;
   } else {
     console.log('不存在');
@@ -63,9 +67,5 @@ function formatTemplate(str, isUserToken) {
   }
   return res;
 }
-
-
-let url = 'http://cui.m.1688.com/weex/weex_dacu/3139.html?__positionId__=weex_dacu&__pageId__=3139&__weex__=true';
-let picUrl = 'https://gw.alicdn.com/tfs/TB1isFOcgMPMeJjy1XcXXXpppXa-750-473.jpg_10000x340q60.jpg';
 
 export default share;

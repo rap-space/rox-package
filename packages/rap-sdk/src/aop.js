@@ -7,24 +7,6 @@ import Rap from './rap';
 import { isWeex, isWeb } from './env';
 import { defer } from './util';
 
-
-function report() {};
-
-let AOP;
-let Windvane;
-let Mtop;
-
-try {
-  Windvane = Rap.requireModule('windvane');
-} catch (e) {
-  console.warn('Windvane require error');
-}
-
-try {
-  Mtop = Rap.requireModule('mtop');
-} catch (e) {
-  console.warn('Mtop require error');
-}
 const RESPONSE_TYPE = {
   /**
    * @description 请求出错
@@ -47,6 +29,8 @@ const RESPONSE_TYPE = {
    */
   'SESSION_EXPIRED': 2
 };
+
+function report() {};
 
 function reportError(params, retJson) {
   params = params || {};
@@ -82,41 +66,6 @@ function requestByRap(options, successCallback, failureCallback) {
   }).then(successCallback, failureCallback);
 }
 
-
-function requestByWindvane(options, successCallback, failureCallback) {
-  if (Windvane && Windvane.call) {
-    if (options.param) {
-      console.error('please use options.data');
-    }
-    options.param = options.data || options.param;
-    if (options.type === 'POST') {
-      options.post = '1';
-    }
-    Windvane.call({
-      class: 'MtopWVPlugin',
-      method: 'send',
-      data: options
-    }, function(retJson) {
-      if (typeof retJson === 'string') {
-        retJson = JSON.parse(retJson);
-      }
-      let isRetTypeSuccess = retJson.retType === RESPONSE_TYPE.SUCCESS;
-      let isRetSuccess = retJson.ret && retJson.ret[0].indexOf('SUCCESS') > -1;
-      if (isRetTypeSuccess || isRetSuccess) {
-        successCallback && successCallback(retJson);
-      } else {
-        failureCallback && failureCallback(retJson);
-      }
-    });
-  }
-}
-
-function requestByMtop(params, successCallback, failureCallback) {
-  if (Mtop.request) {
-    Mtop.request(params, successCallback, failureCallback);
-  }
-}
-
 // 这里有成功与失败的场景
 // 成功-能够调通服务
 // 成功-服务调用成功
@@ -125,24 +74,27 @@ function requestByMtop(params, successCallback, failureCallback) {
 // 失败-网络异常
 // 失败-网关服务异常
 function formatRetJson(retJson) {
-  return retJson;
+  try {
+    return retJson.data;
+  } catch (e) {
+    console.error(`ERROR:: ${e}`);
+  }
 }
-AOP = {
+
+const AOP = {
   request(options, successCallback, failureCallback) {
     let defered = defer();
     let bizType = '3';
     // 这里有
     let _failureCallback = (retJson) => {
-      const result = retJson.data.data;
       failureCallback = failureCallback || successCallback;
-      failureCallback && failureCallback(formatRetJson(result));
+      failureCallback && failureCallback(formatRetJson(retJson));
       // reportError(params, retJson);
-      defered.reject(result);
+      defered.reject(formatRetJson(retJson));
     };
     let _successCallback = (retJson) => {
-      const result = retJson.data.data;
-      successCallback && successCallback(formatRetJson(result));
-      defered.resolve(result);
+      successCallback && successCallback(formatRetJson(retJson));
+      defered.resolve(formatRetJson(retJson));
     };
 
     let params = {};
@@ -163,6 +115,7 @@ AOP = {
       if (isWeex) {
         params = {
           api: 'mtop.1688.wireless.openapi.gateway',
+          isOpenApi: true,
           v: '1.0',
           data: data
         };

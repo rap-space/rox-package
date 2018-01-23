@@ -42,12 +42,12 @@ let App = class NukeDemoIndex extends Component {
       <Tabbar itemStyle={{ height: 88 }} activeKey={this.state.activeKey}>
         <Tabbar.Item
           tabKey="tab1"
-          render={() => this.renderItem.bind(this, 'Embed1')}
+          render={() => this.renderItem('Embed1')}
           src="https://air.1688.com/rap/23067452/index.html?wh_weex=true"
         />
         <Tabbar.Item
           tabKey="tab2"
-          render={() => this.renderItem.bind(this, 'Embed2')}
+          render={() => this.renderItem('Embed2')}
           src="https://air.1688.com/rap/23067452/navigator.html?wh_weex=true"
         />
       </Tabbar>

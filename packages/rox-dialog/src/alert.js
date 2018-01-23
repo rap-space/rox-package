@@ -7,6 +7,7 @@ import Text from 'rox-text';
 
 import styles from './styles';
 
+const DURATION_TIME = 1000;
 class Alert extends Component {
   constructor(props) {
     super(props);
@@ -28,7 +29,7 @@ class Alert extends Component {
     // onHide = onHide || this.hide;
     return (
       <Dialog ref="alert"
-        duration={1000}
+        duration={DURATION_TIME}
         maskClosable={false}
         contentStyle={styles.modalStyle}
       >

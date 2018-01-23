@@ -7,6 +7,7 @@ import Text from 'rox-text';
 
 import styles from './styles';
 
+const BORDER_RADIUS = 5;
 class Confirm extends Component {
   constructor(props) {
     super(props);
@@ -56,14 +57,14 @@ class Confirm extends Component {
             borderRadius: 0,
             color: '#333333',
             borderTopWidth: 1,
-            borderBottomLeftRadius: 5,
+            borderBottomLeftRadius: BORDER_RADIUS,
           }]} type="normal" size="large" onPress={() => {
             this.hide('cancel');
           }}>{cancelText}</Button>
           <Button style={[styles.dlgBtn, {
             borderRadius: 0,
             color: '#ffffff',
-            borderBottomRightRadius: 5,
+            borderBottomRightRadius: BORDER_RADIUS,
           }]} type="primary" size="large" onPress={() => {
             this.hide('ok');
           }}>{okText}</Button>

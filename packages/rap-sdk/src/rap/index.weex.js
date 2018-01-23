@@ -22,7 +22,7 @@ let call = function(options, callback) {
     console.error('rapcaller.call:: ' + `[${className}.${methodName}]--failure, \n message:: ${error}`);
     deferred.reject(error);
   }, function(notify) {
-    // console.log('notify:' + notify);
+    console.log('notify::' + notify);
     // 这里可以修复一些参数处理
     callback && callback(notify);
   });

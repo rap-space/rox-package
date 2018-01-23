@@ -75,7 +75,7 @@ let App = class NukeDemoIndex extends Component {
 
           <Dialog ref="modal1"
             duration={1000}
-            maskClosable={false}
+            maskClosable={true}
             contentStyle={styles.modalStyle}
             onShow={this.onShow}
             onHide={this.onHide}

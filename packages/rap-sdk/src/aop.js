@@ -9,6 +9,7 @@ import { defer } from './util';
 
 
 function report() {};
+
 let AOP;
 let Windvane;
 let Mtop;
@@ -24,7 +25,6 @@ try {
 } catch (e) {
   console.warn('Mtop require error');
 }
-
 const RESPONSE_TYPE = {
   /**
    * @description 请求出错
@@ -47,6 +47,7 @@ const RESPONSE_TYPE = {
    */
   'SESSION_EXPIRED': 2
 };
+
 function reportError(params, retJson) {
   params = params || {};
   if (params.disableTracker) {
@@ -72,6 +73,16 @@ function reportError(params, retJson) {
     // Noop
   }
 }
+
+function requestByRap(options, successCallback, failureCallback) {
+  Rap.call({
+    className: 'mtop',
+    methodName: 'request',
+    options: options
+  }).then(successCallback, failureCallback);
+}
+
+
 function requestByWindvane(options, successCallback, failureCallback) {
   if (Windvane && Windvane.call) {
     if (options.param) {
@@ -113,6 +124,9 @@ function requestByMtop(params, successCallback, failureCallback) {
 // 失败
 // 失败-网络异常
 // 失败-网关服务异常
+function formatRetJson(retJson) {
+  return retJson;
+}
 AOP = {
   request(options, successCallback, failureCallback) {
     let defered = defer();
@@ -120,12 +134,12 @@ AOP = {
     // 这里有
     let _failureCallback = (retJson) => {
       failureCallback = failureCallback || successCallback;
-      failureCallback && failureCallback(retJson);
+      failureCallback && failureCallback(formatRetJson(retJson));
       // reportError(params, retJson);
       defered.reject(retJson);
     };
     let _successCallback = (retJson) => {
-      successCallback && successCallback(retJson);
+      successCallback && successCallback(formatRetJson(retJson));
       defered.resolve(retJson);
     };
 
@@ -140,9 +154,10 @@ AOP = {
       let data = {};
       data.namespace = options.namespace;
       data.apiName = options.api;
-      data.apiVersion = options.v || options.version;
-      data.params = options.params;
-
+      data.apiVersion = options.v || options.version || '1.0';
+      if (typeof options.params === 'object') {
+        data.params = JSON.stringify(options.params);
+      }
       if (isWeex) {
         params = {
           api: 'mtop.1688.wireless.openapi.gateway',
@@ -153,13 +168,16 @@ AOP = {
     } else {
       params = options;
     }
+    let isRap = true;
+    if (isRap) {
+      return requestByRap(params, successCallback, failureCallback);
+    }
     if (Windvane) {
       // 这里服务固定
       requestByWindvane(params, _successCallback, _failureCallback);
     } else if (Mtop) {
       requestByMtop(params, _successCallback, _failureCallback);
     }
-
     return defered.promise;
   }
 };

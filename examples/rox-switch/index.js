@@ -35,7 +35,7 @@ let App = class NukeDemoIndex extends Component {
     return (
       <RoxStyleProvider>
         <Page title="Switch">
-          <Page.Intro main="受控，状态自行控制" />
+          <Page.Intro main={'受控，状态自行控制'} />
           <View style={styles.row}>
             <View style={styles.cellItem}>
               <Switch
@@ -60,7 +60,7 @@ let App = class NukeDemoIndex extends Component {
               </View>
             </View>
           </View>
-          <Page.Intro main="非受控，组件checked 状态更新后，返回结果" />
+          <Page.Intro main={'非受控，组件checked 状态更新后，返回结果'} />
           <View style={styles.row}>
             <View style={styles.cellItem}>
               <Switch

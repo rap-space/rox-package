@@ -14,8 +14,6 @@ const tagItemIconStyle = {
 };
 
 class TagItem extends PureComponent {
-  static displayName = 'TagItem'
-
   static propTypes = {
     selected: T.bool,
     needSelectedIcon: T.bool

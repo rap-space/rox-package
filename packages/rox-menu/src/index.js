@@ -1,3 +1,3 @@
-import MenuList from './view/MenuList';
+import MenuList from './view/menu-list';
 
 export default MenuList;

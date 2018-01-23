@@ -133,14 +133,19 @@ AOP = {
     let bizType = '3';
     // 这里有
     let _failureCallback = (retJson) => {
+      const result = retJson.data.data;
       failureCallback = failureCallback || successCallback;
-      failureCallback && failureCallback(formatRetJson(retJson));
+      failureCallback && failureCallback(formatRetJson(result));
       // reportError(params, retJson);
-      defered.reject(retJson);
+      defered.reject(result);
     };
     let _successCallback = (retJson) => {
-      successCallback && successCallback(formatRetJson(retJson));
-      defered.resolve(retJson);
+      const result = retJson.data.data;
+
+      alert(JSON.stringify(result));
+
+      successCallback && successCallback(formatRetJson(result));
+      defered.resolve(result);
     };
 
     let params = {};

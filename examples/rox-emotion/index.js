@@ -21,8 +21,8 @@ let App = class NukeDemoIndex extends Component {
           <Emotion type="collect" height="500" />
           <Page.Intro main="type: search" />
           <Emotion type="search" height="500" />
-          <Page.Intro main="type: commonEmotion" />
-          <Emotion type="commonEmotion" height="500" />
+          <Page.Intro main="type: commonEmpty" />
+          <Emotion type="commonEmpty" height="500" />
           <Page.Intro main="type: wangwang" />
           <Emotion type="wangwang" height="500" />
           <Page.Intro main="type: connectError" />
@@ -35,7 +35,7 @@ let App = class NukeDemoIndex extends Component {
           <Emotion type="paySuccess" height="500" />
           <Page.Intro main="type: payProcessing" />
           <Emotion type="payProcessing" height="500" />
-          <Page.Intro main="绑定事件" />
+          <Page.Intro main={'绑定事件'} />
           <Emotion type="404" feedbackText={'出错了'} btnText={'我知道了'} onPress={() => {
             alert('press');
           }} jumpText={'去首页看看'} jumpLink="http://m.1688.com/" />

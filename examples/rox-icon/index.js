@@ -19,17 +19,7 @@ const App = class NukeDemoIndex extends Component {
   render() {
     return (
       <Page title="Icon">
-        <Page.Intro main="方形图片" />
-        <View style={styles.listLine}>
-          <Icon
-            style={styles.icon}
-            src="https://img.alicdn.com/tfs/TB1vUv.JFXXXXbAXFXXXXXXXXXX-50-50.png"
-          />
-          <View>
-            <Text>一行文字</Text>
-          </View>
-        </View>
-        <Page.Intro main="自带的 iconfont 集合" />
+        <Page.Intro main={'Iconfont 集合'} />
         <View style={styles.lineWithMargin}>
           <MultiRow
             dataSource={getTypeIconNames('default')}

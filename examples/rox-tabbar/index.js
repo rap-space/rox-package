@@ -33,14 +33,14 @@ let App = class NukeDemoIndex extends Component {
 
       <Tabbar style={styles.tabbar} iconBar={true} itemStyle={styles.item} navStyle={{active: styles.activeTab, inactive: styles.inActiveTab}} activeKey={this.state.activeKey}>
         <Tabbar.Item
-          title="首页"
+          title={'首页'}
           tabKey="tab1"
           icon={{src: 'https://img.alicdn.com/tfs/TB10sQhRFXXXXa6XVXXXXXXXXXX-130-128.png', selected: 'https://img.alicdn.com/tfs/TB1aW7mRFXXXXXIXVXXXXXXXXXX-130-128.png', size: 'small', style: {marginBottom: '6rem'}}}
         >
           {this.renderContent('tab1')}
         </Tabbar.Item>
         <Tabbar.Item
-          title="设置"
+          title={'设置'}
           tabKey="tab2"
           icon={{src: 'https://img.alicdn.com/tfs/TB1rpILRFXXXXc1XXXXXXXXXXXX-128-128.png', selected: 'https://img.alicdn.com/tfs/TB1WHsqRFXXXXciXFXXXXXXXXXX-128-128.png', size: 'small', style: {marginBottom: '6rem'}}}
         >

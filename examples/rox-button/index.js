@@ -29,7 +29,7 @@ let App = class NukeDemoIndex extends Component {
             <Button style={styles.btn} type="primary" onPress={this.press}>primary</Button>
             <Button style={styles.btn} type="primary" size="small" onPress={this.press}>primary</Button>
           </View>
-          <Page.Intro main="独占一行" />
+          <Page.Intro main={'独占一行'} />
           <View style={Object.assign({}, styles.btnWithMargin, { flexDirection: 'column' })} >
             <Button style={styles.btn} block type="primary" size="large" onPress={this.press}>primary</Button>
           </View>

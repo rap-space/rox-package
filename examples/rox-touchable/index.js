@@ -15,40 +15,40 @@ class App extends Component {
     super();
     this.state = {
       count: 0
-    }
+    };
   }
-  pressX = (e) => {
+  pressX = e => {
     this.setState({
       count: this.state.count + 1
-    })
-  }
+    });
+  };
   render() {
     return (
       <RoxStyleProvider>
         <Page title="Touchable">
-          <Page.Intro main="Normal"></Page.Intro>
+          <Page.Intro main="Normal" />
           <View style={styles.result}>
-            {this.state.count
-              ? <Text style={styles.resultText}>点击 {this.state.count}
-                  次</Text>
-              : null}
+            {this.state.count ? (
+              <Text style={styles.resultText}>
+                点击 {this.state.count}
+                次
+              </Text>
+            ) : null}
           </View>
           <View style={styles.btns}>
             <Touchable
               style={styles.touch}
               activeStyle={{
-              backgroundColor: '#FF6000'
-            }}
-              onPress={this
-              .pressX
-              .bind(this)}>
+                backgroundColor: '#FF6000'
+              }}
+              onPress={this.pressX}
+            >
               <Text style={styles.touchText}>点击</Text>
             </Touchable>
           </View>
-
         </Page>
       </RoxStyleProvider>
-    )
+    );
   }
 }
 const styles = {
@@ -76,6 +76,6 @@ const styles = {
     color: '#ffffff',
     fontSize: '28rem'
   }
-}
+};
 
-render(<App/>);
+render(<App />);

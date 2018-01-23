@@ -1,5 +1,5 @@
 /** @jsx createElement */
-import {createElement, Component,render} from 'rax';
+import {createElement, Component, render} from 'rax';
 // eslint-disable-next-line
 import RoxStyleProvider from 'rox-theme-provider';
 import Theme from 'rox-theme';
@@ -32,11 +32,11 @@ class ImageDemo extends Component {
           height: '10rem'
         }
       ]
-    }
+    };
   }
   imageArrLoadHandler = (index, e) => {
-    if (!e.size) 
-      return;
+    if (!e.size) return;
+
     console.log('onload', index, e.size.naturalWidth, e.size.naturalHeight);
 
     let newData = Object.assign([], this.state.data);
@@ -45,7 +45,7 @@ class ImageDemo extends Component {
       newData[index].width = '600rem';
       newData[index].height = Math.round(600 * e.size.naturalHeight / e.size.naturalWidth) + 'rem';
     }
-    this.setState({data: newData})
+    this.setState({data: newData});
   }
 
   render() {
@@ -54,7 +54,6 @@ class ImageDemo extends Component {
       <Page title="Image">
         {data.map((item, index) => {
           return (
-
             <View style={styles.itemWrapper}>
               <View style={styles.item}>
                 <Image
@@ -62,26 +61,25 @@ class ImageDemo extends Component {
                   src={item.src}
                   autoFit={item.autoFit}
                   style={[
-                  {
-                    quality: 'original'
-                  },
-                  !item.autoFit
-                    ? {
-                      width: item.width,
-                      height: item.height
-                    }
-                    : {}
-                ]}
+                    {
+                      quality: 'original'
+                    },
+                    !item.autoFit
+                      ? {
+                        width: item.width,
+                        height: item.height
+                      }
+                      : {}
+                  ]}
                   onLoad={(e) => {
-                  this.imageArrLoadHandler(index, e)
-                }}/>
+                    this.imageArrLoadHandler(index, e);
+                  }} />
               </View>
             </View>
-          )
-        })
-}
+          );
+        })}
       </Page>
-    )
+    );
   }
 }
 const styles = {
@@ -102,6 +100,6 @@ const styles = {
     alignItems: 'center'
   },
   img: {}
-}
+};
 
-render(<ImageDemo/>);
+render(<ImageDemo />);

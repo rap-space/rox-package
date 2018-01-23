@@ -1,5 +1,5 @@
 /** @jsx createElement */
-import {createElement, Component, findDOMNode, render} from 'rax';
+import { createElement, Component, findDOMNode, render } from 'rax';
 import RoxStyleProvider from 'rox-theme-provider';
 // eslint-disable-next-line
 import Page from 'nuke-page';
@@ -14,41 +14,33 @@ let App = class NukeDemoIndex extends Component {
     super();
     this.state = {
       maskVisible: false
-    }
-    this.onShow = this
-      .onShow
-      .bind(this);
-    this.onHide = this
-      .onHide
-      .bind(this);
+    };
+    this.onShow = this.onShow.bind(this);
+    this.onHide = this.onHide.bind(this);
   }
 
   showMask(e) {
     console.log('clicked');
-    this
-      .refs
-      .myMask
-      .show();
+    this.refs.myMask.show();
   }
-  onVisibleChanged = (e) => {}
+  onVisibleChanged = e => {};
   hideMask(e) {
-    this
-      .refs
-      .myMask
-      .hide();
+    this.refs.myMask.hide();
   }
   onShow(e) {
-    console.log('onshow')
+    console.log('onshow');
   }
   onHide(e) {
-    console.log('onhide')
+    console.log('onhide');
   }
   render() {
     return (
       <RoxStyleProvider>
         <Page title="Mask">
-          <Page.Intro main="普通用法"></Page.Intro>
-          <Button type="primary" onPress={(e) => this.showMask(e)}>打开浮层</Button>
+          <Page.Intro main={'普通用法'} />
+          <Button type="primary" onPress={e => this.showMask(e)}>
+            打开浮层
+          </Button>
 
           <Mask
             onShow={this.onShow}
@@ -57,18 +49,21 @@ let App = class NukeDemoIndex extends Component {
             ref="myMask"
             animate={false}
             style={styles.mask}
-            maskClosable={true}>
+            maskClosable={true}
+          >
             <View style={styles.dialogWrap}>
               <Text style={styles.text}>点击外层 mask 区域可关闭</Text>
-              <Button type="primary" onPress={(e) => this.hideMask(e)}>关闭</Button>
+              <Button type="primary" onPress={e => this.hideMask(e)}>
+                关闭
+              </Button>
             </View>
           </Mask>
-
         </Page>
       </RoxStyleProvider>
     );
   }
-}
+};
+
 const styles = {
   textarea: {
     width: '750rem',
@@ -97,6 +92,6 @@ const styles = {
     marginBottom: 20,
     fontSize: 32
   }
-}
+};
 
-render(<App/>);
+render(<App />);

@@ -34,7 +34,7 @@ let App = class NukeDemoIndex extends Component {
         <SearchBar
           style={styles.wrap}
           onSearch={this.search}
-          placeholder="输入搜索关键词"
+          placeholder={'输入搜索关键词'}
         />
         <View style={styles.relatedView}>
           <Text style={styles.result}>要搜索的值：{this.state.value}</Text>
@@ -43,7 +43,7 @@ let App = class NukeDemoIndex extends Component {
           style={styles.wrap}
           onSearch={this.searchOnReturn2}
           showSearchButton={false}
-          placeholder="回车搜索"
+          placeholder={'回车搜索'}
         />
         <View style={styles.relatedView}>
           <Text style={styles.result}>要搜索的值：{this.state.value2}</Text>

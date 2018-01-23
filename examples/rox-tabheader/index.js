@@ -45,7 +45,7 @@ let App = class NukeDemoIndex extends Component {
     return (
       <RoxStyleProvider>
         <Page title="tabheader">
-          <Page.Intro main="normal模式 无下拉选项" />
+          <Page.Intro main={'normal模式 无下拉选项'} />
           <Tabheader
             dataSource={[
               '测试1',
@@ -71,7 +71,7 @@ let App = class NukeDemoIndex extends Component {
             onSelect={(index) => console.log(index)}
           />
 
-          <Page.Intro main="normal模式 有下拉选项" />
+          <Page.Intro main={'normal模式 有下拉选项'} />
 
           <Tabheader
             dataSource={[
@@ -98,7 +98,7 @@ let App = class NukeDemoIndex extends Component {
             onSelect={(index) => console.log(index)}
           />
 
-          <Page.Intro main="icon模式" />
+          <Page.Intro main={'icon模式'} />
           <Tabheader
             dataSource={[
               '测试1',

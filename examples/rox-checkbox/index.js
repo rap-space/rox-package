@@ -21,7 +21,7 @@ let App = class NukeDemoIndex extends Component {
     return (
       <ThemeProvider>
         <Page title="Checkbox">
-          <Page.Intro sub="普通样式" />
+          <Page.Intro sub={'普通样式'} />
           <View style={styles.demo_item}>
             <View style={styles.group_item}>
               <Checkbox
@@ -36,7 +36,7 @@ let App = class NukeDemoIndex extends Component {
               <Text>梨</Text>
             </View>
           </View>
-          <Page.Intro sub="空心样式" />
+          <Page.Intro sub={'空心样式'} />
           <View style={styles.demo_item}>
             <View style={styles.group_item}>
               <Checkbox
@@ -56,7 +56,7 @@ let App = class NukeDemoIndex extends Component {
               <Text>梨</Text>
             </View>
           </View>
-          <Page.Intro sub="list 样式" />
+          <Page.Intro sub={'list 样式'} />
           <View style={[styles.demo_item, { flexDirection: 'column' }]}>
             <View style={styles.group_item}>
               <Checkbox
@@ -77,7 +77,7 @@ let App = class NukeDemoIndex extends Component {
             </View>
           </View>
 
-          <Page.Intro main="自定义大小颜色" />
+          <Page.Intro main={'自定义大小颜色'} />
           <View style={styles.demo_item}>
             <Checkbox
               style={{ width: '30rem', height: '30rem', fontSize: '20rem' }}

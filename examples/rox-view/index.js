@@ -1,1 +1,0 @@
-console.log('rox-view demo start');

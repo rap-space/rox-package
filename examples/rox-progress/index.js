@@ -16,7 +16,7 @@ let App = class NukeDemoIndex extends Component {
         <Page title="Progress">
           <Page.Intro main="normal" />
           <View style={styles.btnWithMargin} >
-            <Progress rate={0.8} style={{ width : 666, height : 10 }} barStyle={{backgroundColor: '#ff0000'}} />
+            <Progress rate={0.8} style={{ width: 666, height: 10 }} barStyle={{backgroundColor: '#ff0000'}} />
           </View>
         </Page>
       </RoxStyleProvider>
@@ -39,4 +39,5 @@ const styles = {
     marginRight: 20
   }
 };
+
 render(<App />);

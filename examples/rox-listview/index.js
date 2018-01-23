@@ -79,7 +79,7 @@ class ListViewDemo extends Component {
       });
     }, 300);
   }
-  
+
   renderHeader() {
     return (
       <RefreshControl
@@ -129,7 +129,7 @@ const styles = {
     height: 160,
     flex: 1,
     alignItems: 'center',
-    justifyContent:'center',
+    justifyContent: 'center',
     borderBottomWidth: 1,
     borderBottomStyle: 'solid',
     borderBottomColor: '#e6e7eb',

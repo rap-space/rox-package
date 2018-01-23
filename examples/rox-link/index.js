@@ -17,7 +17,7 @@ let App = class NukeDemoIndex extends Component {
     return (
       <RoxStyleProvider>
         <Page title="Link">
-          <Page.Intro main="普通跳转" />
+          <Page.Intro main={'普通跳转'} />
           <Link
             style={styles.linkItem}
             activeStyle={styles.activeStyle}
@@ -27,7 +27,7 @@ let App = class NukeDemoIndex extends Component {
             新窗口跳转到h5页面
           </Link>
 
-          <Page.Intro main="常见协议支持" />
+          <Page.Intro main={'常见协议支持'} />
           <Link
             style={styles.linkItem}
             activeStyle={styles.activeStyle}

@@ -6,7 +6,7 @@ let App = class NukeDemoIndex extends Component {
   render() {
     return (
       <ThemeProvider>
-        <Page title="图标类型">
+        <Page title={'图标类型'}>
           <Page.Intro main="type: 404" />
           <Emotion type="404" height="500" />
           <Page.Intro main="type: order" />
@@ -36,9 +36,9 @@ let App = class NukeDemoIndex extends Component {
           <Page.Intro main="type: payProcessing" />
           <Emotion type="payProcessing" height="500" />
           <Page.Intro main="绑定事件" />
-          <Emotion type="404" feedbackText="出错了" btnText="我知道了" onPress={() => {
+          <Emotion type="404" feedbackText={'出错了'} btnText={'我知道了'} onPress={() => {
             alert('press');
-          }} jumpText="去首页看看" jumpLink="http://m.1688.com/" />
+          }} jumpText={'去首页看看'} jumpLink="http://m.1688.com/" />
         </Page>
       </ThemeProvider>
     );

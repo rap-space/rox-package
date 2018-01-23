@@ -20,17 +20,17 @@ class Demo extends Component {
   render() {
     return (
       <Page title="Input">
-        <Page.Intro main="基础样式" />
+        <Page.Intro main={'基础样式'} />
         <View style={styles.lineWithMargin}>
           <Input
             ref="myinput"
             maxLength={10}
             style={{ height: 60, marginBottom: '20rem' }}
-            defaultValue="今年流行"
+            defaultValue={'今年流行'}
             id="first"
           />
         </View>
-        <Page.Intro main="多行" />
+        <Page.Intro main={'多行'} />
         <View style={styles.lineWithMargin}>
           <Input
             style={{ height: '300rem', marginBottom: '20rem' }}
@@ -38,10 +38,10 @@ class Demo extends Component {
             maxLength={10}
             multiple={true}
             id="third"
-            placeholder="多行文本：说点什么吧"
+            placeholder={'多行文本：说点什么吧'}
           />
         </View>
-        <Page.Intro main="自定义样式" />
+        <Page.Intro main={'自定义样式'} />
         <View style={styles.lineWithMargin}>
           <Input
             id="fourth"
@@ -55,9 +55,9 @@ class Demo extends Component {
           />
         </View>
 
-        <Page.Intro main="不可修改" />
+        <Page.Intro main={'不可修改'} />
         <View style={[styles.lineWithMargin, { marginBottom: '10rem' }]}>
-          <Input disabled id="fiveth" type="text" value="不可修改" />
+          <Input disabled id="fiveth" type="text" value={'不可修改'} />
         </View>
       </Page>
     );

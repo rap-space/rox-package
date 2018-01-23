@@ -1,5 +1,5 @@
 /** @jsx createElement */
-import {createElement, Component, render} from 'rax';
+import { createElement, Component, render } from 'rax';
 // eslint-disable-next-line
 import RoxStyleProvider from 'rox-theme-provider';
 import Theme from 'rox-theme';
@@ -25,32 +25,32 @@ let App = class NukeDemoIndex extends Component {
     super();
     this.state = {
       index: 2
-    }
+    };
   }
 
-  sliderChange = (e) => {
-    this.setState({index: e.index});
+  sliderChange = e => {
+    this.setState({ index: e.index });
     console.log(e);
-  }
+  };
   btnClick() {
-    this.refs.Slider.slideTo(this.state.index + 1)
+    this.refs.Slider.slideTo(this.state.index + 1);
   }
   renderPics() {
     let body = [];
     pics.map((item, index) => {
       body.push(
         <View style={[styles.item]}>
-          <Image src={item} style={styles.img}></Image>
+          <Image src={item} style={styles.img} />
         </View>
-      )
-    })
+      );
+    });
     return body;
   }
   render() {
     return (
       <RoxStyleProvider>
         <Page title="slider">
-          <Page.Intro main="3s 自动轮播"></Page.Intro>
+          <Page.Intro main={'3s 自动轮播'} />
           <View style={styles.sliderWrap}>
             <Slider
               ref="Slider"
@@ -63,19 +63,26 @@ let App = class NukeDemoIndex extends Component {
               index={this.state.index}
               autoplayTimeout="3000"
               paginationStyle={styles.paginationStyle}
-              onChange={this.sliderChange}>
+              onChange={this.sliderChange}
+            >
               {this.renderPics()}
             </Slider>
           </View>
           <View style={styles.btns}>
-            <Button style={styles.btn} block type="primary" onPress={() => this.btnClick()}>切换</Button>
-
+            <Button
+              style={styles.btn}
+              block
+              type="primary"
+              onPress={() => this.btnClick()}
+            >
+              切换
+            </Button>
           </View>
         </Page>
       </RoxStyleProvider>
     );
   }
-}
+};
 const styles = {
   sliderWrap: {
     padding: 25
@@ -108,6 +115,6 @@ const styles = {
     width: 700,
     height: 465
   }
-}
+};
 
-render(<App/>);
+render(<App />);

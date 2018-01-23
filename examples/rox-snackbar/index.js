@@ -52,19 +52,19 @@ let App = class NukeDemoIndex extends Component {
     return (
       <RoxStyleProvider>
         <Page title="Snackbar">
-          <Page.Intro main="有交互" />
+          <Page.Intro main={'有交互'} />
           <Button style={styles.btn} onPress={this.showBar} type="primary">click me</Button>
           <Snackbar
-            message="测试提示文本"
+            message={'测试提示文本'}
             actionTpl={actionTpl}
             visibile={this.state.showSnackBar}
             onAction={() => {
               this.closeHandler();
             }} />
-          <Page.Intro main="无交互" />
+          <Page.Intro main={'无交互'} />
           <Button style={styles.btn} onPress={this.showBar1} type="primary">click me</Button>
           <Snackbar
-            message="测试提示文本"
+            message={'测试提示文本'}
             visibile={this.state.showSnackBar1} />
         </Page>
       </RoxStyleProvider>

@@ -1,6 +1,6 @@
 {
   "name": "rox-radio",
-  "version": "0.0.15",
+  "version": "0.0.17",
   "description": "",
   "main": "lib/index.js",
   "files": [

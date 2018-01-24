@@ -45,7 +45,7 @@ let App = class NukeDemoIndex extends Component {
     return (
       <RoxStyleProvider>
         <Page title="tabheader">
-          <Page.Intro main={'normal模式 无下拉选项'} />
+          <Page.Intro main={'normal模式'} />
           <Tabheader
             dataSource={[
               '测试1',
@@ -62,33 +62,6 @@ let App = class NukeDemoIndex extends Component {
             itemWidth={144}
             type={'normal'}
             isDrop={false}
-            fontSize={28}
-            selectTextColor={'#FF7300'}
-            selectLineColor={'#000'}
-            dropTitle={'选择类目类目'}
-            dropSelectColor={'#ff30f0'}
-            isShowSelectLine={true}
-            onSelect={(index) => console.log(index)}
-          />
-
-          <Page.Intro main={'normal模式 有下拉选项'} />
-
-          <Tabheader
-            dataSource={[
-              '测试1',
-              '测试233测试233',
-              '测试测试1',
-              '测试1',
-              '测试测试1',
-              '测试rr',
-              '测试1',
-              '测试1'
-            ]}
-            initIndex={0}
-            height={80}
-            itemWidth={144}
-            type={'normal'}
-            isDrop={true}
             fontSize={28}
             selectTextColor={'#FF7300'}
             selectLineColor={'#000'}

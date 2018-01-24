@@ -1,6 +1,6 @@
 {
   "name": "rox-tabheader",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -17,8 +17,8 @@
     "nuke-image": "^1.0.0",
     "nuke-scroll-view": "^1.0.4",
     "nuke-touchable": "^1.0.0",
-    "rox-text": "^0.0.15",
-    "rox-view": "^0.0.15",
+    "rox-text": "^0.0.16",
+    "rox-view": "^0.0.16",
     "universal-env": "0.x.x",
     "universal-transition": "0.x.x"
   }

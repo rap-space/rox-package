@@ -16,7 +16,6 @@ function each(obj, iterator, context = null) {
   }
 }
 
-
 const EVENT_CENTER_TYPE = {
   page: 'PageEventCenter',
   app: 'AppEventCenter',

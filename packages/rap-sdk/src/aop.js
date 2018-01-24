@@ -88,6 +88,10 @@ const AOP = {
     } else {
       params = options;
     }
+
+    console.log(`----params----: ${JSON.stringify(params)}`);
+
+
     requestByRap(params, successCallback, failureCallback);
     return defered.promise;
   }
@@ -124,7 +128,8 @@ function formatOpenApiParams(options) {
   let data = {};
   data.namespace = options.namespace;
   data.apiName = options.api;
-  data.apiVersion = options.v || options.version || '1.0';
+  data.apiVersion = '' + (options.v || options.version || '1.0');
+
   if (typeof options.params === 'object') {// fix: android bug
     data.params = JSON.stringify(options.params);
   }

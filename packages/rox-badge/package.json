@@ -1,5 +1,5 @@
 {
-  "name": "rox-link",
+  "name": "rox-badge",
   "version": "0.0.19",
   "description": "",
   "main": "lib/index.js",
@@ -14,6 +14,6 @@
     "rax": "0.x"
   },
   "dependencies": {
-    "nuke-link": "^1.0.1"
+    "nuke-badge": "^1.0.6"
   }
 }

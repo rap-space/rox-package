@@ -1,3 +1,4 @@
+export Badge from 'rox-badge';
 export Button from 'rox-button';
 export Checkbox from 'rox-checkbox';
 export Dialog from 'rox-dialog';
@@ -28,6 +29,6 @@ export Tag from 'rox-tag';
 export Text from 'rox-text';
 export Theme from 'rox-theme';
 export ThemeProvider from 'rox-theme-provider';
-export Touchbale from 'rox-touchable';
+export Touchable from 'rox-touchable';
 export View from 'rox-view';
 export Web from 'rox-web';

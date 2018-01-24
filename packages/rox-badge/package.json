@@ -1,0 +1,19 @@
+{
+  "name": "rox-badge",
+  "version": "0.0.15",
+  "description": "",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "rox",
+    "rox-components"
+  ],
+  "peerDependencies": {
+    "rax": "0.x"
+  },
+  "dependencies": {
+    "nuke-badge": "^1.0.6"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "index": {
+    "description": "非下拉模式"
+  },
+  "drop": {
+    "description": "普通模式下拉选项"
+  }
+}

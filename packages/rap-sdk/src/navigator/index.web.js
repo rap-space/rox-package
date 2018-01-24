@@ -1,4 +1,4 @@
-let Navigator = {
+const Navigator = {
   push() {
 
   },

@@ -65,14 +65,6 @@ function requestByRap(options, successCallback, failureCallback) {
     .then(successCallback, failureCallback);
 }
 
-// 这里有成功与失败的场景 成功-能够调通服务 成功-服务调用成功 成功-服务调用失败 失败 失败-网络异常 失败-网关服务异常
-function formatRetJson(retJson) {
-  try {
-    return retJson.data;
-  } catch (e) {
-    console.error(`ERROR:: ${e}`);
-  }
-}
 const AOP = {
   request(options, successCallback, failureCallback) {
     let defered = defer();
@@ -96,6 +88,10 @@ const AOP = {
     } else {
       params = options;
     }
+
+    console.log(`----params----: ${JSON.stringify(params)}`);
+
+
     requestByRap(params, successCallback, failureCallback);
     return defered.promise;
   }
@@ -110,7 +106,11 @@ const AOP = {
 // 失败-网关服务异常
 function formatRetJson(retJson) {
   try {
-    return retJson.data;
+    if (typeof retJson === 'string') {
+      retJson = JSON.parse(retJson);
+    }
+
+    return retJson;
   } catch (e) {
     console.error(`ERROR:: ${e}`);
   }
@@ -128,7 +128,8 @@ function formatOpenApiParams(options) {
   let data = {};
   data.namespace = options.namespace;
   data.apiName = options.api;
-  data.apiVersion = options.v || options.version || '1.0';
+  data.apiVersion = '' + (options.v || options.version || '1.0');
+
   if (typeof options.params === 'object') {// fix: android bug
     data.params = JSON.stringify(options.params);
   }
@@ -140,4 +141,5 @@ function formatOpenApiParams(options) {
   };
   return params;
 }
+
 export default AOP;

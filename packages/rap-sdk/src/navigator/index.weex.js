@@ -125,24 +125,6 @@ let Navigator = {
     });
   },
   addRightItem(options, callback) {
-    // let param = {};
-    // 长度待确认
-    // if (options.text) {
-    //   param.text = options.text;
-    // };
-
-    // // 尺寸待固定;
-    // if (options.iconImage) {
-    //   param.iconImage = options.iconImage;
-    // }
-
-    // if (options.tag) {
-    //   options.tag = options.tag;
-    // }
-
-    // if (options.onPress) {
-    //   callback = options.onPress;
-    // };
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'addRightItem',
@@ -159,4 +141,5 @@ let Navigator = {
     });
   }
 };
+
 export default Navigator;

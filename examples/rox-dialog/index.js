@@ -48,6 +48,10 @@ let App = class NukeDemoIndex extends Component {
     console.log('showAlert');
     this.refs.alert.show();
   }
+  showAlert2() {
+    console.log('showAlert');
+    this.refs.alert2.show();
+  }
   render() {
     return (
       <ThemeProvider>
@@ -63,15 +67,21 @@ let App = class NukeDemoIndex extends Component {
             <Button type="primary" onPress={() => {
               this.showAlert();
             }}>点击打开 Alert 对话框</Button>
+            <Page.Intro main="Dialog.Alert" />
+            <Button type="primary" onPress={() => {
+              this.showAlert2();
+            }}>点击打开 Alert 对话框- 无标题</Button>
           </View>
 
           <Dialog.Confirm ref="confirm" onCancel={() => {
             this.hideConfirm();
           }} onOk={() => {
             this.hideConfirm();
-          }}>此操作不此操作不</Dialog.Confirm>
+          }}>确定取消开抢提醒吗，取消后您将不能及时获取优惠信息，错过最佳的进货时间？</Dialog.Confirm>
 
-          <Dialog.Alert ref="alert" okText={'1'}>删除应该</Dialog.Alert>
+          <Dialog.Alert ref="alert" okText={'按钮'}>确定取消开抢提醒吗，取消后您将不能及时获取优惠信息，错过最佳的进货时间？</Dialog.Alert>
+
+          <Dialog.Alert ref="alert2" disabledTitle={true} okText={'按钮'}>确定取消开抢提醒吗，取消后您将不能及时获取优惠信息，错过最佳的进货时间？</Dialog.Alert>
 
           <Dialog ref="modal1"
             duration={1000}

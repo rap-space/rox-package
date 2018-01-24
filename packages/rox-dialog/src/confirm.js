@@ -7,7 +7,8 @@ import Text from 'rox-text';
 
 import styles from './styles';
 
-const BORDER_RADIUS = 5;
+const DURATION_TIME = 1000;
+const BORDER_RADIUS = 12;
 class Confirm extends Component {
   constructor(props) {
     super(props);
@@ -38,7 +39,7 @@ class Confirm extends Component {
     okText = okText || '确认';
     return (
       <Dialog ref="confirm"
-        duration={1000}
+        duration={DURATION_TIME}
         maskClosable={false}
         contentStyle={styles.modalStyle}
       >
@@ -53,17 +54,17 @@ class Confirm extends Component {
           </ScrollView>
         </View>
         <View style={styles.footer}>
-          <Button style={[styles.dlgBtn, {
-            borderRadius: 0,
+          <Button style={[styles.buttonConfirm, {
             color: '#333333',
+            borderRadius: 0,
             borderTopWidth: 1,
             borderBottomLeftRadius: BORDER_RADIUS,
           }]} type="normal" size="large" onPress={() => {
             this.hide('cancel');
           }}>{cancelText}</Button>
-          <Button style={[styles.dlgBtn, {
-            borderRadius: 0,
+          <Button style={[styles.buttonConfirm, {
             color: '#ffffff',
+            borderRadius: 0,
             borderBottomRightRadius: BORDER_RADIUS,
           }]} type="primary" size="large" onPress={() => {
             this.hide('ok');

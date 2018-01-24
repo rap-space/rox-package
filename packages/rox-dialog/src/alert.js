@@ -8,6 +8,7 @@ import Text from 'rox-text';
 import styles from './styles';
 
 const DURATION_TIME = 1000;
+const BORDER_RADIUS = 12;
 class Alert extends Component {
   constructor(props) {
     super(props);
@@ -23,7 +24,7 @@ class Alert extends Component {
   }
 
   render() {
-    let { okText, titleText } = this.props;
+    let { okText, titleText, disabledTitle } = this.props;
     titleText = titleText || '温馨提示';
     okText = okText || '确认';
     // onHide = onHide || this.hide;
@@ -34,9 +35,11 @@ class Alert extends Component {
         contentStyle={styles.modalStyle}
       >
         <View style={styles.body}>
-          <View style={styles.head}>
-            <Text style={styles.textHead}>{titleText}</Text>
-          </View>
+          {
+            disabledTitle ? null : <View style={styles.head}>
+              <Text style={styles.textHead}>{titleText}</Text>
+            </View>
+          }
           <ScrollView style={styles.tips}>
             <Text style={styles.text}>
               {this.props.children}
@@ -44,13 +47,7 @@ class Alert extends Component {
           </ScrollView>
         </View>
         <View style={styles.footer}>
-          <Button style={[styles.dlgBtn, {
-            borderRadius: 0,
-            color: '#333333',
-            borderTopWidth: 1,
-            borderBottomLeftRadius: 5,
-            borderBottomRightRadius: 5,
-          }]} type="normal" size="large" onPress={this.hide}>{okText}</Button>
+          <Button style={styles.buttonAlert} type="normal" size="large" onPress={this.hide}>{okText}</Button>
         </View>
       </Dialog>);
   }

@@ -1,21 +1,24 @@
 
+const BORDER_RADIUS = 12;
+const s12 = 48;
 
 var styles = {
   modalStyle: {
     width: 612,
     height: 322,
-    // padding:'10rem',
-    borderRadius: 12,
+    paddingTop: s12,
+    borderRadius: BORDER_RADIUS,
   },
+
   body: {
     flex: 1,
-    paddingLeft: 48,
-    paddingRight: 48,
-    paddingTop: 30,
+    paddingLeft: s12,
+    paddingRight: s12,
     // justifyContent: 'center',
-    borderRadius: '8rem',
+    borderRadius: BORDER_RADIUS,
     backgroundColor: '#ffffff',
   },
+
   head: {
     height: 50,
     alignItems: 'left',
@@ -26,8 +29,8 @@ var styles = {
     color: '#333333',
     fontSize: 36,
   },
+
   tips: {
-    paddingTop: 12,
     height: 120,
     alignItems: 'center',
     justifyContent: 'center'
@@ -46,26 +49,22 @@ var styles = {
     borderTopColor: '#dddddd',
     flexDirection: 'row',
     borderTopStyle: 'solid',
-    borderTopWidth: 1,
+    borderTopWidth: 0,
     alignItems: 'center',
-    justifyContent: 'flex-end',
-    height: '94rem'
+    justifyContent: 'flex-end'
   },
-  dlgBtn: {
+  buttonConfirm: {
     flex: 1,
     borderWidth: 0
   },
-  dlgBtnSeperator: {
-    color: '#dddddd'
-  },
-  button: {
-    width: '300rem',
-    height: '60rem',
-    borderWidth: '1rem',
-    borderStyle: 'solid',
-    borderColor: '#ccc',
-    alignItems: 'center',
-    justifyContent: 'center'
+  buttonAlert: {
+    flex: 1,
+    borderRadius: 0,
+    color: '#333333',
+    borderWidth: 0,
+    borderTopWidth: 1,
+    borderBottomLeftRadius: BORDER_RADIUS,
+    borderBottomRightRadius: BORDER_RADIUS,
   }
 };
 export default styles;

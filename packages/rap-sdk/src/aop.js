@@ -134,7 +134,7 @@ function formatOpenApiParams(options) {
   }
   params = {
     api: 'mtop.1688.wireless.openapi.gateway',
-    isOpenApi: true, // 约定参数 再通知Native 透传appKey与timestamp
+    isOpenApi: true, // 约定参数 再通知Native 透传 appKey与 timestamp
     v: '1.0',
     data: data
   };

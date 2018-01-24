@@ -47,8 +47,8 @@ class Confirm extends Component {
           <View style={styles.head}>
             <Text style={styles.textHead}>{titleText}</Text>
           </View>
-          <ScrollView style={styles.tips}>
-            <Text style={styles.text}>
+          <ScrollView style={styles.content}>
+            <Text style={styles.contentText}>
               {this.props.children}
             </Text>
           </ScrollView>
@@ -56,7 +56,6 @@ class Confirm extends Component {
         <View style={styles.footer}>
           <Button style={[styles.buttonConfirm, {
             color: '#333333',
-            borderRadius: 0,
             borderTopWidth: 1,
             borderBottomLeftRadius: BORDER_RADIUS,
           }]} type="normal" size="large" onPress={() => {

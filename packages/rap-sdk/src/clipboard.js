@@ -1,7 +1,8 @@
 import { requireModule } from './rap';
 import { log } from './util';
 
-let _clipboard = requireModule('clipboard');
+const _clipboard = requireModule('clipboard');
+
 let clipboard = {
   setString: function(str) {
     if (typeof str === 'string') {

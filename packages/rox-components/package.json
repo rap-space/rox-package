@@ -10,6 +10,7 @@
   "author": "",
   "license": "MIT",
   "dependencies": {
+    "rox-badge": "^0.0.18",
     "rox-button": "^0.0.18",
     "rox-checkbox": "^0.0.18",
     "rox-dialog": "^0.0.18",

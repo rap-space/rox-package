@@ -1,30 +1,11 @@
 // 需要考虑三种场景
 // 1. Weex环境下
 // 2. weex 降级的 主客容器下
-// 3. H5下
-// import {report} from '@ali/universal-tracker';
+// 3. H5下 import {report} from '@ali/universal-tracker';
 import Rap from './rap';
-import { isWeex, isWeb } from './env';
-import { defer } from './util';
+import {isWeex, isWeb} from './env';
+import {defer} from './util';
 
-
-function report() {};
-
-let AOP;
-let Windvane;
-let Mtop;
-
-try {
-  Windvane = Rap.requireModule('windvane');
-} catch (e) {
-  console.warn('Windvane require error');
-}
-
-try {
-  Mtop = Rap.requireModule('mtop');
-} catch (e) {
-  console.warn('Mtop require error');
-}
 const RESPONSE_TYPE = {
   /**
    * @description 请求出错
@@ -48,6 +29,8 @@ const RESPONSE_TYPE = {
   'SESSION_EXPIRED': 2
 };
 
+function report() {};
+
 function reportError(params, retJson) {
   params = params || {};
   if (params.disableTracker) {
@@ -67,7 +50,9 @@ function reportError(params, retJson) {
       url: location.protocol + '//' + location.host + location.pathname + '/universal_mtop',
       type: 'data',
       sampling: 10,
-      message: errorMsg ? errorMsg.substring(0, 500) : params.api + ':response can not be parse'
+      message: errorMsg
+        ? errorMsg.substring(0, 500)
+        : params.api + ':response can not be parse'
     });
   } catch (e) {
     // Noop
@@ -75,47 +60,46 @@ function reportError(params, retJson) {
 }
 
 function requestByRap(options, successCallback, failureCallback) {
-  Rap.call({
-    className: 'mtop',
-    methodName: 'request',
-    options: options
-  }).then(successCallback, failureCallback);
+  return Rap
+    .call({className: 'mtop', methodName: 'request', options: options})
+    .then(successCallback, failureCallback);
 }
 
-
-function requestByWindvane(options, successCallback, failureCallback) {
-  if (Windvane && Windvane.call) {
-    if (options.param) {
-      console.error('please use options.data');
-    }
-    options.param = options.data || options.param;
-    if (options.type === 'POST') {
-      options.post = '1';
-    }
-    Windvane.call({
-      class: 'MtopWVPlugin',
-      method: 'send',
-      data: options
-    }, function(retJson) {
-      if (typeof retJson === 'string') {
-        retJson = JSON.parse(retJson);
-      }
-      let isRetTypeSuccess = retJson.retType === RESPONSE_TYPE.SUCCESS;
-      let isRetSuccess = retJson.ret && retJson.ret[0].indexOf('SUCCESS') > -1;
-      if (isRetTypeSuccess || isRetSuccess) {
-        successCallback && successCallback(retJson);
-      } else {
-        failureCallback && failureCallback(retJson);
-      }
-    });
+// 这里有成功与失败的场景 成功-能够调通服务 成功-服务调用成功 成功-服务调用失败 失败 失败-网络异常 失败-网关服务异常
+function formatRetJson(retJson) {
+  try {
+    return retJson.data;
+  } catch (e) {
+    console.error(`ERROR:: ${e}`);
   }
 }
+const AOP = {
+  request(options, successCallback, failureCallback) {
+    let defered = defer();
+    let bizType = '3';
+    // 这里有
+    let _failureCallback = (retJson) => {
+      failureCallback = failureCallback || successCallback;
+      failureCallback && failureCallback(formatRetJson(retJson));
+      // reportError(params, retJson);
+      defered.reject(formatRetJson(retJson));
+    };
+    let _successCallback = (retJson) => {
+      successCallback && successCallback(formatRetJson(retJson));
+      defered.resolve(formatRetJson(retJson));
+    };
 
-function requestByMtop(params, successCallback, failureCallback) {
-  if (Mtop.request) {
-    Mtop.request(params, successCallback, failureCallback);
+    let params = {};
+    // 获取插件信息; 根据bizType【是否是三方】来决定使用哪个 MTOP，还是只作为MTOP通道
+    if (bizType === '3') {
+      params = formatOpenApiParams(options);
+    } else {
+      params = options;
+    }
+    requestByRap(params, successCallback, failureCallback);
+    return defered.promise;
   }
-}
+};
 
 // 这里有成功与失败的场景
 // 成功-能够调通服务
@@ -125,56 +109,35 @@ function requestByMtop(params, successCallback, failureCallback) {
 // 失败-网络异常
 // 失败-网关服务异常
 function formatRetJson(retJson) {
-  return retJson;
-}
-AOP = {
-  request(options, successCallback, failureCallback) {
-    let defered = defer();
-    let bizType = '3';
-    // 这里有
-    let _failureCallback = (retJson) => {
-      const result = retJson.data.data;
-      failureCallback = failureCallback || successCallback;
-      failureCallback && failureCallback(formatRetJson(result));
-      // reportError(params, retJson);
-      defered.reject(result);
-    };
-    let _successCallback = (retJson) => {
-      const result = retJson.data.data;
-      successCallback && successCallback(formatRetJson(result));
-      defered.resolve(result);
-    };
-
-    let params = {};
-    // 获取插件信息; 根据bizType【是否是三方】来决定使用哪个 MTOP，还是只作为MTOP通道
-    if (bizType === '3') {
-      // namespace
-      // apiName
-      // apiVersion
-      // appKey
-      // params
-      let data = {};
-      data.namespace = options.namespace;
-      data.apiName = options.api;
-      data.apiVersion = options.v || options.version || '1.0';
-      if (typeof options.params === 'object') {
-        data.params = JSON.stringify(options.params);
-      }
-      if (isWeex) {
-        params = {
-          api: 'mtop.1688.wireless.openapi.gateway',
-          v: '1.0',
-          data: data
-        };
-      }
-    } else {
-      params = options;
-    }
-
-    requestByRap(params, successCallback, failureCallback);
-
-    return defered.promise;
+  try {
+    return retJson.data;
+  } catch (e) {
+    console.error(`ERROR:: ${e}`);
   }
-};
-
+}
+/**
+ *
+ * @param {Object} options
+ * @param {String} options.api  开放平台API Name
+ * @param {String} options.version  开放平台 API Version
+ * @param {Obejct} options.params   开放平台 业务参数
+ * @param {String} options.namespace  开放平台 命名空间
+ */
+function formatOpenApiParams(options) {
+  let params = {};
+  let data = {};
+  data.namespace = options.namespace;
+  data.apiName = options.api;
+  data.apiVersion = options.v || options.version || '1.0';
+  if (typeof options.params === 'object') {// fix: android bug
+    data.params = JSON.stringify(options.params);
+  }
+  params = {
+    api: 'mtop.1688.wireless.openapi.gateway',
+    isOpenApi: true, // 约定参数 再通知Native 透传appKey与timestamp
+    v: '1.0',
+    data: data
+  };
+  return params;
+}
 export default AOP;

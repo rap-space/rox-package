@@ -6,6 +6,14 @@ import Rap from './rap';
 import {isWeex, isWeb} from './env';
 import {defer} from './util';
 
+const RAP_SUCCESS = 'RAP_SUCCESS';
+const RAP_FAILURE = 'RAP_FAILURE';
+const RET_BOUND_SYMBOL = '::';
+const RET_CODE_SUCCESS = 'SUCCESS';
+const RET_TRUE = 'true';
+const RET_FALSE = 'false';
+const RET_MESSAGE_NULL = 'null';
+const rCode = /FAIL_BIZ_/;
 const RESPONSE_TYPE = {
   /**
    * @description 请求出错
@@ -91,7 +99,6 @@ const AOP = {
 
     console.log(`----params----: ${JSON.stringify(params)}`);
 
-
     requestByRap(params, successCallback, failureCallback);
     return defered.promise;
   }
@@ -106,11 +113,33 @@ const AOP = {
 // 失败-网关服务异常
 function formatRetJson(retJson) {
   try {
+    let res = {};
+    let o = {};
+
     if (typeof retJson === 'string') {
       retJson = JSON.parse(retJson);
     }
 
-    return retJson;
+    if (RAP_SUCCESS === retJson.code) {
+      res = retJson.data.data;
+
+      const ret = res.ret[0].split(RET_BOUND_SYMBOL);
+      const code = ret[0].toUpperCase();
+
+      if (RET_CODE_SUCCESS === code) {
+        o = res.data;
+      } else {
+        o.success = RET_FALSE;
+        o.errorCode = code.replace(rCode, '');
+        o.errorMessage = ret[1] === RET_MESSAGE_NULL ? '' : ret[1];
+      }
+    } else {
+      o.success = RET_FALSE;
+      o.errorCode = RAP_FAILURE;
+      o.errorMessage = '接口调用异常';
+    }
+
+    return o;
   } catch (e) {
     console.error(`ERROR:: ${e}`);
   }
@@ -128,8 +157,7 @@ function formatOpenApiParams(options) {
   let data = {};
   data.namespace = options.namespace;
   data.apiName = options.api;
-  data.apiVersion = '' + (options.v || options.version || '1.0');
-
+  data.apiVersion = '' + parseInt(options.v || options.version || '1');
   if (typeof options.params === 'object') {// fix: android bug
     data.params = JSON.stringify(options.params);
   }

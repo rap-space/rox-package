@@ -14,28 +14,6 @@ const RET_TRUE = 'true';
 const RET_FALSE = 'false';
 const RET_MESSAGE_NULL = 'null';
 const rCode = /FAIL_BIZ_/;
-const RESPONSE_TYPE = {
-  /**
-   * @description 请求出错
-   * @type {Number}
-   */
-  'ERROR': -1,
-  /**
-   * @description 请求成功
-   * @type {Number}
-   */
-  'SUCCESS': 0,
-  /**
-   * @description 请求token过期
-   * @type {Number}
-   */
-  'TOKEN_EXPIRED': 1,
-  /**
-   * @description 请求session过期
-   * @type {Number}
-   */
-  'SESSION_EXPIRED': 2
-};
 
 function report() {};
 
@@ -75,16 +53,15 @@ function requestByRap(options, successCallback, failureCallback) {
 
 const AOP = {
   request(options, successCallback, failureCallback) {
-    let defered = defer();
-    let bizType = '3';
+    const defered = defer();
+    const bizType = '3';
     // 这里有
-    let _failureCallback = (retJson) => {
+    const _failureCallback = (retJson) => {
       failureCallback = failureCallback || successCallback;
       failureCallback && failureCallback(formatRetJson(retJson));
-      // reportError(params, retJson);
       defered.reject(formatRetJson(retJson));
     };
-    let _successCallback = (retJson) => {
+    const _successCallback = (retJson) => {
       successCallback && successCallback(formatRetJson(retJson));
       defered.resolve(formatRetJson(retJson));
     };
@@ -96,6 +73,27 @@ const AOP = {
     } else {
       params = options;
     }
+
+    requestByRap(params, _successCallback, _failureCallback);
+
+    return defered.promise;
+  },
+  httpRequest(options, successCallback, failureCallback) {
+    const defered = defer();
+
+    const _failureCallback = (retJson) => {
+      failureCallback = failureCallback || successCallback;
+      failureCallback && failureCallback(formatRetJson(retJson));
+      // reportError(params, retJson);
+      defered.reject(formatRetJson(retJson));
+    };
+
+    const _successCallback = (retJson) => {
+      successCallback && successCallback(formatRetJson(retJson));
+      defered.resolve(formatRetJson(retJson));
+    };
+
+    const params = formatHttpProxyParams(options);
 
     requestByRap(params, _successCallback, _failureCallback);
 
@@ -120,7 +118,7 @@ function formatRetJson(retJson) {
     }
 
     if (RAP_SUCCESS === retJson.code) {
-      res = retJson.data.data;
+      res = retJson.data;
 
       const ret = res.ret[0].split(RET_BOUND_SYMBOL);
       const code = ret[0].toUpperCase();
@@ -166,6 +164,33 @@ function formatOpenApiParams(options) {
     v: '1.0',
     data: data
   };
+  return params;
+}
+
+/**
+ *
+ * @param {Object} options
+ * @param {String} options.targetUrl  代理 url 地址
+ */
+function formatHttpProxyParams(options) {
+  let params = {};
+  let data = {};
+
+  const API = 'mtop.1688.wireless.isv.httpproxy';
+
+  data.targetUrl = options.targetUrl;
+  data.ecode = '1';
+  data.method = options.method || 'GET';
+  data.headers = options.headers;
+  data.body = options.body;
+
+  params = {
+    api: API,
+    v: '1.0',
+    ecode: '1',
+    data: data
+  };
+
   return params;
 }
 

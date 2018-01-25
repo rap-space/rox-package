@@ -97,9 +97,8 @@ const AOP = {
       params = options;
     }
 
-    console.log(`----params----: ${JSON.stringify(params)}`);
+    requestByRap(params, _successCallback, _failureCallback);
 
-    requestByRap(params, successCallback, failureCallback);
     return defered.promise;
   }
 };

@@ -15,14 +15,12 @@ let call = function(options, callback) {
   let deferred = defer();
   RBridge.call && RBridge.call(className, methodName, params, function(success) {
     success = JSON.stringify(success);
-    console.log('rapcaller.call:: ' + `[${className}.${methodName}]--success,  \n message:: ${success}`);
     deferred.resolve(success);
   }, function(error) {
     error = JSON.stringify(error);
     console.error('rapcaller.call:: ' + `[${className}.${methodName}]--failure, \n message:: ${error}`);
     deferred.reject(error);
   }, function(notify) {
-    console.log('notify::' + notify);
     // 这里可以修复一些参数处理
     callback && callback(notify);
   });

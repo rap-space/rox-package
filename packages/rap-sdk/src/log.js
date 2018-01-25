@@ -2,19 +2,19 @@ import localstore from './localstorage';
 
 // localstore.getItem('_rapDebugMode_');
 const log = {
-  log: function() {
+  log() {
     console.log();
   },
-  error: function() {
+  error() {
     console.error();
   },
-  debug: function() {
+  debug() {
     console.debug();
   },
-  warn: function() {
+  warn() {
     console.warn();
   },
-  info: function() {
+  info() {
     console.info();
   }
 };

@@ -1,29 +1,31 @@
 import { defer } from '../util';
-import {requireModule} from './weex-module';
+import { requireModule } from './weex-module';
 
-let RBridge;
-let MODULE_NAME = '@weex-module/rapcaller';
-let call = function(options, callback) {
-  let className = options.className;
-  let methodName = options.methodName;
+const MODULE_NAME = '@weex-module/rapcaller';
+let RBridge = window.RBridge;
+
+const call = function(options, callback) {
+  const { className, methodName } = options;
   // 支持两种， 这里暂时写param
-  let params = options.options || options.param;
+  const params = options.options || options.param;
+
   if (!RBridge) {
     RBridge = requireModule('rapcaller');
   }
 
-  let deferred = defer();
-  RBridge.call && RBridge.call(className, methodName, params, function(success) {
+  const deferred = defer();
+
+  RBridge.call && RBridge.call(className, methodName, params, (success) => {
     success = JSON.stringify(success);
     deferred.resolve(success);
-  }, function(error) {
+  }, (error) => {
     error = JSON.stringify(error);
     console.error('rapcaller.call:: ' + `[${className}.${methodName}]--failure, \n message:: ${error}`);
     deferred.reject(error);
-  }, function(notify) {
-    // 这里可以修复一些参数处理
+  }, (notify) => {
     callback && callback(notify);
   });
+
   return deferred.promise;
 };
 

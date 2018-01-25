@@ -1,6 +1,6 @@
 import { requireModule } from './weex-module';
 
-const call = function(params) {
+function call(params) {
   if (window.WindVane && window.WindVane.call) {
     // noop
   } else {

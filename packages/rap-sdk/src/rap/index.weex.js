@@ -4,7 +4,7 @@ import { requireModule } from './weex-module';
 const MODULE_NAME = '@weex-module/rapcaller';
 let RBridge = window.RBridge;
 
-const call = function(options, callback) {
+function call(options, callback) {
   const { className, methodName } = options;
   // 支持两种， 这里暂时写param
   const params = options.options || options.param;

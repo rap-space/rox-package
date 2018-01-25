@@ -1,44 +1,54 @@
 
 const BORDER_RADIUS = 12;
-const s12 = 48;
-
+const BODY_PADDING = 48;
+const HEAD_HEIGHT = 44;
+const headFontSize = 36;
 var styles = {
   modalStyle: {
     width: 612,
-    height: 322,
-    paddingTop: s12,
-    borderRadius: BORDER_RADIUS,
+    minHeight: 332,
+    borderRadius: BORDER_RADIUS
   },
 
   body: {
     flex: 1,
-    paddingLeft: s12,
-    paddingRight: s12,
+    paddingLeft: BODY_PADDING,
+    paddingRight: BODY_PADDING,
+    paddingTop: BODY_PADDING,
+    paddingBottom: BODY_PADDING,
+
     // justifyContent: 'center',
-    borderRadius: BORDER_RADIUS,
+    borderTopLeftRadius: BORDER_RADIUS,
+    borderTopRightRadius: BORDER_RADIUS,
     backgroundColor: '#ffffff',
+    overflow: 'hidden'
   },
 
   head: {
-    height: 50,
-    alignItems: 'left',
+    height: HEAD_HEIGHT,
+    alignItems: 'center',
     justifyContent: 'center',
   },
 
   textHead: {
     color: '#333333',
-    fontSize: 36,
+    fontSize: headFontSize,
+    height: HEAD_HEIGHT,
+    lineHeight: HEAD_HEIGHT,
+    overflow: 'hidden',
   },
 
-  tips: {
-    height: 120,
+  content: {
+    minHeight: 104,
+    maxHeight: 600,
+    marginTop: 16,
     alignItems: 'center',
     justifyContent: 'center'
   },
-  text: {
+  contentText: {
     fontSize: 28,
-    lines: 3,
-    '-webkit-line-clamp': 3,
+    lines: 5,
+    '-webkit-line-clamp': 5,
     overflow: 'hidden',
     lineHeight: '40rem',
     color: '#60646e',

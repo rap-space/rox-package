@@ -40,8 +40,8 @@ class Alert extends Component {
               <Text style={styles.textHead}>{titleText}</Text>
             </View>
           }
-          <ScrollView style={styles.tips}>
-            <Text style={styles.text}>
+          <ScrollView style={[styles.content, disabledTitle ? {marginTop: 0} : {} ]}>
+            <Text style={styles.contentText}>
               {this.props.children}
             </Text>
           </ScrollView>

@@ -117,10 +117,6 @@ function formatRetJson(retJson) {
     let res = {};
     let o = {};
 
-    if (typeof retJson === 'string') {
-      retJson = JSON.parse(retJson);
-    }
-
     retJson = parseJson(retJson);
 
     if (RAP_SUCCESS === retJson.code) {

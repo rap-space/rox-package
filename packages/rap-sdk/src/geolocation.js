@@ -1,6 +1,6 @@
 import RapBridge from './rap';
 
-let geolocation = {
+const geolocation = {
 
 };
 

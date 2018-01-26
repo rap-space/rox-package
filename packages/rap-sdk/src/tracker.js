@@ -1,3 +1,3 @@
-let Tracker = {};
+const Tracker = {};
 
 export default Tracker;

@@ -6,17 +6,19 @@ import Version from './version';
 import log from './log';
 
 function defer() {
-  let deferred = {
+  const deferred = {
     always(...args) {
       this.promise.then(...args);
       this.promise.catch(...args);
       return this;
     }
   };
+
   deferred.promise = new Promise((resolve, reject) => {
     deferred.resolve = resolve;
     deferred.reject = reject;
   });
+
   return deferred;
 }
 
@@ -33,4 +35,16 @@ function each(obj, iterator, context = null) {
   }
 }
 
-export default { defer, each, Version, log };
+function parseJson(jsonStr) {
+  if (typeof jsonStr === 'string') {
+    try {
+      return JSON.parse(jsonStr);
+    } catch (e) {
+      return jsonStr;
+    }
+  }
+
+  return jsonStr;
+}
+
+export default { defer, each, Version, log, parseJson };

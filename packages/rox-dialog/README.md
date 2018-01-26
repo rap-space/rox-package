@@ -32,8 +32,8 @@ Dialog 的实现方式是通过Weex 中的 Mask 标签进行包装实现, 使用
 
 | 参数      | 说明                                     | 类型          | 默认值 |
 |-----------|------------------------------------------|---------------|--------|
-| titleText   | 标题文字                 | String       | 确定  |
-| contentStyle   | 触发元素       | Element        |   |
+| titleText   | 标题文字                 | String       | 温馨提醒  |
+| disabledTitle   | 禁用标题                 | Boolean       | false  |
 | okText   | 确认文字                     | String       | 确定  |
 
 
@@ -43,7 +43,6 @@ Dialog 的实现方式是通过Weex 中的 Mask 标签进行包装实现, 使用
 
 | 参数      | 说明                                     | 类型          | 默认值 |
 |-----------|------------------------------------------|---------------|--------|
-| contentStyle   | 触发元素       | Element        |   |
 | titleText   | 标题文字                 | String       | 温馨提醒  |
 | okText   | 确认文案                 | String       | 确定  |
 | cancelText   | 取消文案                     | String       | 取消  |

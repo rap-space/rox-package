@@ -1,4 +1,4 @@
-import { createElement, Component, render } from 'rax';
+import { createElement, Component, render, PropTypes } from 'rax';
 import Dialog from 'nuke-dialog';
 import Button from 'rox-button';
 import ScrollView from 'rox-scrollview';
@@ -25,9 +25,11 @@ class Alert extends Component {
 
   render() {
     let { okText, titleText, disabledTitle } = this.props;
-    titleText = titleText || '温馨提示';
-    okText = okText || '确认';
     // onHide = onHide || this.hide;
+    let contentStyle = disabledTitle ? {
+      marginTop: 0,
+      minHeight: 332 - 96 * 2
+    } : {};
     return (
       <Dialog ref="alert"
         duration={DURATION_TIME}
@@ -40,11 +42,11 @@ class Alert extends Component {
               <Text style={styles.textHead}>{titleText}</Text>
             </View>
           }
-          <ScrollView style={[styles.content, disabledTitle ? {marginTop: 0} : {} ]}>
+          <View style={[styles.content, contentStyle]}>
             <Text style={styles.contentText}>
               {this.props.children}
             </Text>
-          </ScrollView>
+          </View>
         </View>
         <View style={styles.footer}>
           <Button style={styles.buttonAlert} type="normal" size="large" onPress={this.hide}>{okText}</Button>
@@ -52,5 +54,16 @@ class Alert extends Component {
       </Dialog>);
   }
 }
+Alert.displayName = 'Alert';
 
+Alert.defaultProps = {
+  okText: '确认',
+  titleText: '温馨提示',
+  disabledTitle: false
+};
+Alert.propTypes = {
+  okText: PropTypes.string,
+  titleText: PropTypes.string,
+  disabledTitle: PropTypes.boolean
+};
 export default Alert;

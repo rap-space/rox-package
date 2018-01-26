@@ -47,11 +47,11 @@ class Confirm extends Component {
           <View style={styles.head}>
             <Text style={styles.textHead}>{titleText}</Text>
           </View>
-          <ScrollView style={styles.content}>
+          <View style={styles.content}>
             <Text style={styles.contentText}>
               {this.props.children}
             </Text>
-          </ScrollView>
+          </View>
         </View>
         <View style={styles.footer}>
           <Button style={[styles.buttonConfirm, {

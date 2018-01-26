@@ -77,7 +77,7 @@ let App = class NukeDemoIndex extends Component {
             this.hideConfirm();
           }} onOk={() => {
             this.hideConfirm();
-          }}>确定取消开抢提醒吗，取消后您将不能及时获取优惠信息，错过最佳的进货时间？</Dialog.Confirm>
+          }}>确定取消开抢提醒吗</Dialog.Confirm>
 
           <Dialog.Alert ref="alert" okText={'按钮'}>确定取消开抢提醒吗，取消后您将不能及时获取优惠信息，错过最佳的进货时间？</Dialog.Alert>
 

@@ -1,4 +1,4 @@
-import { createElement, Component, render } from 'rax';
+import { createElement, Component, render, PropTypes } from 'rax';
 import Dialog from 'nuke-dialog';
 import Button from 'rox-button';
 import ScrollView from 'rox-scrollview';
@@ -17,7 +17,7 @@ class Confirm extends Component {
   }
 
   hide(type) {
-    let { onOk, onCancel} = this.props;
+    let { onOk, onCancel } = this.props;
     if (type == 'ok' &&　onOk) {
       onOk();
       this.refs.confirm.hide();
@@ -34,9 +34,6 @@ class Confirm extends Component {
 
   render() {
     let { okText, cancelText, titleText } = this.props;
-    titleText = titleText || '温馨提示';
-    cancelText = cancelText || '取消';
-    okText = okText || '确认';
     return (
       <Dialog ref="confirm"
         duration={DURATION_TIME}
@@ -47,11 +44,11 @@ class Confirm extends Component {
           <View style={styles.head}>
             <Text style={styles.textHead}>{titleText}</Text>
           </View>
-          <ScrollView style={styles.content}>
+          <View style={styles.content}>
             <Text style={styles.contentText}>
               {this.props.children}
             </Text>
-          </ScrollView>
+          </View>
         </View>
         <View style={styles.footer}>
           <Button style={[styles.buttonConfirm, {
@@ -72,5 +69,16 @@ class Confirm extends Component {
       </Dialog>);
   }
 }
+Confirm.displayName = 'Alert';
 
+Confirm.defaultProps = {
+  okText: '确认',
+  cancelText: '取消',
+  titleText: '温馨提示'
+};
+Confirm.propTypes = {
+  okText: PropTypes.string,
+  cancelText: PropTypes.string,
+  titleText: PropTypes.string
+};
 export default Confirm;

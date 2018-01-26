@@ -39,13 +39,17 @@ var styles = {
   },
 
   content: {
-    minHeight: 104,
+    // minHeight: 96,
+    height: 112,
     maxHeight: 600,
-    marginTop: 16,
+    marginTop: 24,
+    // borderWidth: 1,
+    overflow: 'hidden',
     alignItems: 'center',
     justifyContent: 'center'
   },
   contentText: {
+    // borderWidth: 1,
     fontSize: 28,
     lines: 5,
     '-webkit-line-clamp': 5,
@@ -60,11 +64,13 @@ var styles = {
     flexDirection: 'row',
     borderTopStyle: 'solid',
     borderTopWidth: 0,
+
     alignItems: 'center',
     justifyContent: 'flex-end'
   },
   buttonConfirm: {
     flex: 1,
+    borderRadius: 0,
     borderWidth: 0
   },
   buttonAlert: {

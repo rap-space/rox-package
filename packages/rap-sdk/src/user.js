@@ -2,10 +2,18 @@ import { parseJson } from './util';
 
 const USER_MODULE = '@weex-module/user';
 const User = window.require(USER_MODULE);
+import AOP from './aop';
 
 export default {
-  getUserInfo(callback) {
+  getUserInfo(options, callback) {
+    if (!callback) {
+      callback = options;
+    }
     if (User.getUserInfo) {
+      if (options && options.extraInfo) {
+        // MTOP
+        AOP.request();
+      }
       User.getUserInfo((info) => {
         info = parseJson(info);
         if (String(info.isLogin) === 'true') {

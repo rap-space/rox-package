@@ -2,7 +2,7 @@
 // 1. Weex环境下
 // 2. weex 降级的 主客容器下
 // 3. H5下 import {report} from '@ali/universal-tracker';
-import Rap from './rap';
+import Mtop from './mtop';
 import { isWeex, isWeb } from './env';
 import { defer, parseJson } from './util';
 
@@ -44,12 +44,6 @@ function reportError(params = {}, retJson) {
   }
 }
 
-function requestByRap(options, successCallback, failureCallback) {
-  return Rap.call({
-    className: 'mtop',
-    methodName: 'request',
-    options}).then(successCallback, failureCallback);
-}
 
 /**
  *
@@ -168,7 +162,7 @@ const AOP = {
       params = options;
     }
 
-    requestByRap(params, _successCallback, _failureCallback);
+    Mtop.request(params, _successCallback, _failureCallback);
 
     return defered.promise;
   },
@@ -190,7 +184,7 @@ const AOP = {
 
     const params = formatHttpProxyParams(options);
 
-    requestByRap(params, _successCallback, _failureCallback);
+    Mtop.request(params, _successCallback, _failureCallback);
 
     return defered.promise;
   }

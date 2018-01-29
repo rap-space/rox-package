@@ -65,6 +65,7 @@ class Emotion extends Component {
             {this.props.jumpText}
           </Link> : null
         }
+        {this.props.children}
       </View>
     );
   }
@@ -98,6 +99,7 @@ const styles = {
   }
 };
 Emotion.propTypes = {
+  type: PropTypes.string,
   rate: PropTypes.number,
   style: PropTypes.any,
   barStyle: PropTypes.any
@@ -108,6 +110,7 @@ Emotion.defaultProps = {
   style: {},
   barStyle: {}
 };
+
 Emotion.displayName = 'Emotion';
 
 export default Emotion;

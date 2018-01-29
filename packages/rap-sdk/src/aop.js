@@ -91,8 +91,7 @@ function formatHttpProxyParams(options) {
   const API = 'mtop.1688.wireless.isv.httpproxy';
   const data = {};
 
-  data.targetUrl = options.targetUrl;
-  data.ecode = '1';
+  data.targetUrl = options.url || options.targetUrl;
   data.method = options.method || 'GET';
   data.headers = options.headers;
   data.body = options.body;
@@ -177,7 +176,7 @@ const AOP = {
 
     return defered.promise;
   },
-  httpRequest(options, successCallback, failureCallback) {
+  proxy(options, successCallback, failureCallback) {
     const defered = defer();
 
     const _failureCallback = (retJson) => {

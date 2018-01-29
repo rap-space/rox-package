@@ -1,4 +1,4 @@
-# Checkbox
+# rox-checkbox
 
 - category: UI
 - chinese: 复选框

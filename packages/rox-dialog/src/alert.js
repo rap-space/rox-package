@@ -24,12 +24,12 @@ class Alert extends Component {
   }
 
   render() {
-    let { okText, titleText, disabledTitle } = this.props;
+    let { okText, titleText, disabledTitle, contentStyle = {}} = this.props;
     // onHide = onHide || this.hide;
-    let contentStyle = disabledTitle ? {
+    contentStyle = disabledTitle ? {
       marginTop: 0,
       minHeight: 332 - 96 * 2
-    } : {};
+    } : contentStyle;
     return (
       <Dialog ref="alert"
         duration={DURATION_TIME}

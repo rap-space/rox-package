@@ -33,7 +33,8 @@ class Confirm extends Component {
   }
 
   render() {
-    let { okText, cancelText, titleText } = this.props;
+    let { okText, cancelText, titleText, contentStyle = {}} = this.props;
+
     return (
       <Dialog ref="confirm"
         duration={DURATION_TIME}
@@ -44,7 +45,7 @@ class Confirm extends Component {
           <View style={styles.head}>
             <Text style={styles.textHead}>{titleText}</Text>
           </View>
-          <View style={styles.content}>
+          <View style={[styles.content, contentStyle]}>
             <Text style={styles.contentText}>
               {this.props.children}
             </Text>

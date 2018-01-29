@@ -45,9 +45,10 @@ function reportError(params = {}, retJson) {
 }
 
 function requestByRap(options, successCallback, failureCallback) {
-  return Rap
-    .call({className: 'mtop', methodName: 'request', options})
-    .then(successCallback, failureCallback);
+  return Rap.call({
+    className: 'mtop',
+    methodName: 'request',
+    options}).then(successCallback, failureCallback);
 }
 
 /**
@@ -137,7 +138,6 @@ function formatRetJson(retJson) {
       o.errorCode = RAP_FAILURE;
       o.errorMessage = '接口调用异常';
     }
-
     return o;
   } catch (e) {
     console.error(`ERROR:: ${e}`);
@@ -155,8 +155,9 @@ const AOP = {
       defered.reject(formatRetJson(retJson));
     };
     const _successCallback = (retJson) => {
-      successCallback && successCallback(formatRetJson(retJson));
-      defered.resolve(formatRetJson(retJson));
+      let data = formatRetJson(retJson);
+      successCallback && successCallback(data);
+      defered.resolve(data);
     };
 
     let params = {};
@@ -176,13 +177,15 @@ const AOP = {
 
     const _failureCallback = (retJson) => {
       failureCallback = failureCallback || successCallback;
-      failureCallback && failureCallback(formatRetJson(retJson));
-      defered.reject(formatRetJson(retJson));
+      let data = formatRetJson(retJson);
+      failureCallback && failureCallback(data);
+      defered.reject(data);
     };
 
     const _successCallback = (retJson) => {
-      successCallback && successCallback(formatRetJson(retJson));
-      defered.resolve(formatRetJson(retJson));
+      let data = formatRetJson(retJson);
+      successCallback && successCallback(data);
+      defered.resolve(data);
     };
 
     const params = formatHttpProxyParams(options);

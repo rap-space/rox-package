@@ -40,7 +40,9 @@ function parseJson(jsonStr) {
     try {
       return JSON.parse(jsonStr);
     } catch (e) {
-      return jsonStr;
+      return {
+        parseError: jsonStr
+      };
     }
   }
 

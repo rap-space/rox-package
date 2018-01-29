@@ -101,8 +101,6 @@ function formatHttpProxyParams(options) {
     data.body = JSON.stringify(options.body);
   }
 
-  data.body = options.body;
-
   const params = {
     api: API,
     v: '1.0',

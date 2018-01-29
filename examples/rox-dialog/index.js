@@ -1,5 +1,10 @@
 import { createElement, render, Component } from 'rax';
-import { Theme, ThemeProvider, Button, Text, Dialog, View } from 'rox-components';
+// import { Theme, ThemeProvider, Button, Text, Dialog, View } from 'rox-components';
+import ThemeProvider from 'rox-theme-provider';
+import Button from 'rox-button';
+import Text from 'rox-text';
+import Dialog from 'rox-dialog';
+import View from 'rox-view';
 import Page from 'nuke-page';
 
 

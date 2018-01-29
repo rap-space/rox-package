@@ -66,6 +66,7 @@ function formatOpenApiParams(options) {
   data.namespace = options.namespace;
   data.apiName = options.api;
   data.apiVersion = `${parseInt(options.v || options.version || '1')}`;
+  data.params = options.params;
 
   if (typeof options.params === 'object') {// fix: android bug
     data.params = JSON.stringify(options.params);
@@ -94,6 +95,12 @@ function formatHttpProxyParams(options) {
   data.ecode = '1';
   data.method = options.method || 'GET';
   data.headers = options.headers;
+  data.body = options.body;
+
+  if (typeof options.body === 'object') {
+    data.body = JSON.stringify(options.body);
+  }
+
   data.body = options.body;
 
   const params = {

@@ -42,6 +42,10 @@ export default {
             });
           }).catch((e) => {
             // false;
+            callback && callback({
+              ...info,
+              extraInfo: false
+            });
           });
         } else {
           callback && callback(info);

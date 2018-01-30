@@ -47,8 +47,7 @@ export default {
               extraInfo: res
             });
           }).catch((e) => {
-            // false;
-            callback({
+            callback && callback({
               ...info,
               extraInfo: false
             });

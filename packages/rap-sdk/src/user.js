@@ -2,7 +2,7 @@ import { parseJson } from './util';
 
 const USER_MODULE = '@weex-module/user';
 const User = window.require(USER_MODULE);
-import Mtop from './mtop';
+import AOP from './aop';
 
 export default {
   getUserInfo(options, callback) {
@@ -13,12 +13,12 @@ export default {
       let extraInfoPromise;
       if (options && options.extraInfo) {
         // getUserExtraInfo
+        // http://ocn.alibaba-inc.com/isp/apifactory/api/input.htm?name=alibaba.account.basic&namespace=com.alibaba.account&version=1
         extraInfoPromise = new Promise((resolve, reject) => {
-          Mtop.request({
-            api: '',
-            ecode: 1,
-            timeout: 2000,
-            v: '1.0'
+          AOP.request({
+            api: 'alibaba.account.basic',
+            namespace: 'com.alibaba.account',
+            v: '1'
           }, (res) => {
             resolve(res);
           }, function(error) {
@@ -48,10 +48,8 @@ export default {
       if (extraInfoPromise) {
         promises.push(extraInfoPromise);
       }
-
       Promise.all(extraInfoPromise).then((e) => {
         // 成功
-        console.log('----- getUserInfo ----- ', e);
         callback(e);
       }, () => {
         // 失败

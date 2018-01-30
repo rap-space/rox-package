@@ -136,6 +136,7 @@ function formatRetJson(retJson) {
       o.errorCode = RAP_FAILURE;
       o.errorMessage = '接口调用异常';
     }
+
     return o;
   } catch (e) {
     console.error(`ERROR:: ${e}`);
@@ -148,14 +149,22 @@ const AOP = {
     const bizType = '3';
 
     const _failureCallback = (retJson) => {
-      failureCallback = failureCallback || successCallback;
-      failureCallback && failureCallback(formatRetJson(retJson));
-      defered.reject(formatRetJson(retJson));
+      const data = formatRetJson(retJson);
+
+      failureCallback && failureCallback(data);
+      defered.reject(data);
     };
+
     const _successCallback = (retJson) => {
-      let data = formatRetJson(retJson);
-      successCallback && successCallback(data);
-      defered.resolve(data);
+      const data = formatRetJson(retJson);
+
+      if (RET_TRUE === data.success) {
+        successCallback && successCallback(data.result);
+        defered.resolve(data.result);
+      } else {
+        failureCallback && failureCallback(data);
+        defered.reject(data);
+      }
     };
 
     let params = {};
@@ -174,16 +183,22 @@ const AOP = {
     const defered = defer();
 
     const _failureCallback = (retJson) => {
-      failureCallback = failureCallback || successCallback;
-      let data = formatRetJson(retJson);
+      const data = formatRetJson(retJson);
+
       failureCallback && failureCallback(data);
       defered.reject(data);
     };
 
     const _successCallback = (retJson) => {
-      let data = formatRetJson(retJson);
-      successCallback && successCallback(data);
-      defered.resolve(data);
+      const data = formatRetJson(retJson);
+
+      if (RET_TRUE === data.success) {
+        successCallback && successCallback(data.result);
+        defered.resolve(data.result);
+      } else {
+        failureCallback && failureCallback(data);
+        defered.reject(data);
+      }
     };
 
     const params = formatHttpProxyParams(options);

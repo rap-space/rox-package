@@ -27,38 +27,28 @@ export default {
         });
       }
 
-      let userInfoPromise = new Promise((resolve, reject) => {
-        User.getUserInfo((info) => {
-          info = parseJson(info);
-          if (String(info.isLogin) === 'true') {
-            info.isLogin = true;
-            resolve(info);
-          } else {
-            info.isLogin = false;
-            reject(info);
-          }
-          // callback && callback(info);
-        });
-      });
-      let promises = [];
-
-      if (userInfoPromise) {
-        promises.push(userInfoPromise);
-      }
-      if (extraInfoPromise) {
-        promises.push(extraInfoPromise);
-      }
-      Promise.all(extraInfoPromise).then((e) => {
-        // 成功
-        callback(e);
-      }, () => {
-        // 失败
-      }).catch((error) => {
-        // error
+      User.getUserInfo((info) => {
+        info = parseJson(info);
+        if (String(info.isLogin) === 'true') {
+          info.isLogin = true;
+        } else {
+          info.isLogin = false;
+        }
+        if (extraInfoPromise) {
+          extraInfoPromise.then((e) => {
+            callback && callback({
+              ...info,
+              extraInfo: e
+            });
+          }).catch((e) => {
+            // false;
+          });
+        } else {
+          callback && callback(info);
+        }
       });
     }
   },
-
   login(callback) {
     if (User.login) {
       User.login((ret) => {

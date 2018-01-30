@@ -39,8 +39,8 @@ var styles = {
   },
 
   content: {
-    // minHeight: 96,
-    height: 112,
+    minHeight: 72,
+    // height: 112,
     maxHeight: 600,
     marginTop: 24,
     // borderWidth: 1,

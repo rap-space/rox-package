@@ -1,5 +1,5 @@
 import { createElement, Component, render, PropTypes } from 'rax';
-import Dialog from 'nuke-dialog';
+import Dialog from './dialog';
 import Button from 'rox-button';
 import ScrollView from 'rox-scrollview';
 import View from 'rox-view';
@@ -18,7 +18,7 @@ class Confirm extends Component {
 
   hide(type) {
     let { onOk, onCancel } = this.props;
-    if (type == 'ok' &&　onOk) {
+    if (type == 'ok' && 　onOk) {
       onOk();
       this.refs.confirm.hide();
     } else if (type == 'cancel' && onCancel) {
@@ -33,32 +33,20 @@ class Confirm extends Component {
   }
 
   render() {
-    let { okText, cancelText, titleText, contentStyle = {}} = this.props;
-
+    let { okText, cancelText, titleText, disabledTitle, contentStyle = {} } = this.props;
     return (
       <Dialog ref="confirm"
-        duration={DURATION_TIME}
-        maskClosable={false}
-        contentStyle={styles.modalStyle}
-      >
-        <View style={styles.body}>
-          <View style={styles.head}>
-            <Text style={styles.textHead}>{titleText}</Text>
-          </View>
-          <View style={[styles.content, contentStyle]}>
-            <Text style={styles.contentText}>
-              {this.props.children}
-            </Text>
-          </View>
-        </View>
-        <View style={styles.footer}>
+        disabledTitle={disabledTitle}
+        titleText={titleText}
+        contentStyle={contentStyle}
+        buttons={[
           <Button style={[styles.buttonConfirm, {
             color: '#333333',
             borderTopWidth: 1,
             borderBottomLeftRadius: BORDER_RADIUS,
           }]} type="normal" size="large" onPress={() => {
             this.hide('cancel');
-          }}>{cancelText}</Button>
+          }}>{cancelText}</Button>,
           <Button style={[styles.buttonConfirm, {
             color: '#ffffff',
             borderRadius: 0,
@@ -66,7 +54,9 @@ class Confirm extends Component {
           }]} type="primary" size="large" onPress={() => {
             this.hide('ok');
           }}>{okText}</Button>
-        </View>
+        ]}
+      >
+        {this.props.children}
       </Dialog>);
   }
 }

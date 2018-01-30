@@ -9,10 +9,25 @@ import Page from 'nuke-page';
 
 
 let App = class NukeDemoIndex extends Component {
+  state = {
+    lines: 1,
+    disabledTitle: false,
+    title: '温馨提示',
+    confirmText: '',
+    confirmText1: '确定取消开抢提醒吗？',
+    confirmText2: '确定取消开抢提醒吗，取消后您将不能及时获取优惠信息，错过最佳进货时间？',
+    confirmText5: '确定取消开抢提醒吗，取消后您将不能及时获取优惠信息，错过最佳进货时间？确定取消开抢提醒吗，取消后您将不能及时获取优惠信息，错过最佳进货时间？',
+    alertText: '',
+    alertText1: '您将错过最佳进货时间。',
+    alertText2: '取消开抢提醒后您将不能及时获取优惠信息，错过最佳进货时间。',
+    alertText5: '取消开抢提醒后您将不能及时获取优惠信息，错过最佳进货时间, 取消开抢提醒后您将不能及时获取优惠信息，错过最佳进货时间。取消开抢提醒后您将不能及时获取优惠信息，错过最佳进货时间。',
+  }
+
   constructor() {
     super();
     this.hideModal = this.hideModal.bind(this);
   }
+
   showModal = () => {
     console.log('showModal');
     this.refs.modal1.hide();
@@ -40,8 +55,13 @@ let App = class NukeDemoIndex extends Component {
     this.refs.modal1.hide();
   }
 
-  showConfirm() {
+  showConfirm(obj) {
     console.log('showConfirm');
+    this.setState({
+      disabledTitle: !obj.title,
+      lines: obj.lines,
+      confirmText: this.state['confirmText' + obj.lines]
+    });
     this.refs.confirm.show();
   }
 
@@ -49,83 +69,136 @@ let App = class NukeDemoIndex extends Component {
     console.log('hideConfirm');
     // this.refs.confirm.hide();
   }
-  showAlert() {
+  showAlert(obj) {
     console.log('showAlert');
+    this.setState({
+      disabledTitle: !obj.title,
+      lines: obj.lines,
+      alertText: this.state['alertText' + obj.lines]
+    });
     this.refs.alert.show();
   }
-  showAlert2() {
-    console.log('showAlert');
-    this.refs.alert2.show();
-  }
   render() {
+    let height = 72;
+    if (this.state.lines > 2) {
+      height = 72 * 3;
+    }
     return (
       <ThemeProvider>
         <Page title="Dialog">
           <Page.Intro main="Dialog" />
           <View style={{ height: '2000rem' }}>
-            <Button type="primary" onPress={this.showModal}>点击打开对话框，可以点击遮罩层关闭</Button>
-            <Page.Intro main="Dialog.Confirm" />
-            <Button type="primary" onPress={() => {
-              this.showConfirm();
-            }}>点击打开 Confirm 对话框</Button>
-            <Page.Intro main="Dialog.Alert" />
-            <Button type="primary" onPress={() => {
-              this.showAlert();
-            }}>点击打开 Alert 对话框</Button>
-            <Page.Intro main="Dialog.Alert" />
-            <Button type="primary" onPress={() => {
-              this.showAlert2();
-            }}>点击打开 Alert 对话框- 无标题</Button>
+
+            <Page.Intro main="Dialog.Confirm: 有标题" />
+            <Button type="primary" style={styles.margin} onPress={() => {
+              this.showConfirm({
+                title: true,
+                lines: 1
+              });
+            }}>1行正文</Button>
+
+            <Button type="primary" style={styles.margin} onPress={() => {
+              this.showConfirm({
+                title: true,
+                lines: 2
+              });
+            }}>2行正文</Button>
+
+            <Button type="primary" style={styles.margin} onPress={() => {
+              this.showConfirm({
+                title: true,
+                lines: 5
+              });
+            }}>多行正文</Button>
+
+
+            <Page.Intro main="Dialog.Confirm: 无标题" />
+            <Button type="primary" style={styles.margin} onPress={() => {
+              this.showConfirm({
+                title: false,
+                lines: 1
+              });
+            }}>1行正文</Button>
+
+            <Button type="primary" style={styles.margin} onPress={() => {
+              this.showConfirm({
+                title: false,
+                lines: 2
+              });
+            }}>2行正文</Button>
+
+            <Button type="primary" style={styles.margin} onPress={() => {
+              this.showConfirm({
+                title: false,
+                lines: 5
+              });
+            }}>多行正文</Button>
+
+            <Page.Intro main="Dialog.Alert: 有标题" />
+            <Button type="primary" style={styles.margin} onPress={() => {
+              this.showAlert({
+                title: true,
+                lines: 1
+              });
+            }}>标题+1行正文</Button>
+
+            <Button type="primary" style={styles.margin} onPress={() => {
+              this.showAlert({
+                title: true,
+                lines: 2
+              });
+            }}>标题+2行正文</Button>
+
+            <Button type="primary" style={styles.margin} onPress={() => {
+              this.showAlert({
+                title: true,
+                lines: 5
+              });
+            }}>标题+多行正文</Button>
+
+
+            <Page.Intro main="Dialog.Alert: 无标题" />
+
+            <Button type="primary" style={styles.margin} onPress={() => {
+              this.showAlert({
+                title: false,
+                lines: 1
+              });
+            }}>1行正文</Button>
+
+            <Button type="primary" style={styles.margin} onPress={() => {
+              this.showAlert({
+                title: false,
+                lines: 2
+              });
+            }}>2行正文</Button>
+
+            <Button type="primary" style={styles.margin} onPress={() => {
+              this.showAlert({
+                title: false,
+                lines: 5
+              });
+            }}>多行正文</Button>
           </View>
 
-          <Dialog.Confirm ref="confirm" onCancel={() => {
-            this.hideConfirm();
-          }} onOk={() => {
-            this.hideConfirm();
-          }}>确定取消开抢提醒吗</Dialog.Confirm>
+          <Dialog.Alert ref="alert"
+            okText={'按钮'}
+            disabledTitle={this.state.disabledTitle}
+            contentStyle={
+              {
+                height: height
+              }
+            }
+          >{this.state.alertText}</Dialog.Alert>
 
-          <Dialog.Alert ref="alert" okText={'按钮'}>确定取消开抢提醒吗，取消后您将不能及时获取优惠信息，错过最佳的进货时间？</Dialog.Alert>
-
-          <Dialog.Alert ref="alert2" disabledTitle={true} okText={'按钮'}>确定取消开抢提醒吗，取消后您将不能及时获取优惠信息，错过最佳的进货时间？</Dialog.Alert>
-
-          <Dialog ref="modal1"
-            duration={1000}
-            maskClosable={true}
-            contentStyle={styles.modalStyle}
-            onShow={this.onShow}
-            onHide={this.onHide}
-            onMaskPress={this.onMaskPress}>
-            <View style={styles.body}>
-              <View style={styles.head}>
-                <Text style={styles.textHead}>确定吗？</Text>
-              </View>
-              <View style={styles.tips}>
-                <Text style={styles.text}>
-                  此操作不此操作不可逆此操作不可逆此操作不
-                  可逆此操作不可逆此操作不可逆此操作不可逆此
-                  操作不可逆此操作不可逆此操作不可逆可逆
-                  是否继续
-                </Text>
-              </View>
-            </View>
-            <View style={styles.footer}>
-              <Button style={[styles.dlgBtn, {
-                borderRadius: 0,
-                color: '#333333',
-                borderTopWidth: 1,
-                borderBottomLeftRadius: 5,
-              }]} type="normal" size="large" onPress={() => {
-                this.hideModal();
-              }}>取消1</Button>
-              <Button style={[styles.dlgBtn, {
-                borderRadius: 0,
-                color: '#ffffff',
-                borderBottomRightRadius: 5,
-              }]} type="primary" size="large" onPress={() => {
-                this.hideModalAndConfirm();
-              }}>确定2</Button>
-            </View>
-          </Dialog>
+          <Dialog.Confirm ref="confirm"
+            disabledTitle={this.state.disabledTitle}
+            contentStyle={
+              {
+                height: height
+              }
+            }
+            okText={'按钮'} >{this.state.confirmText}</Dialog.Confirm>
         </Page>
       </ThemeProvider>
     );
@@ -138,6 +211,9 @@ var styles = {
     paddingRight: '24rem',
     paddingTop: '24rem',
     backgroundColor: '#f4f4f4'
+  },
+  margin: {
+    marginBottom: 10
   },
   click: {
     height: '100rem',

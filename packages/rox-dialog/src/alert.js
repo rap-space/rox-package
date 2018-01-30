@@ -1,5 +1,5 @@
 import { createElement, Component, render, PropTypes } from 'rax';
-import Dialog from 'nuke-dialog';
+import Dialog from './dialog';
 import Button from 'rox-button';
 import ScrollView from 'rox-scrollview';
 import View from 'rox-view';
@@ -24,33 +24,21 @@ class Alert extends Component {
   }
 
   render() {
-    let { okText, titleText, disabledTitle, contentStyle = {}} = this.props;
-    // onHide = onHide || this.hide;
-    contentStyle = disabledTitle ? {
-      marginTop: 0,
-      minHeight: 332 - 96 * 2
-    } : contentStyle;
+    let { okText, titleText, disabledTitle, contentStyle = {} } = this.props;
     return (
       <Dialog ref="alert"
-        duration={DURATION_TIME}
-        maskClosable={false}
-        contentStyle={styles.modalStyle}
+        disabledTitle={disabledTitle}
+        titleText={titleText}
+        contentStyle={contentStyle}
+        buttons={[
+          <Button
+            style={styles.buttonAlert}
+            type="normal"
+            size="large"
+            onPress={this.hide}>{okText}</Button>
+        ]}
       >
-        <View style={styles.body}>
-          {
-            disabledTitle ? null : <View style={styles.head}>
-              <Text style={styles.textHead}>{titleText}</Text>
-            </View>
-          }
-          <View style={[styles.content, contentStyle]}>
-            <Text style={styles.contentText}>
-              {this.props.children}
-            </Text>
-          </View>
-        </View>
-        <View style={styles.footer}>
-          <Button style={styles.buttonAlert} type="normal" size="large" onPress={this.hide}>{okText}</Button>
-        </View>
+        {this.props.children}
       </Dialog>);
   }
 }

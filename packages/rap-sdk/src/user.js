@@ -4,6 +4,7 @@ const USER_MODULE = '@weex-module/user';
 const User = window.require(USER_MODULE);
 import AOP from './aop';
 
+let extraInfo = false;
 export default {
   getUserInfo(options, callback) {
     if (!callback) {
@@ -15,11 +16,16 @@ export default {
         // getUserExtraInfo
         // http://ocn.alibaba-inc.com/isp/apifactory/api/input.htm?name=alibaba.account.basic&namespace=com.alibaba.account&version=1
         extraInfoPromise = new Promise((resolve, reject) => {
+          if (extraInfo) {
+            resolve(extraInfo);
+            return;
+          }
           AOP.request({
             api: 'alibaba.account.basic',
             namespace: 'com.alibaba.account',
             v: '1'
           }, (res) => {
+            extraInfo = res;
             resolve(res);
           }, function(error) {
             reject(error);
@@ -35,16 +41,23 @@ export default {
           info.isLogin = false;
         }
         if (extraInfoPromise) {
-          extraInfoPromise.then((e) => {
+          extraInfoPromise.then((res) => {
             callback && callback({
               ...info,
-              extraInfo: e
+              extraInfo: res
             });
           }).catch((e) => {
             // false;
+            callback({
+              ...info,
+              extraInfo: false
+            });
           });
         } else {
-          callback && callback(info);
+          callback && callback({
+            ...info,
+            extraInfo: false
+          });
         }
       });
     }
@@ -65,6 +78,7 @@ export default {
 
   logout(callback) {
     if (User.logout) {
+      extraInfo = false;
       User.logout(callback);
     }
   }

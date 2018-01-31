@@ -3,21 +3,19 @@ import { log } from './util';
 
 const _clipboard = requireModule('clipboard');
 
-let clipboard = {
-  setString: function(str) {
+const clipboard = {
+  setString(str) {
     if (typeof str === 'string') {
       _clipboard.setString(str);
     } else {
       log.error('arguments type error');
     }
   },
-
-  getString: function(callback) {
+  getString(callback) {
     _clipboard.getString((res) => {
-      // let info = {}
       callback && callback(res);
     });
-  },
+  }
 };
 
 export default clipboard;

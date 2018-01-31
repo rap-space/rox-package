@@ -12,9 +12,9 @@ const RAP_SUCCESS = 'RAP_SUCCESS';
 const RAP_FAILURE = 'RAP_FAILURE';
 const MTOP_RET_BOUND_SYMBOL = '::';
 const MTOP_RET_SUCCESS = 'SUCCESS';
+const MTOP_MESSAGE_NULL = 'null';
 const AOP_TRUE = 'true';
 const AOP_FALSE = 'false';
-const MOP_MESSAGE_NULL = 'null';
 const rCode = /FAIL_BIZ_/;
 const DISABLED_REFRESH_TOKEN = 'disabled_refreshToken';
 
@@ -105,7 +105,7 @@ function formatRetJson(retJson) {
       } else {
         o.success = AOP_FALSE;
         o.errorCode = code.replace(rCode, '');
-        o.errorMessage = ret[1] === MOP_MESSAGE_NULL ? '' : ret[1];
+        o.errorMessage = ret[1] === MTOP_MESSAGE_NULL ? '' : ret[1];
       }
     } else {
       o.success = AOP_FALSE;
@@ -143,6 +143,7 @@ function _promise(params, successCallback, failureCallback) {
   return new Promise((resolve, reject) => {
     Mtop.request(params, (retJson) => {
       const data = formatRetJson(retJson);
+
       if (AOP_TRUE === String(data.success)) {
         successCallback && successCallback(data.result);
         resolve(data.result);

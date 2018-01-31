@@ -34,32 +34,36 @@ export default {
           });
         }
 
-        User.getUserInfo((info) => {
-          info = parseJson(info);
-          if (String(info.isLogin) === 'true') {
-            info.isLogin = true;
-          } else {
-            info.isLogin = false;
-          }
-          if (extraInfoPromise) {
-            extraInfoPromise.then((res) => {
-              resolve({
-                ...info,
-                extraInfo: res
+        const getUserInfo = () => {
+          User.getUserInfo((info) => {
+            info = parseJson(info);
+            if (String(info.isLogin) === 'true') {
+              info.isLogin = true;
+            } else {
+              info.isLogin = false;
+            }
+            if (extraInfoPromise) {
+              extraInfoPromise.then((res) => {
+                resolve({
+                  ...info,
+                  extraInfo: res
+                });
+              }).catch((e) => {
+                resolve({
+                  ...info,
+                  extraInfo: false
+                });
               });
-            }).catch((e) => {
+            } else {
               resolve({
                 ...info,
                 extraInfo: false
               });
-            });
-          } else {
-            resolve({
-              ...info,
-              extraInfo: false
-            });
-          }
-        });
+            }
+          });
+        };
+
+        getUserInfo();
       }
     });
   },

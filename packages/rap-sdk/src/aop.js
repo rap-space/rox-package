@@ -15,36 +15,6 @@ const RET_FALSE = 'false';
 const RET_MESSAGE_NULL = 'null';
 const rCode = /FAIL_BIZ_/;
 
-function report() {};
-
-function reportError(params = {}, retJson) {
-  if (params.disableTracker) {
-    return;
-  }
-
-  let errorMsg;
-
-  try {
-    errorMsg = JSON.stringify(retJson);
-  } catch (e) {
-    // Noop
-  }
-
-  try {
-    report({
-      url: location.protocol + '//' + location.host + location.pathname + '/universal_mtop',
-      type: 'data',
-      sampling: 10,
-      message: errorMsg
-        ? errorMsg.substring(0, 500)
-        : params.api + ':response can not be parse'
-    });
-  } catch (e) {
-    // Noop
-  }
-}
-
-
 /**
  *
  * @param {Object} options

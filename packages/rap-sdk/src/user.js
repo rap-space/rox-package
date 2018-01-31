@@ -17,19 +17,20 @@ export default {
           // http://ocn.alibaba-inc.com/isp/apifactory/api/input.htm?name=alibaba.account.basic&namespace=com.alibaba.account&version=1
           extraInfoPromise = new Promise((resolve, reject) => {
             if (extraInfo) {
-              resolve(extraInfo);
-              return;
+              return resolve(extraInfo);
             }
+
             AOP.request({
               api: 'alibaba.account.basic',
               namespace: 'com.alibaba.account',
               v: '1'
-            }, (res) => {
-              extraInfo = res;
-              resolve(res);
-            }, function(error) {
-              reject(error);
-            });
+            })
+              .then( (res) => {
+                extraInfo = res;
+                resolve(res);
+              }, function(error) {
+                reject(error);
+              });
           });
         }
 

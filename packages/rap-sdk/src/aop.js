@@ -12,7 +12,7 @@ const MTOP_RET_BOUND_SYMBOL = '::';
 const MTOP_RET_SUCCESS = 'SUCCESS';
 const AOP_TRUE = 'true';
 const AOP_FALSE = 'false';
-const MTOP_MESSAGE_NULL = 'null';
+const MOP_MESSAGE_NULL = 'null';
 const rCode = /FAIL_BIZ_/;
 
 /**
@@ -102,7 +102,7 @@ function formatRetJson(retJson) {
       } else {
         o.success = AOP_FALSE;
         o.errorCode = code.replace(rCode, '');
-        o.errorMessage = ret[1] === MTOP_MESSAGE_NULL ? '' : ret[1];
+        o.errorMessage = ret[1] === MOP_MESSAGE_NULL ? '' : ret[1];
       }
     } else {
       o.success = AOP_FALSE;
@@ -118,66 +118,44 @@ function formatRetJson(retJson) {
 
 const AOP = {
   request(options, successCallback, failureCallback) {
-    return new Promise((resolve, reject) => {
-      const bizType = '3';
-
-      const _failureCallback = (retJson) => {
-        const data = formatRetJson(retJson);
-
-        failureCallback && failureCallback(data);
-        reject(data);
-      };
-
-      const _successCallback = (retJson) => {
-        const data = formatRetJson(retJson);
-
-        if (AOP_TRUE === String(data.success)) {
-          successCallback && successCallback(data.result);
-          resolve(data.result);
-        } else {
-          failureCallback && failureCallback(data);
-          reject(data);
-        }
-      };
-
-      let params = {};
-      // 获取插件信息; 根据bizType【是否是三方】来决定使用哪个 MTOP，还是只作为MTOP通道
-      if (bizType === '3') {
-        params = formatOpenApiParams(options);
-      } else {
-        params = options;
-      }
-
-      Mtop.request(params, _successCallback, _failureCallback);
-    });
+    const bizType = '3';
+    let params = {};
+    // 获取插件信息; 根据bizType【是否是三方】来决定使用哪个 MTOP，还是只作为MTOP通道
+    if (bizType === '3') {
+      params = formatOpenApiParams(options);
+    } else {
+      params = options;
+    }
+    return _promise(params, successCallback, failureCallback);
   },
 
   proxy(options, successCallback, failureCallback) {
-    return new Promise((resolve, reject) => {
-      const _failureCallback = (retJson) => {
-        const data = formatRetJson(retJson);
-
-        failureCallback && failureCallback(data);
-        reject(data);
-      };
-
-      const _successCallback = (retJson) => {
-        const data = formatRetJson(retJson);
-
-        if (AOP_TRUE === String(data.success)) {
-          successCallback && successCallback(data.result);
-          resolve(data.result);
-        } else {
-          failureCallback && failureCallback(data);
-          reject(data);
-        }
-      };
-
-      const params = formatHttpProxyParams(options);
-
-      Mtop.request(params, _successCallback, _failureCallback);
-    });
+    const params = formatHttpProxyParams(options);
+    return _promise(params, successCallback, failureCallback);
   }
 };
+
+
+function _promise(params, successCallback, failureCallback) {
+  return new Promise((resolve, reject) => {
+    Mtop.request(params, (retJson) => {
+      const data = formatRetJson(retJson);
+      if (AOP_TRUE === String(data.success)) {
+        successCallback && successCallback(data.result);
+        resolve(data.result);
+      } else {
+        _failureCallback(data, failureCallback, reject);
+      }
+    }, (retJson) => {
+      const data = formatRetJson(retJson);
+      _failureCallback(data, failureCallback, reject);
+    });
+  });
+};
+
+function _failureCallback(data, failureCallback, reject) {
+  failureCallback && failureCallback(data);
+  reject(data);
+}
 
 export default AOP;

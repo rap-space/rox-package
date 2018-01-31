@@ -10,12 +10,12 @@ const RAP_SUCCESS = 'RAP_SUCCESS';
 const RAP_FAILURE = 'RAP_FAILURE';
 const RET_BOUND_SYMBOL = '::';
 const RET_CODE_SUCCESS = 'SUCCESS';
-const RET_TRUE = 'true';
+const RET_AOP_SUCCESS = 'true';
 const RET_FALSE = 'false';
 const RET_MESSAGE_NULL = 'null';
 const rCode = /FAIL_BIZ_/;
 
-function report() {};
+function report() { };
 
 function reportError(params = {}, retJson) {
   if (params.disableTracker) {
@@ -158,10 +158,12 @@ const AOP = {
     const _successCallback = (retJson) => {
       const data = formatRetJson(retJson);
 
-      if (RET_TRUE === data.success) {
+      if (RET_AOP_SUCCESS === data.success) {
         successCallback && successCallback(data.result);
         defered.resolve(data.result);
       } else {
+        // 错误场景下需要判断是什么类型的错误
+        // 如果是401 并且是，需要跳转到授权页面;
         failureCallback && failureCallback(data);
         defered.reject(data);
       }
@@ -192,7 +194,7 @@ const AOP = {
     const _successCallback = (retJson) => {
       const data = formatRetJson(retJson);
 
-      if (RET_TRUE === data.success) {
+      if (RET_AOP_SUCCESS === data.success) {
         successCallback && successCallback(data.result);
         defered.resolve(data.result);
       } else {

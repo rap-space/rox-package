@@ -7,7 +7,7 @@ let Rap;
 if (isWeex) {
   Rap = RapWeex;
 } else if (isWeb) {
-  Rap = RapWeex;
+  Rap = RapWeb;
 }
 
 export default Rap;

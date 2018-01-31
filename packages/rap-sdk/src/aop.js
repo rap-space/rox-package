@@ -49,13 +49,16 @@ function formatOpenApiParams(options) {
 /**
  *
  * @param {Object} options
- * @param {String} options.targetUrl  代理 url 地址
+ * @param {String} options.url   请求地址
+ * @param {String} options.method 请求方式
+ * @param {String} options.headers 请求头
+ * @param {String} options.body 请求体
  */
 function formatHttpProxyParams(options) {
   const API = 'mtop.1688.wireless.isv.httpproxy';
   const data = {};
 
-  data.targetUrl = options.url || options.targetUrl;
+  data.targetUrl = options.url;
   data.method = options.method || 'GET';
   data.headers = options.headers;
   data.body = options.body;
@@ -115,67 +118,65 @@ function formatRetJson(retJson) {
 
 const AOP = {
   request(options, successCallback, failureCallback) {
-    const defered = defer();
-    const bizType = '3';
+    return new Promise((resolve, reject) => {
+      const bizType = '3';
 
-    const _failureCallback = (retJson) => {
-      const data = formatRetJson(retJson);
+      const _failureCallback = (retJson) => {
+        const data = formatRetJson(retJson);
 
-      failureCallback && failureCallback(data);
-      defered.reject(data);
-    };
-
-    const _successCallback = (retJson) => {
-      const data = formatRetJson(retJson);
-
-      if (RET_TRUE === String(data.success)) {
-        successCallback && successCallback(data.result);
-        defered.resolve(data.result);
-      } else {
         failureCallback && failureCallback(data);
-        defered.reject(data);
+        reject(data);
+      };
+
+      const _successCallback = (retJson) => {
+        const data = formatRetJson(retJson);
+
+        if (RET_TRUE === String(data.success)) {
+          successCallback && successCallback(data.result);
+          resolve(data.result);
+        } else {
+          failureCallback && failureCallback(data);
+          reject(data);
+        }
+      };
+
+      let params = {};
+      // 获取插件信息; 根据bizType【是否是三方】来决定使用哪个 MTOP，还是只作为MTOP通道
+      if (bizType === '3') {
+        params = formatOpenApiParams(options);
+      } else {
+        params = options;
       }
-    };
 
-    let params = {};
-    // 获取插件信息; 根据bizType【是否是三方】来决定使用哪个 MTOP，还是只作为MTOP通道
-    if (bizType === '3') {
-      params = formatOpenApiParams(options);
-    } else {
-      params = options;
-    }
-
-    Mtop.request(params, _successCallback, _failureCallback);
-
-    return defered.promise;
+      Mtop.request(params, _successCallback, _failureCallback);
+    });
   },
+
   proxy(options, successCallback, failureCallback) {
-    const defered = defer();
+    return new Promise((resolve, reject) => {
+      const _failureCallback = (retJson) => {
+        const data = formatRetJson(retJson);
 
-    const _failureCallback = (retJson) => {
-      const data = formatRetJson(retJson);
-
-      failureCallback && failureCallback(data);
-      defered.reject(data);
-    };
-
-    const _successCallback = (retJson) => {
-      const data = formatRetJson(retJson);
-
-      if (RET_TRUE === String(data.success)) {
-        successCallback && successCallback(data.result);
-        defered.resolve(data.result);
-      } else {
         failureCallback && failureCallback(data);
-        defered.reject(data);
-      }
-    };
+        reject(data);
+      };
 
-    const params = formatHttpProxyParams(options);
+      const _successCallback = (retJson) => {
+        const data = formatRetJson(retJson);
 
-    Mtop.request(params, _successCallback, _failureCallback);
+        if (RET_TRUE === String(data.success)) {
+          successCallback && successCallback(data.result);
+          resolve(data.result);
+        } else {
+          failureCallback && failureCallback(data);
+          reject(data);
+        }
+      };
 
-    return defered.promise;
+      const params = formatHttpProxyParams(options);
+
+      Mtop.request(params, _successCallback, _failureCallback);
+    });
   }
 };
 

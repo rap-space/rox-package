@@ -1,62 +1,49 @@
 
-const isWeex = typeof callNative === 'function';
+import { isWeex } from '../env';
+
 const isWindVane = typeof WindVane !== 'undefined';
 let WV = {};
 
-function defer() {
-  let deferred = {
-    always(...args) {
-      this.promise.then(...args);
-      this.promise.catch(...args);
-      return this;
-    }
-  };
-  deferred.promise = new Promise((resolve, reject) => {
-    deferred.resolve = resolve;
-    deferred.reject = reject;
-  });
-  return deferred;
-}
-
 WV.call = function(className, method, data) {
-  let deferred = defer();
-  if (isWeex) {
-    let Windvane = require('@weex-module/windvane');
+  return new Promise((resolve, reject) => {
+    if (isWeex) {
+      let Windvane = require('@weex-module/windvane');
 
-    const options = {
-      class: className,
-      method,
-      data
-    };
+      const options = {
+        class: className,
+        method,
+        data
+      };
 
-    if (Windvane.call2) {
-      Windvane.call2(options, (result) => {
-        deferred.resolve(result);
+      if (Windvane.call2) {
+        Windvane.call2(options, (result) => {
+          resolve(result);
+        }, (error) => {
+          reject(error);
+        });
+      } else if (Windvane.call) {
+        Windvane.call(options, (result) => {
+          resolve(result);
+        });
+      }
+      // eslint-disable-next-line
+    } else if (isWindVane && WindVane.isAvailable) {
+      // eslint-disable-next-line
+      WV.isAvailable = WindVane.isAvailable;
+      // eslint-disable-next-line
+      WindVane.call(className, method, data, (result) => {
+        resolve(result);
       }, (error) => {
-        deferred.reject(error);
+        reject(error);
       });
-    } else if (Windvane.call) {
-      Windvane.call(options, (result) => {
-        deferred.resolve(result);
+    } else {
+      // 失败
+      reject({
+        msg: '浏览器不支持 windvane',
+        ret: ['HY_NOT_SUPPORT_DEVICE']
       });
     }
-    // eslint-disable-next-line
-  } else if (isWindVane && WindVane.isAvailable) {
-    // eslint-disable-next-line
-    WV.isAvailable = WindVane.isAvailable;
-    // eslint-disable-next-line
-    WindVane.call(className, method, data, (result) => {
-      deferred.resolve(result);
-    }, (error) => {
-      deferred.reject(error);
-    });
-  } else {
-    // 失败
-    deferred.reject({
-      msg: '浏览器不支持 windvane',
-      ret: ['HY_NOT_SUPPORT_DEVICE']
-    });
-  }
+  });
 };
 
 export default WV;

@@ -5,23 +5,6 @@ import isArray from 'lodash/isArray';
 import Version from './version';
 import log from './log';
 
-function defer() {
-  const deferred = {
-    always(...args) {
-      this.promise.then(...args);
-      this.promise.catch(...args);
-      return this;
-    }
-  };
-
-  deferred.promise = new Promise((resolve, reject) => {
-    deferred.resolve = resolve;
-    deferred.reject = reject;
-  });
-
-  return deferred;
-}
-
 function each(obj, iterator, context = null) {
   if (isObject(obj) && !isArray(obj)) {
     for (var key in obj) {
@@ -49,4 +32,4 @@ function parseJson(jsonStr) {
   return jsonStr;
 }
 
-export default { defer, each, Version, log, parseJson };
+export default { each, Version, log, parseJson };

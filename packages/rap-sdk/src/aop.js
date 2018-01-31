@@ -8,42 +8,12 @@ import { defer, parseJson } from './util';
 
 const RAP_SUCCESS = 'RAP_SUCCESS';
 const RAP_FAILURE = 'RAP_FAILURE';
-const RET_BOUND_SYMBOL = '::';
-const RET_CODE_SUCCESS = 'SUCCESS';
-const RET_AOP_SUCCESS = 'true';
-const RET_FALSE = 'false';
-const RET_MESSAGE_NULL = 'null';
+const MTOP_RET_BOUND_SYMBOL = '::';
+const MTOP_RET_SUCCESS = 'SUCCESS';
+const AOP_TRUE = 'true';
+const AOP_FALSE = 'false';
+const MTOP_MESSAGE_NULL = 'null';
 const rCode = /FAIL_BIZ_/;
-
-function report() { };
-
-function reportError(params = {}, retJson) {
-  if (params.disableTracker) {
-    return;
-  }
-
-  let errorMsg;
-
-  try {
-    errorMsg = JSON.stringify(retJson);
-  } catch (e) {
-    // Noop
-  }
-
-  try {
-    report({
-      url: location.protocol + '//' + location.host + location.pathname + '/universal_mtop',
-      type: 'data',
-      sampling: 10,
-      message: errorMsg
-        ? errorMsg.substring(0, 500)
-        : params.api + ':response can not be parse'
-    });
-  } catch (e) {
-    // Noop
-  }
-}
-
 
 /**
  *
@@ -79,13 +49,16 @@ function formatOpenApiParams(options) {
 /**
  *
  * @param {Object} options
- * @param {String} options.targetUrl  代理 url 地址
+ * @param {String} options.url   请求地址
+ * @param {String} options.method 请求方式
+ * @param {String} options.headers 请求头
+ * @param {String} options.body 请求体
  */
 function formatHttpProxyParams(options) {
   const API = 'mtop.1688.wireless.isv.httpproxy';
   const data = {};
 
-  data.targetUrl = options.url || options.targetUrl;
+  data.targetUrl = options.url;
   data.method = options.method || 'GET';
   data.headers = options.headers;
   data.body = options.body;
@@ -121,18 +94,18 @@ function formatRetJson(retJson) {
     if (RAP_SUCCESS === retJson.code) {
       res = parseJson(retJson.data);
 
-      const ret = res.ret[0].split(RET_BOUND_SYMBOL);
+      const ret = res.ret[0].split(MTOP_RET_BOUND_SYMBOL);
       const code = ret[0].toUpperCase();
 
-      if (RET_CODE_SUCCESS === code) {
+      if (MTOP_RET_SUCCESS === code) {
         o = res.data;
       } else {
-        o.success = RET_FALSE;
+        o.success = AOP_FALSE;
         o.errorCode = code.replace(rCode, '');
-        o.errorMessage = ret[1] === RET_MESSAGE_NULL ? '' : ret[1];
+        o.errorMessage = ret[1] === MTOP_MESSAGE_NULL ? '' : ret[1];
       }
     } else {
-      o.success = RET_FALSE;
+      o.success = AOP_FALSE;
       o.errorCode = RAP_FAILURE;
       o.errorMessage = '接口调用异常';
     }
@@ -145,69 +118,65 @@ function formatRetJson(retJson) {
 
 const AOP = {
   request(options, successCallback, failureCallback) {
-    const defered = defer();
-    const bizType = '3';
+    return new Promise((resolve, reject) => {
+      const bizType = '3';
 
-    const _failureCallback = (retJson) => {
-      const data = formatRetJson(retJson);
+      const _failureCallback = (retJson) => {
+        const data = formatRetJson(retJson);
 
-      failureCallback && failureCallback(data);
-      defered.reject(data);
-    };
-
-    const _successCallback = (retJson) => {
-      const data = formatRetJson(retJson);
-
-      if (RET_AOP_SUCCESS === data.success) {
-        successCallback && successCallback(data.result);
-        defered.resolve(data.result);
-      } else {
-        // 错误场景下需要判断是什么类型的错误
-        // 如果是401 并且是，需要跳转到授权页面;
         failureCallback && failureCallback(data);
-        defered.reject(data);
+        reject(data);
+      };
+
+      const _successCallback = (retJson) => {
+        const data = formatRetJson(retJson);
+
+        if (AOP_TRUE === String(data.success)) {
+          successCallback && successCallback(data.result);
+          resolve(data.result);
+        } else {
+          failureCallback && failureCallback(data);
+          reject(data);
+        }
+      };
+
+      let params = {};
+      // 获取插件信息; 根据bizType【是否是三方】来决定使用哪个 MTOP，还是只作为MTOP通道
+      if (bizType === '3') {
+        params = formatOpenApiParams(options);
+      } else {
+        params = options;
       }
-    };
 
-    let params = {};
-    // 获取插件信息; 根据bizType【是否是三方】来决定使用哪个 MTOP，还是只作为MTOP通道
-    if (bizType === '3') {
-      params = formatOpenApiParams(options);
-    } else {
-      params = options;
-    }
-
-    Mtop.request(params, _successCallback, _failureCallback);
-
-    return defered.promise;
+      Mtop.request(params, _successCallback, _failureCallback);
+    });
   },
+
   proxy(options, successCallback, failureCallback) {
-    const defered = defer();
+    return new Promise((resolve, reject) => {
+      const _failureCallback = (retJson) => {
+        const data = formatRetJson(retJson);
 
-    const _failureCallback = (retJson) => {
-      const data = formatRetJson(retJson);
-
-      failureCallback && failureCallback(data);
-      defered.reject(data);
-    };
-
-    const _successCallback = (retJson) => {
-      const data = formatRetJson(retJson);
-
-      if (RET_AOP_SUCCESS === data.success) {
-        successCallback && successCallback(data.result);
-        defered.resolve(data.result);
-      } else {
         failureCallback && failureCallback(data);
-        defered.reject(data);
-      }
-    };
+        reject(data);
+      };
 
-    const params = formatHttpProxyParams(options);
+      const _successCallback = (retJson) => {
+        const data = formatRetJson(retJson);
 
-    Mtop.request(params, _successCallback, _failureCallback);
+        if (AOP_TRUE === String(data.success)) {
+          successCallback && successCallback(data.result);
+          resolve(data.result);
+        } else {
+          failureCallback && failureCallback(data);
+          reject(data);
+        }
+      };
 
-    return defered.promise;
+      const params = formatHttpProxyParams(options);
+
+      Mtop.request(params, _successCallback, _failureCallback);
+    });
   }
 };
 

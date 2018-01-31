@@ -13,20 +13,18 @@ function call(options, callback) {
     RBridge = requireModule('rapcaller');
   }
 
-  const deferred = defer();
-
-  RBridge.call && RBridge.call(className, methodName, params, (success) => {
-    success = JSON.stringify(success);
-    deferred.resolve(success);
-  }, (error) => {
-    error = JSON.stringify(error);
-    console.error('rapcaller.call:: ' + `[${className}.${methodName}]--failure, \n message:: ${error}`);
-    deferred.reject(error);
-  }, (notify) => {
-    callback && callback(notify);
+  return new Promise((resolve, reject) => {
+    RBridge.call && RBridge.call(className, methodName, params, (success) => {
+      success = JSON.stringify(success);
+      resolve(success);
+    }, (error) => {
+      error = JSON.stringify(error);
+      console.error('rapcaller.call:: ' + `[${className}.${methodName}]--failure, \n message:: ${error}`);
+      reject(error);
+    }, (notify) => {
+      callback && callback(notify);
+    });
   });
-
-  return deferred.promise;
 };
 
 export default {

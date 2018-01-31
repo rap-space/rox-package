@@ -4,7 +4,9 @@ function requestByRap(options, successCallback, failureCallback) {
   return Rap.call({
     className: 'mtop',
     methodName: 'request',
-    options}).then(successCallback, failureCallback);
+    options
+  })
+    .then(successCallback, failureCallback);
 }
 
 export default {

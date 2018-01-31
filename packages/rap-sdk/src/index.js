@@ -6,6 +6,7 @@ import { on, off, emit } from './event';
 // navigator
 import navigator from './navigator';
 
+// localstorage
 import localStorage from './localstorage';
 
 // biz

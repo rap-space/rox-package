@@ -183,9 +183,10 @@ function _failureCallback(data, failureCallback, reject) {
       redirectURL: redirectURL,
       originalURL: originalURL,
     });
-    console.log('targetURL--', targetURL);
+    // console.log('targetURL--', targetURL);
     navi.push({
       url: targetURL,
+      clearTop: true,
       animated: false
     });
     // 是否还要reject;

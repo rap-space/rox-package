@@ -55,17 +55,17 @@ const Navigator = {
     const title = formatTitle(param.title);
     const backgroundColor = param.backgroundColor;
     const clearTop = param.clearTop || false;
-    const animate = param.animated || true;
+    const animated = param.animated !== false ? true : false;
 
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'push',
       param: {
         url: formatURL(url),
-        backgroundColor: backgroundColor,
-        title: title,
-        clearTop: clearTop,
-        animate: animate
+        backgroundColor,
+        title,
+        clearTop,
+        animated
       }
     });
   },

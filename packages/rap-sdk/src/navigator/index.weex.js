@@ -11,15 +11,17 @@ function formatURL(url) {
 
 function formatTitle(options) {
   options = options || {};
+
   if (isString(options)) {
     options = {
       text: options
     };
   } else if (isObject(options)) {
-    let url = formatURL(options.url);
+    const url = formatURL(options.url);
+
     options = {
       text: options.text,
-      url: url,
+      url,
       textColor: options.textColor || '#333333',
       iconImage: options.iconImage,
 
@@ -34,7 +36,7 @@ function formatTitle(options) {
   return options;
 }
 
-let Navigator = {
+const Navigator = {
   push(param) {
     // 如果直接传一个String
     if (isString(param)) {
@@ -43,15 +45,18 @@ let Navigator = {
       };
     }
     param = param || {};
-    let url = param.url;
+
+    const url = param.url;
+
     if (!url) {
       console.error('param.url');
     }
 
-    let title = formatTitle(param.title);
-    let backgroundColor = param.backgroundColor;
-    let clearTop = param.clearTop || false;
-    let animate = param.animated || true;
+    const title = formatTitle(param.title);
+    const backgroundColor = param.backgroundColor;
+    const clearTop = param.clearTop || false;
+    const animate = param.animated || true;
+
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'push',
@@ -68,9 +73,11 @@ let Navigator = {
   pop(num) {
     let index = 1;
     let animated = true;
+
     if (isNumber(+num)) {
       index = num;
     }
+
     if (isObject(num)) {
       index = num.index;
       animated = num.animated;
@@ -80,26 +87,29 @@ let Navigator = {
       className: CLASS_NAME,
       methodName: 'pop',
       param: {
-        index: index,
-        animated: animated
+        index,
+        animated
       }
     });
   },
 
   popTo(param) {
     let index;
+
     if (param && param.index) {
       index = param.index;
     } else {
       index = index;
     }
-    let animated = param && param.animated;
+
+    const animated = param && param.animated;
+
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'popTo',
       param: {
-        index: index,
-        animated: animated
+        index,
+        animated
       }
     });
   },
@@ -124,6 +134,7 @@ let Navigator = {
       param: {}
     });
   },
+
   addRightItem(options, callback) {
     return RapBridge.call({
       className: CLASS_NAME,
@@ -131,6 +142,7 @@ let Navigator = {
       param: options
     }, callback);
   },
+
   removeRightItem(tagName) {
     return RapBridge.call({
       className: CLASS_NAME,

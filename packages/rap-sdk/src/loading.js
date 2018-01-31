@@ -1,7 +1,8 @@
 import Rap from './rap';
 
 const CLASS_NAME = 'ui';
-let Loading = {
+
+const Loading = {
   showLoading(options) {
     options = options || {};
     let param = {};
@@ -25,4 +26,5 @@ let Loading = {
     });
   }
 };
+
 export default Loading;

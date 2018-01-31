@@ -158,7 +158,7 @@ const AOP = {
     const _successCallback = (retJson) => {
       const data = formatRetJson(retJson);
 
-      if (RET_TRUE === data.success) {
+      if (RET_TRUE === String(data.success)) {
         successCallback && successCallback(data.result);
         defered.resolve(data.result);
       } else {
@@ -192,7 +192,7 @@ const AOP = {
     const _successCallback = (retJson) => {
       const data = formatRetJson(retJson);
 
-      if (RET_TRUE === data.success) {
+      if (RET_TRUE === String(data.success)) {
         successCallback && successCallback(data.result);
         defered.resolve(data.result);
       } else {

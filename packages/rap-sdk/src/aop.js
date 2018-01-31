@@ -3,8 +3,10 @@
 // 2. weex 降级的 主客容器下
 // 3. H5下 import {report} from '@ali/universal-tracker';
 import Mtop from './mtop';
+import navi from './navigator';
 import { isWeex, isWeb } from './env';
-import { defer, parseJson } from './util';
+import { defer, parseJson, each } from './util';
+import location from './location';
 
 const RAP_SUCCESS = 'RAP_SUCCESS';
 const RAP_FAILURE = 'RAP_FAILURE';
@@ -14,6 +16,7 @@ const AOP_TRUE = 'true';
 const AOP_FALSE = 'false';
 const MOP_MESSAGE_NULL = 'null';
 const rCode = /FAIL_BIZ_/;
+const DISABLED_REFRESH_TOKEN = 'disabled_refreshToken';
 
 /**
  *
@@ -153,9 +156,42 @@ function _promise(params, successCallback, failureCallback) {
   });
 };
 
+let emotionPageURL = 'https://air.1688.com/apps/alim/open/emotion-page.html?wh_weex=true';
+
+function getEmotionPageURL(options) {
+  var arr = [];
+  each(options, (val, key, obj) => {
+    if (val) {
+      arr.push(`${key}=$${val}`);
+    }
+  });
+  let queryString = arr.join('&');
+  return `${emotionPageURL}&${queryString}`;
+}
 function _failureCallback(data, failureCallback, reject) {
-  failureCallback && failureCallback(data);
-  reject(data);
+  let errorCode = data.errorCode;
+  if (data.errorCode === DISABLED_REFRESH_TOKEN) {
+    let appKey = '1';
+    let categroy = '2';
+    let originalURL = location.href;
+    let redirectURL = location.href;
+    let errorCode = DISABLED_REFRESH_TOKEN.toUpperCase();
+    let targetURL = getEmotionPageURL({
+      appKey: appKey,
+      categroyName: categroy,
+      redirectURL: redirectURL,
+      originalURL: originalURL,
+    });
+    console.log('targetURL--', targetURL);
+    navi.push({
+      url: targetURL,
+      animated: false
+    });
+    // 是否还要reject;
+  } else {
+    failureCallback && failureCallback(data);
+    reject(data);
+  }
 }
 
 export default AOP;

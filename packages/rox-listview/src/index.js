@@ -1,3 +1,3 @@
-import ListView from 'nuke-listview';
+import ListView from 'nuke-list-view';
 
 export default ListView;

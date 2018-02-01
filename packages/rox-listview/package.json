@@ -14,7 +14,6 @@
     "rax": "0.x"
   },
   "dependencies": {
-    "nuke-listview": "^0.1.2",
-    "weex-rx": "^1.0.2"
+    "nuke-list-view": "^1.0.3"
   }
 }

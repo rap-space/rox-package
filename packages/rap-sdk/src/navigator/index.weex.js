@@ -10,26 +10,25 @@ function formatURL(url) {
 };
 
 function formatTitle(options) {
-  options = options || {};
-
   if (isString(options)) {
     options = {
       text: options
     };
   } else if (isObject(options)) {
     const url = formatURL(options.url);
-
-    options = {
-      text: options.text,
-      url,
-      textColor: options.textColor || '#333333',
-      iconImage: options.iconImage,
-
-      subText: options.subText,
-      subUrl: url,
-      subTextColor: options.subTextColor || '#999999',
-      subIconImages: options.subIconImages || []
-    };
+    // options = {
+    //   text: options.text,
+    //   textColor: options.textColor || '#333333',
+    //   iconImage: options.iconImage,
+    //   subText: options.subText,
+    //   subUrl: url,
+    //   subLeftIconImage: options.subLeftIconImage,
+    //   subRightIconImage: options.subRightIconImage,
+    //   subTextColor: options.subTextColor || '#999999',
+    // };
+    if (url) {
+      options.url = url;
+    }
   } else {
     console.error('parameter format is wrong');
   }
@@ -37,36 +36,33 @@ function formatTitle(options) {
 }
 
 const Navigator = {
-  push(param) {
+  push(options) {
     // 如果直接传一个String
-    if (isString(param)) {
-      param = {
-        url: param
+    if (isString(options)) {
+      options = {
+        url: options
       };
     }
-    param = param || {};
-
-    const url = param.url;
-
-    if (!url) {
-      console.error('param.url');
+    options = options || {};
+    const url = options.url;
+    const title = formatTitle(options.title);
+    const backgroundColor = options.backgroundColor;
+    const clearTop = options.clearTop || false;
+    const animated = options.animated !== false ? true : false;
+    let param = {
+      backgroundColor,
+      title,
+      clearTop,
+      animated
+    };
+    let resUrl = formatURL(url);
+    if (resUrl) {
+      param.url = resUrl;
     }
-
-    const title = formatTitle(param.title);
-    const backgroundColor = param.backgroundColor;
-    const clearTop = param.clearTop || false;
-    const animated = param.animated !== false ? true : false;
-
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'push',
-      param: {
-        url: formatURL(url),
-        backgroundColor,
-        title,
-        clearTop,
-        animated
-      }
+      param: param
     });
   },
 

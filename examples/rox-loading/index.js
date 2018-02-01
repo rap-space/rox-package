@@ -37,7 +37,7 @@ let App = class NukeDemoIndex extends Component {
   render() {
     return (
       <RoxStyleProvider>
-        <Page title="Mask">
+        <Page title="Loading">
           <Page.Intro main={'普通用法'} />
           <Button type="primary" onPress={e => this.onShow(e)}>
             显示Loading

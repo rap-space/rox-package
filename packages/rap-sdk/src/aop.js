@@ -41,6 +41,7 @@ function formatOpenApiParams(options) {
 
   const params = {
     api: API,
+    type: 'POST',
     isOpenApi: true, // 约定参数 再通知Native 透传 appKey与 timestamp
     v: '1.0',
     data

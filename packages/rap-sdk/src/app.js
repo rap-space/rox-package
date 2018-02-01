@@ -1,21 +1,37 @@
 import Version from './version';
 import { isWeex } from './env';
 
-let ua = navigator.userAgent;
+const ua = navigator.userAgent;
 let match = ua.match(/AliApp\(([^\/]+)\/([\d\.]+)\)/i);
+const names = {
+  'DingTalk': 'dingtalk',
+  'TB': 'taobao',
+  'TB-PD': 'taobao',
+  'TM': 'tmall',
+  'TM-PD': 'tmall',
+  'AP': 'alipay',
+  'AP-PD': 'alipay',
+  'WX': 'wangxin',
+  'WX-PD': 'wangxin',
+  'QN': 'qianniu',
+  'QN-PD': 'qianniu',
+  '1688': '1688',
+  'LSC': 'LazadaSellerCenter',
+  'LSC-PD': 'LazadaSellerCenter',
+};
 
-let os = {
+const os = {
   name: '',
   version: null,
   android: false,
   ios: false,
 };
 
-let rIOS = isWeex ?
+const rIOS = isWeex ?
   /ios\/([\w\.]+)*/i :
   /ip[honead]+(?:.*os\s([\w]+)*\slike\smac|;\sopera)/i;
 
-let rAndroid = /android[\/\s-]?([\w\.]+)*/i;
+const rAndroid = /android[\/\s-]?([\w\.]+)*/i;
 
 // iPhone8,2(iOS/10.1.1) AliApp(QN/5.5.0) Weex/0.9.1 1242x2208
 // Mozilla/5.0 (iPhone; CPU iPhone OS 8_1_3 like Mac OS X) AppleWebKit/600.1.4 (KHTML, like Gecko) Mobile/12B466 AliApp(QN/3.2.1)  QNIOS/201200@tbsellerworkbench_iphone_1.0.0
@@ -25,19 +41,22 @@ let rAndroid = /android[\/\s-]?([\w\.]+)*/i;
 if (match = ua.match(rIOS)) {
   os.name = 'iOS';
   os.ios = true;
-  if (match[1]) match[1] = match[1].replace(/_/g, '.');
+
+  if (match[1]) {
+    match[1] = match[1].replace(/_/g, '.');
+  }
 } else if (match = ua.match(rAndroid)) {
   os.name = 'Android';
   os.android = true;
 }
-let isIOS = false;
-let isAndroid = false;
 
+const isIOS = os.ios;
+const isAndroid = os.android;
+const version = new Version(match ? match[2] : '');
 
 export default {
-  isIOS: isIOS,
-  isAndroid: isAndroid,
-  version: new Version(match ? match[2] : ''),
-  // osVersion: new Version(match ? match[2] : ''),
+  isIOS,
+  isAndroid,
+  version,
   ua: navigator.userAgent
 };

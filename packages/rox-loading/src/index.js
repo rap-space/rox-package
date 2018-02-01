@@ -13,27 +13,28 @@ class Loading extends Component {
   }
 
   show() {
-    this.refs.myMask.show();
-    setTimeout(() => {
-      this.refs.myMask.hide();
-    }, 3000);
+    this.refs.loadingMask.show();
+    // setTimeout(() => {
+    //   this.refs.loadingMask.hide();
+    // }, 3000);
   }
-  onShow(e) {
-    console.log('onshow');
+  hide() {
+    this.refs.loadingMask.hide();
   }
-  onHide(e) {
-    console.log('onhide');
-  }
+  //
   onVisibleChanged() {
-
   }
 
   render() {
+    let { text, onVisibleChanged } = this.props;
+    let loadingText = text || '努力加载中...';
     return (
       <Mask
         defaultVisible={false}
-        onVisibleChanged={this.onVisibleChanged}
-        ref="myMask"
+        onVisibleChanged={(e) => {
+          onVisibleChanged && onVisibleChanged(e);
+        }}
+        ref="loadingMask"
         animate={false}
         style={styles.mask}
         maskClosable={true}
@@ -42,7 +43,7 @@ class Loading extends Component {
           <Image source={{
             uri: 'https://img.alicdn.com/tfs/TB16UqKj8fH8KJjy1XbXXbLdXXa-74-74.gif'
           }} style={styles.loadingIcon} />
-          <Text style={styles.loadingText}>加载中</Text>
+          <Text style={styles.loadingText}>{loadingText}</Text>
         </View>
       </Mask>
     );

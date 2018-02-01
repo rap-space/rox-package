@@ -12,34 +12,20 @@ import Loading from 'rox-loading';
 let App = class NukeDemoIndex extends Component {
   constructor() {
     super();
-    this.state = {
-      maskVisible: false
-    };
-    this.onShow = this.onShow.bind(this);
-    this.onHide = this.onHide.bind(this);
   }
 
-  showMask(e) {
-    console.log('clicked');
+  showLoading(e) {
     this.refs.loading.show();
-  }
-  onVisibleChanged = e => {};
-  hideMask(e) {
-    this.refs.loading.hide();
-  }
-  onShow(e) {
-    console.log('onshow');
-    this.refs.loading.show();
-  }
-  onHide(e) {
-    console.log('onhide');
+    setTimeout(() => {
+      this.refs.loading.hide();
+    }, 3000);
   }
   render() {
     return (
       <RoxStyleProvider>
         <Page title="Loading">
           <Page.Intro main={'普通用法'} />
-          <Button type="primary" onPress={e => this.onShow(e)}>
+          <Button type="primary" onPress={e => this.showLoading(e)}>
             显示Loading
           </Button>
           <Loading ref="loading" />

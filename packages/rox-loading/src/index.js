@@ -36,7 +36,7 @@ class Loading extends Component {
         ref="myMask"
         animate={false}
         style={styles.mask}
-        maskClosable={false}
+        maskClosable={true}
       >
         <View style={styles.loading}>
           <Image source={{

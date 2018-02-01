@@ -9,6 +9,7 @@ export Input from 'rox-input';
 export Layout from 'rox-layout';
 export Link from 'rox-link';
 export ListView from 'rox-listview';
+export Loading from 'rox-loading';
 export Mask from 'rox-mask';
 export Menu from 'rox-menu';
 export NumberPicker from 'rox-number-picker';

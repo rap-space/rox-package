@@ -14,6 +14,9 @@
     "rax": "0.x"
   },
   "dependencies": {
-    "nuke-mask": "^1.0.9"
+    "rox-mask": "^0.0.19",
+    "rox-view": "^0.0.19",
+    "rox-text": "^0.0.19",
+    "rox-image": "^0.0.19"
   }
 }

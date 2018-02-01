@@ -4,18 +4,24 @@ const styles = {
     width: 750,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'rgba(0,0,0,0.7)'
+    backgroundColor: 'rgba(0,0,0,0)'
   },
   loading: {
     borderRadius: 20,
-    width: 200,
+    width: 240,
     height: 200,
+    backgroundColor: 'rgba(0, 0, 0, 0.6)',
     alignItems: 'center',
     justifyContent: 'center'
   },
   loadingIcon: {
-    width: 68,
-    height: 68
+    width: 100,
+    height: 100
+  },
+  loadingText: {
+    // marginTop: 24,
+    color: '#eeeeee',
+    fontSize: 28
   }
 };
 

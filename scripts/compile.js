@@ -117,7 +117,7 @@ if (args.watch) {
   const packages = getPackages(customPackages);
   const watchPackagesDir = packages.map(dir => path.resolve(dir, 'src'));
 
-  console.log(chalk.green('watch packages compile', packages));
+  process.stdout.write(chalk.green(`watch packages compile With: \n${packages.join('\n')} \n -------------\n`));
 
   chokidar.watch(watchPackagesDir, {
     ignored: IGNORE_PATTERN

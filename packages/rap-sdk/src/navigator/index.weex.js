@@ -16,22 +16,16 @@ function formatTitle(options) {
     };
   } else if (isObject(options)) {
     const url = formatURL(options.url);
-    // options = {
-    //   text: options.text,
-    //   textColor: options.textColor || '#333333',
-    //   iconImage: options.iconImage,
-    //   subText: options.subText,
-    //   subUrl: url,
-    //   subLeftIconImage: options.subLeftIconImage,
-    //   subRightIconImage: options.subRightIconImage,
-    //   subTextColor: options.subTextColor || '#999999',
-    // };
+
     if (url) {
       options.url = url;
     }
   } else {
-    console.error('parameter format is wrong');
+    options = {
+      text: ''
+    };
   }
+
   return options;
 }
 
@@ -43,26 +37,28 @@ const Navigator = {
         url: options
       };
     }
-    options = options || {};
-    const url = options.url;
-    const title = formatTitle(options.title);
-    const backgroundColor = options.backgroundColor;
-    const clearTop = options.clearTop || false;
-    const animated = options.animated !== false ? true : false;
+
+    let { url, title, backgroundColor, clearTop = false, animated = true } = options || {};
+
+    title = formatTitle(title);
+
     let param = {
       backgroundColor,
       title,
       clearTop,
       animated
     };
+
     let resUrl = formatURL(url);
+
     if (resUrl) {
       param.url = resUrl;
     }
+
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'push',
-      param: param
+      param
     });
   },
 

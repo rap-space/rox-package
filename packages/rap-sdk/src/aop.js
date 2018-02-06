@@ -143,6 +143,7 @@ const AOP = {
 function _promise(params, successCallback, failureCallback) {
   return new Promise((resolve, reject) => {
     Mtop.request(params, (retJson) => {
+      console.log(`----rejson----: ${JSON.stringify(retJson)}`);
       const data = formatRetJson(retJson);
 
       if (AOP_TRUE === String(data.success)) {

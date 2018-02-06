@@ -164,7 +164,7 @@ function getEmotionPageURL(options) {
   var arr = [];
   each(options, (val, key, obj) => {
     if (val) {
-      arr.push(`${key}=$${val}`);
+      arr.push(`${key}=${val}`);
     }
   });
   let queryString = arr.join('&');
@@ -172,12 +172,11 @@ function getEmotionPageURL(options) {
 }
 function _failureCallback(data, failureCallback, reject) {
   let errorCode = data.errorCode;
-  if (data.errorCode === DISABLED_REFRESH_TOKEN) {
+  let originalURL = location.href;
+  let redirectURL = location.href;
+  if (errorCode === DISABLED_REFRESH_TOKEN) {
     let appKey = '1';
     let categroy = '2';
-    let originalURL = location.href;
-    let redirectURL = location.href;
-    let errorCode = DISABLED_REFRESH_TOKEN.toUpperCase();
     let targetURL = getEmotionPageURL({
       appKey: appKey,
       categroyName: categroy,
@@ -191,6 +190,17 @@ function _failureCallback(data, failureCallback, reject) {
       animated: false
     });
     // 是否还要reject;
+  } else if (typeof errorCode === 'undefined') {
+    let targetURL = getEmotionPageURL({
+      redirectURL: redirectURL,
+      originalURL: originalURL,
+    });
+    console.error(`[data]:: ${JSON.stringify(data)}, 为你跳转到: ${targetURL}`);
+    navi.push({
+      url: targetURL,
+      clearTop: true,
+      animated: false
+    });
   } else {
     failureCallback && failureCallback(data);
     reject(data);

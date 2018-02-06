@@ -58,5 +58,5 @@ export default {
   isIOS,
   isAndroid,
   version,
-  ua: navigator.userAgent
+  ua: ua
 };

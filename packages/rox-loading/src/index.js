@@ -10,6 +10,8 @@ import styles from './styles';
 class Loading extends Component {
   constructor(props) {
     super(props);
+    this.show = this.show.bind(this);
+    this.hide = this.show.hide(this);
   }
 
   show() {
@@ -26,7 +28,7 @@ class Loading extends Component {
   }
 
   render() {
-    let { text, onVisibleChanged } = this.props;
+    let { text, onVisibleChanged, maskClosable} = this.props;
     let loadingText = text || '努力加载中...';
     return (
       <Mask
@@ -37,7 +39,7 @@ class Loading extends Component {
         ref="loadingMask"
         animate={false}
         style={styles.mask}
-        maskClosable={true}
+        maskClosable={maskClosable}
       >
         <View style={styles.loading}>
           <Image source={{

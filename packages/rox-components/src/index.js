@@ -4,6 +4,7 @@ export Checkbox from 'rox-checkbox';
 export Dialog from 'rox-dialog';
 export Emotion from 'rox-emotion';
 export Icon from 'rox-icon';
+export Iconfont from 'rox-iconfont';
 export Image from 'rox-image';
 export Input from 'rox-input';
 export Layout from 'rox-layout';

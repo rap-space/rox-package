@@ -1,5 +1,5 @@
 {
-  "name": "rox-tabbar",
+  "name": "rox-iconfont",
   "version": "0.0.25",
   "description": "",
   "main": "lib/index.js",
@@ -14,6 +14,6 @@
     "rax": "0.x"
   },
   "dependencies": {
-    "nuke-tabbar": "^1.0.6"
+    "nuke-iconfont": "^1.0.0"
   }
 }

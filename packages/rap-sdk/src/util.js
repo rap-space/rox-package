@@ -3,7 +3,7 @@ import isNumber from 'lodash/isNumber';
 import isObject from 'lodash/isObject';
 import isArray from 'lodash/isArray';
 import Version from './version';
-import log from './log';
+import logger from './log';
 
 function each(obj, iterator, context = null) {
   if (isObject(obj) && !isArray(obj)) {
@@ -32,4 +32,4 @@ function parseJson(jsonStr) {
   return jsonStr;
 }
 
-export default { each, Version, log, parseJson };
+export default { each, Version, logger, parseJson};

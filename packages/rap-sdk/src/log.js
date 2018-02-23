@@ -1,22 +1,42 @@
-import localstore from './localstorage';
+import Location from './location';
 
 // localstore.getItem('_rapDebugMode_');
+
+
+let href = Location.href;
+let regRapDebugMode = /rapDebugMode=(\w+)&?/g;
+let result = href.exec(regRapDebugMode);
+let debugMode;
+if (result && result[1]) {
+  debugMode = result[1];
+}
 const log = {
   log() {
-    console.log();
+    logger('log', arguments);
   },
   error() {
-    console.error();
+    logger('error', arguments);
   },
   debug() {
-    console.debug();
+    logger('debug', arguments);
   },
   warn() {
-    console.warn();
+    logger('warn', arguments);
   },
   info() {
-    console.info();
+    logger('info', arguments);
   }
 };
+
+function logger(type, args) {
+  if (type == debugMode) {
+    let _args = sliceArguments(args);
+    console[type].apply(console, _args);
+  } else {
+  }
+}
+function sliceArguments(arg) {
+  return Array.prototype.slice(arg);
+}
 
 export default log;

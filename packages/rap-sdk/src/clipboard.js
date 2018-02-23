@@ -1,5 +1,5 @@
 import { requireModule } from './rap';
-import { log } from './util';
+import { logger } from './util';
 
 const _clipboard = requireModule('clipboard');
 
@@ -8,7 +8,7 @@ const clipboard = {
     if (typeof str === 'string') {
       _clipboard.setString(str);
     } else {
-      log.error('arguments type error');
+      logger.error('arguments type error');
     }
   },
   getString(callback) {

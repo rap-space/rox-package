@@ -1,6 +1,8 @@
 import { requireModule } from './weex-module';
+import { parseJson, logger } from '../util';
 
 const MODULE_NAME = '@weex-module/rapcaller';
+
 let RBridge = window.RBridge;
 
 function call(options, callback) {
@@ -14,15 +16,19 @@ function call(options, callback) {
 
   return new Promise((resolve, reject) => {
     RBridge.call && RBridge.call(className, methodName, params, (success) => {
-      success = JSON.stringify(success);
-      console.log(`RAP_CALLER_SUCCESS:: [${className}.${methodName}], params: ${JSON.stringify(params)}, success: ${success}}`);
+      success = parseJson(success);
+      // console.log(`RAP_CALLER_SUCCESS:: [${className}.${methodName}], params: ${JSON.stringify(params)}, success: ${success}}`);
       resolve(success);
     }, (error) => {
-      error = JSON.stringify(error);
-      console.error('RAP_CALLER_FAILED::' + `[${className}.${methodName}]--failure, \n message:: ${error}`);
+      error = parseJson(error);
+      logger.log('------start---------');
+      logger.error(`${MODULE_NAME}--call::  ${className}.${methodName}, params: ${params} \n \n error: ${error}`);
+      logger.log('------end---------');
+      // console.error('RAP_CALLER_FAILED::' + `[${className}.${methodName}]--failure, \n message:: ${error}`);
       reject(error);
     }, (notify) => {
-      console.log(`RAP_CALLER_NOTIFY_SUCCESS:: [${className}.${methodName}], params: ${JSON.stringify(params)}, notify: ${JSON.stringify(notify)}}`);
+      notify = parseJson(notify);
+      // console.log(`RAP_CALLER_NOTIFY_SUCCESS:: [${className}.${methodName}], params: ${JSON.stringify(params)}, notify: ${JSON.stringify(notify)}}`);
       callback && callback(notify);
     });
   });

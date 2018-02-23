@@ -14,11 +14,10 @@
     "rax": "0.x"
   },
   "dependencies": {
-    "nuke-button": "^1.0.10",
-    "nuke-env": "^1.0.1",
-    "nuke-image": "^1.0.0",
-    "nuke-link": "^1.0.1",
-    "nuke-text": "^0.0.14",
-    "nuke-view": "^1.0.7"
+    "universal-env": "^0.x.x",
+    "rox-image": "^0.0.x",
+    "rox-link": "^0.0.x",
+    "rox-text": "^0.0.x",
+    "rox-view": "^0.0.x"
   }
 }

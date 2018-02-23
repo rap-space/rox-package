@@ -8,7 +8,7 @@ let App = class NukeDemoIndex extends Component {
       <ThemeProvider>
         <Page title={'图标类型'}>
           <Page.Intro main="type: 404" />
-          <Emotion type="404" height="500" />
+          <Emotion type="404" text={'您访问的页面找不到了'} buttonText={'回到首页'} />
           <Page.Intro main="type: order" />
           <Emotion type="order" height="500" />
           <Page.Intro main="type: redpack" />

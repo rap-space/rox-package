@@ -1,6 +1,6 @@
 {
   "name": "rox-menu",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -16,9 +16,9 @@
   "dependencies": {
     "nuke-core": "^1.0.5",
     "nuke-theme-provider": "^1.0.7",
-    "rox-icon": "^0.0.25",
-    "rox-text": "^0.0.25",
-    "rox-touchable": "^0.0.25",
-    "rox-view": "^0.0.25"
+    "rox-icon": "^0.0.26",
+    "rox-text": "^0.0.26",
+    "rox-touchable": "^0.0.26",
+    "rox-view": "^0.0.26"
   }
 }

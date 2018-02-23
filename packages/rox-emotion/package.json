@@ -1,6 +1,6 @@
 {
   "name": "rox-emotion",
-  "version": "0.0.25",
+  "version": "0.0.26",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -14,10 +14,10 @@
     "rax": "0.x"
   },
   "dependencies": {
-    "universal-env": "^0.x.x",
-    "rox-image": "^0.0.x",
-    "rox-link": "^0.0.x",
-    "rox-text": "^0.0.x",
-    "rox-view": "^0.0.x"
+    "rox-image": "^0.0.26",
+    "rox-link": "^0.0.26",
+    "rox-text": "^0.0.26",
+    "rox-view": "^0.0.26",
+    "universal-env": "^0.x.x"
   }
 }

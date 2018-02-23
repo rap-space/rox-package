@@ -43,7 +43,7 @@ class Emotion extends Component {
   }
 
   render() {
-    let { type, style, width, height, text, buttonText, children } = this.props;
+    let { type, style, width, height, text, buttonText, buttonLink, children } = this.props;
     type = type || '404';
     let stylesContainer = {
       ...styles.container
@@ -65,7 +65,7 @@ class Emotion extends Component {
       <View style={stylesContainer}>
         <Image src={ICON_LIST[type]} style={iconStyle} />
         { text ? <Text style={styles.emotionText}>{text}</Text> : null }
-        { buttonText ? <Link style={styles.button}><Text style={styles.buttonText}>{buttonText}</Text></Link> : null}
+        { buttonText ? <Link style={styles.button} href={buttonLink}><Text style={styles.buttonText}>{buttonText}</Text></Link> : null}
         { children }
       </View>
     );

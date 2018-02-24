@@ -11,7 +11,7 @@ class Loading extends Component {
   constructor(props) {
     super(props);
     this.show = this.show.bind(this);
-    this.hide = this.show.hide(this);
+    this.hide = this.hide.bind(this);
   }
 
   show() {

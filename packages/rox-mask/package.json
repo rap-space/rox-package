@@ -1,6 +1,6 @@
 {
   "name": "rox-mask",
-  "version": "0.0.26",
+  "version": "0.0.27",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -15,8 +15,8 @@
   },
   "dependencies": {
     "nuke-mask": "^1.0.9",
-    "rox-image": "^0.0.26",
-    "rox-text": "^0.0.26",
-    "rox-view": "^0.0.26"
+    "rox-image": "^0.0.27",
+    "rox-text": "^0.0.27",
+    "rox-view": "^0.0.27"
   }
 }

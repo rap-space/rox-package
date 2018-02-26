@@ -171,16 +171,14 @@ function getEmotionPageURL(options) {
   let queryString = arr.join('&');
   return `${emotionPageURL}&${queryString}`;
 }
+
 function _failureCallback(data, failureCallback, reject) {
   let errorCode = data.errorCode;
   let originalURL = location.href;
   let redirectURL = location.href;
   if (errorCode === DISABLED_REFRESH_TOKEN) {
-    let appKey = '1';
-    let categroy = '2';
     let targetURL = getEmotionPageURL({
-      appKey: appKey,
-      categroyName: categroy,
+      errorCode: DISABLED_REFRESH_TOKEN,
       redirectURL: encodeURIComponent(redirectURL),
       originalURL: encodeURIComponent(originalURL),
     });
@@ -193,10 +191,11 @@ function _failureCallback(data, failureCallback, reject) {
     // 是否还要reject;
   } else if (typeof errorCode === 'undefined') {
     let targetURL = getEmotionPageURL({
+      errorCode: 'DISABLED_TOKEN',
       redirectURL: encodeURIComponent(redirectURL),
       originalURL: encodeURIComponent(originalURL),
     });
-    console.error(`[data]:: ${JSON.stringify(data)}, 为你跳转到: ${targetURL}`);
+    console.error(`[aop response data]:: ${JSON.stringify(data)}, 为你跳转到: ${targetURL}`);
     navi.push({
       url: targetURL,
       clearTop: true,

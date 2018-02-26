@@ -5,7 +5,7 @@ import Location from './location';
 
 let href = Location.href;
 let regRapDebugMode = /rapDebugMode=(\w+)&?/g;
-let result = href.exec(regRapDebugMode);
+let result = regRapDebugMode.exec(href);
 let debugMode;
 if (result && result[1]) {
   debugMode = result[1];

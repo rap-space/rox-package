@@ -5,7 +5,7 @@
 import Mtop from './mtop';
 import navi from './navigator';
 import { isWeex, isWeb } from './env';
-import { defer, parseJson, each } from './util';
+import { parseJson, each, logger } from './util';
 import location from './location';
 
 const RAP_SUCCESS = 'RAP_SUCCESS';
@@ -143,7 +143,7 @@ const AOP = {
 function _promise(params, successCallback, failureCallback) {
   return new Promise((resolve, reject) => {
     Mtop.request(params, (retJson) => {
-      console.log(`----rejson----: ${JSON.stringify(retJson)}`);
+      console.log(`----retjson----: ${JSON.stringify(retJson)}`);
       const data = formatRetJson(retJson);
 
       if (AOP_TRUE === String(data.success)) {
@@ -181,8 +181,8 @@ function _failureCallback(data, failureCallback, reject) {
     let targetURL = getEmotionPageURL({
       appKey: appKey,
       categroyName: categroy,
-      redirectURL: redirectURL,
-      originalURL: originalURL,
+      redirectURL: encodeURIComponent(redirectURL),
+      originalURL: encodeURIComponent(originalURL),
     });
     // console.log('targetURL--', targetURL);
     navi.push({
@@ -193,8 +193,8 @@ function _failureCallback(data, failureCallback, reject) {
     // 是否还要reject;
   } else if (typeof errorCode === 'undefined') {
     let targetURL = getEmotionPageURL({
-      redirectURL: redirectURL,
-      originalURL: originalURL,
+      redirectURL: encodeURIComponent(redirectURL),
+      originalURL: encodeURIComponent(originalURL),
     });
     console.error(`[data]:: ${JSON.stringify(data)}, 为你跳转到: ${targetURL}`);
     navi.push({

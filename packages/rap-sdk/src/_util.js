@@ -4,6 +4,7 @@ import isObject from 'lodash/isObject';
 import isArray from 'lodash/isArray';
 import Version from './version';
 import logger from './log';
+import Localtion from './location';
 
 function each(obj, iterator, context = null) {
   if (isObject(obj) && !isArray(obj)) {
@@ -32,7 +33,28 @@ function parse2json(jsonStr) {
   return jsonStr;
 }
 
-function getAppKey() {
-  return '';
+function getAppKeyByRapURL(url) {
+  let regAppKey = /rap:\/\/openplugin\/(\d+)\//g;
+  let regAirAppKey = /1688\.com\/rap\/(\d+)\//g;
+  let res;
+  if (url.indexOf('rap://openplugin') >= 0) {
+    res = regAppKey.exec(url);
+  } else if (url.indexOf('1688.com/rap/') >= 0) {
+    // http://air.1688.com/rap/123456/
+    res = regAirAppKey.exec(url);
+  }
+  let appKey;
+  if (res && res[1]) {
+    appKey = res[1];
+  }
+  if (!appKey) {
+    console.log('appKey is undefined');
+  };
+  return appKey;
 }
+
+function getAppKey() {
+  return getAppKeyByRapURL(Localtion.href);
+}
+
 export default { each, Version, logger, parse2json, getAppKey};

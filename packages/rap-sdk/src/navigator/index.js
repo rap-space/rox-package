@@ -1,13 +1,13 @@
 import { isWeex, isWeb } from '../env';
-import RapWeex from './index.weex';
-import RapWeb from './index.web';
+import NavigatorWeex from './index.weex';
+import NavigatorWeb from './index.web';
 
-let Rap;
+let Navigator;
 
 if (isWeex) {
-  Rap = RapWeex;
+  Navigator = NavigatorWeex;
 } else {
-  Rap = RapWeb;
+  Navigator = NavigatorWeb;
 }
 
-module.exports = Rap;
+module.exports = Navigator;

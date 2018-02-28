@@ -5,7 +5,7 @@
 import Mtop from './mtop';
 import navi from './navigator';
 import { isWeex, isWeb } from './env';
-import { parseJson, each, logger } from './util';
+import { parse2json, each, logger } from './_util';
 import location from './location';
 
 const RAP_SUCCESS = 'RAP_SUCCESS';
@@ -93,10 +93,10 @@ function formatRetJson(retJson) {
     let res = {};
     let o = {};
 
-    retJson = parseJson(retJson);
+    retJson = parse2json(retJson);
 
     if (RAP_SUCCESS === retJson.code) {
-      res = parseJson(retJson.data);
+      res = parse2json(retJson.data);
 
       const ret = res.ret[0].split(MTOP_RET_BOUND_SYMBOL);
       const code = ret[0].toUpperCase();

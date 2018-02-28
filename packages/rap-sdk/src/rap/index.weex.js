@@ -1,5 +1,5 @@
 import { requireModule } from './weex-module';
-import { parseJson, logger } from '../util';
+import { parse2json, logger } from '../_util';
 
 const MODULE_NAME = '@weex-module/rapcaller';
 
@@ -16,18 +16,18 @@ function call(options, callback) {
 
   return new Promise((resolve, reject) => {
     RBridge.call && RBridge.call(className, methodName, params, (success) => {
-      success = parseJson(success);
+      success = parse2json(success);
       // console.log(`RAP_CALLER_SUCCESS:: [${className}.${methodName}], params: ${JSON.stringify(params)}, success: ${success}}`);
       resolve(success);
     }, (error) => {
-      error = parseJson(error);
+      error = parse2json(error);
       logger.log('------start---------');
       logger.error(`${MODULE_NAME}--call::  ${className}.${methodName}, params: ${params} \n \n error: ${error}`);
       logger.log('------end---------');
       // console.error('RAP_CALLER_FAILED::' + `[${className}.${methodName}]--failure, \n message:: ${error}`);
       reject(error);
     }, (notify) => {
-      notify = parseJson(notify);
+      notify = parse2json(notify);
       // console.log(`RAP_CALLER_NOTIFY_SUCCESS:: [${className}.${methodName}], params: ${JSON.stringify(params)}, notify: ${JSON.stringify(notify)}}`);
       callback && callback(notify);
     });

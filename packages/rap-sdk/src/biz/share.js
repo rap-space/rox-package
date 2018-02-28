@@ -1,5 +1,5 @@
 import Rap from '../rap';
-import { each } from '../util';
+import { each } from '../_util';
 
 let className = 'biz';
 let methodName = 'openShareComponent';

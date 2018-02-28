@@ -1,4 +1,4 @@
-import { parseJson } from './util';
+import { parse2json } from './_util';
 import AOP from './aop';
 
 const USER_MODULE = '@weex-module/user';
@@ -36,7 +36,7 @@ export default {
 
         const getUserInfo = () => {
           User.getUserInfo((info) => {
-            info = parseJson(info);
+            info = parse2json(info);
             if (String(info.isLogin) === 'true') {
               info.isLogin = true;
             } else {
@@ -72,7 +72,7 @@ export default {
     return new Promise((resolve, reject) => {
       if (User.login) {
         User.login((ret) => {
-          ret = parseJson(ret);
+          ret = parse2json(ret);
           ret.isLogin = false;
 
           const status = ret && String(ret.status);

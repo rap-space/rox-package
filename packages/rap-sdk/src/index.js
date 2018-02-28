@@ -14,6 +14,8 @@ import device from './device';
 import user from './user';
 import share from './biz/share';
 import aliwangwang from './biz/aliwangwang';
+import sso from './biz/sso';
+
 // request
 import aop from './aop';
 
@@ -57,6 +59,7 @@ const RAP = {
   showLoading,
   hideLoading,
   clipboard,
+  sso,
   util
 };
 

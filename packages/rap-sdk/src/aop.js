@@ -173,7 +173,7 @@ function getEmotionPageURL(options) {
 function _failureCallback(data, failureCallback, reject) {
   let errorCode = data.errorCode;
   if (errorCode === DISABLED_REFRESH_TOKEN) {
-    let targetURL = getTargetURL(DISABLED_REFRESH_TOKEN);
+    let targetURL = getTargetURL('DISABLED_REFRESH_TOKEN');
     gotoEmotionPage(targetURL);
     // 是否还要reject;
   } else if (typeof errorCode === 'undefined') {

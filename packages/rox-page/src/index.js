@@ -1,5 +1,5 @@
 import { createElement, Component, PropTypes as T } from 'rax';
-import ThemeProvider from 'nuke-theme-provider';
+import ThemeProvider from 'rox-theme-provider';
 import tracePVLog from './utils/tracePVLog';
 import setTitle from './utils/setTitle';
 import { setIn } from './utils/xpath';
@@ -14,7 +14,7 @@ class RoxPage extends Component {
     let pageData = null;
 
     try {
-      pageData = require('@page/data');
+      pageData = window.require('@page/data');
     } catch (e) {
       // TODO: traceGoldlog error
     }

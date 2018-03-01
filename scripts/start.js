@@ -46,8 +46,12 @@ const config = {
     new webpack.NoEmitOnErrorsPlugin(),
     new webpack.ProgressPlugin(),
     new RaxWebpackPlugin({
+      externalBuiltinModules: true,
       frameworkComment: true,
-      platforms: []
+      platforms: [],
+      builtinModules: {
+        '@page/data': '@page/data'
+      }
     }),
   ],
   module: {

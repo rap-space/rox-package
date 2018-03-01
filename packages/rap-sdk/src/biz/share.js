@@ -6,9 +6,9 @@ let methodName = 'openShareComponent';
 let url = 'http://cui.m.1688.com/weex/weex_dacu/3139.html?__positionId__=weex_dacu&__pageId__=3139&__weex__=true';
 let picUrl = 'https://gw.alicdn.com/tfs/TB1isFOcgMPMeJjy1XcXXXpppXa-750-473.jpg_10000x340q60.jpg';
 
-let share = function(options) {
+let share = function(options, callback) {
   let share = Rap.requireModule('share');
-
+  callback = callback || function() {};
   if (!share.doShare) {
     console.error('no support share');
     return;
@@ -37,7 +37,7 @@ let share = function(options) {
   param.typeQr = judgeTypeQr(options.typeQr);
   param.template = formatTemplate(options.template, options.isUserToken);
 
-  share.doShare &&　share.doShare(param);
+  share.doShare &&　share.doShare(param, callback);
 };
 
 function judgeTypeQr(type) {

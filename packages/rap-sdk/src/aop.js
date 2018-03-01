@@ -172,37 +172,43 @@ function getEmotionPageURL(options) {
 
 function _failureCallback(data, failureCallback, reject) {
   let errorCode = data.errorCode;
-  let originalURL = location.href;
-  let redirectURL = location.href;
   if (errorCode === DISABLED_REFRESH_TOKEN) {
-    let targetURL = getEmotionPageURL({
-      errorCode: DISABLED_REFRESH_TOKEN,
-      redirectURL: encodeURIComponent(redirectURL),
-      originalURL: encodeURIComponent(originalURL),
-    });
-    // console.log('targetURL--', targetURL);
-    navi.push({
-      url: targetURL,
-      clearTop: true,
-      animated: false
-    });
+    let targetURL = getTargetURL(DISABLED_REFRESH_TOKEN);
+    gotoEmotionPage(targetURL);
     // 是否还要reject;
   } else if (typeof errorCode === 'undefined') {
-    let targetURL = getEmotionPageURL({
-      errorCode: 'DISABLED_TOKEN',
-      redirectURL: encodeURIComponent(redirectURL),
-      originalURL: encodeURIComponent(originalURL),
-    });
+    let targetURL = getTargetURL('DISABLED_TOKEN');
     console.error(`[aop response data]:: ${JSON.stringify(data)}, 为你跳转到: ${targetURL}`);
-    navi.push({
-      url: targetURL,
-      clearTop: true,
-      animated: false
-    });
+    gotoEmotionPage(targetURL);
   } else {
     failureCallback && failureCallback(data);
     reject(data);
   }
+}
+
+function getTargetURL(errorCode) {
+  let originalURL = location.href;
+  let redirectURL = location.href;
+  let targetURL = getEmotionPageURL({
+    errorCode: errorCode,
+    redirectURL: encodeURIComponent(redirectURL),
+    originalURL: encodeURIComponent(originalURL),
+  });
+  return targetURL;
+}
+
+let isInvalidToken = false;
+function gotoEmotionPage(targetURL) {
+  if (!isInvalidToken) {
+    navi.push({
+      url: targetURL,
+      clearTop: true,
+      animated: false
+    }).then(() => {
+      isInvalidToken = false;
+    });
+  }
+  isInvalidToken = true;
 }
 
 export default AOP;

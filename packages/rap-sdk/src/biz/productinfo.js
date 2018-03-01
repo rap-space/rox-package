@@ -1,6 +1,6 @@
 const bizInfo = {
   'trade': {
-    'url': 'http://trade.m.1688.com/page/sellerOrderList.html',
+    'url': 'https://trade.m.1688.com/page/sellerOrderList.html',
     'name': '订管管理'
   },
   'popularize': {
@@ -8,7 +8,7 @@ const bizInfo = {
     'name': '营销推广'
   },
   'winport': {
-    'url': 'http://winport.m.1688.com/page/index.html',
+    'url': 'https://winport.m.1688.com/page/index.html',
     'name': '旺铺',
     'params': ['memberId']
   },
@@ -18,16 +18,20 @@ const bizInfo = {
   },
   'publishOffer': {
     name: '发布商品',
-    url: 'http://offer.m.1688.com/page/postoffer.html'
+    url: 'https://offer.m.1688.com/page/postoffer.html'
   }
 };
-
+function copy(obj) {
+  return JSON.parse(JSON.stringify(obj));
+}
 function getBizInfo(type) {
   let appInfo = bizInfo[type];
   if (appInfo) {
-    return appInfo;
+    return copy(appInfo);
   } else {
     console.error(`不存在 ${type}`);
+    return copy(bizInfo);
   }
 }
+
 export default getBizInfo;

@@ -1,5 +1,5 @@
 {
-  "name": "rox-text",
+  "name": "rox-page",
   "version": "0.0.28",
   "description": "",
   "main": "lib/index.js",
@@ -10,10 +10,11 @@
     "rox",
     "rox-components"
   ],
+  "dependencies": {
+    "rox-theme-provider": "^0.0.28",
+    "universal-env": "^0.5.2"
+  },
   "peerDependencies": {
     "rax": "0.x"
-  },
-  "dependencies": {
-    "nuke-text": "^0.0.12"
   }
 }

@@ -19,6 +19,11 @@ const bizInfo = {
   'publishOffer': {
     name: '发布商品',
     url: 'https://offer.m.1688.com/page/postoffer.html'
+  },
+  'refundDetail': {
+    'name': '退款详情',
+    'url': 'https://refund.m.1688.com/page/refundDetail.html',
+    'params': ['refundId', 'userType']
   }
 };
 function copy(obj) {

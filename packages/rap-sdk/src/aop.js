@@ -56,7 +56,7 @@ function formatOpenApiParams(options) {
  * @param {String} options.url   请求地址
  * @param {String} options.method 请求方式
  * @param {String} options.headers 请求头
- * @param {String} options.body 请求体
+ * @param {Object} options.body 请求体
  */
 function formatHttpProxyParams(options) {
   const API = 'mtop.1688.wireless.isv.httpproxy';

@@ -119,7 +119,7 @@ const Navigator = {
     });
   },
 
-  clear(param) {
+  close(param) {
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'close',

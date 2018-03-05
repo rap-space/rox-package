@@ -1,3 +1,12 @@
+import { each } from '../_util';
+
+// function each(obj, iterator, context = null) {
+//   for (var key in obj) {
+//     if (!obj.hasOwnProperty(key)) continue;
+//     if (iterator.call(context, obj[key], key, obj) === false) break;
+//   }
+// }
+
 const bizInfo = {
   'trade': {
     'url': 'https://trade.m.1688.com/page/sellerOrderList.html',
@@ -10,7 +19,7 @@ const bizInfo = {
   'winport': {
     'url': 'https://winport.m.1688.com/page/index.html',
     'name': '旺铺',
-    'params': ['memberId']
+    'query': ['memberId']
   },
   'winportDecorate': {
     name: '旺铺装修',
@@ -23,12 +32,36 @@ const bizInfo = {
   'refundDetail': {
     'name': '退款详情',
     'url': 'https://refund.m.1688.com/page/refundDetail.html',
-    'params': ['refundId', 'userType']
+    'query': ['refundId', 'userType']
+  },
+  'orderDetail': {
+    'name': '订单详情',
+    'url': 'http://h5.m.1688.com/trade/page/orderDetail.html',
+    'query': ['orderId'],
+    'queryMap': {
+      orderId: 'orderId2'
+    }
   }
 };
+
 function copy(obj) {
   return JSON.parse(JSON.stringify(obj));
 }
+
+// 包含了 映射 逻辑
+function queryToString(query, queryMap) {
+  let arr = [];
+  each(query, (val, key) => { // 用户
+    let queryKey = key;
+    if (queryMap && queryMap[key]) {
+      // console.log('queryMap[key]', queryMap[key]);
+      queryKey = queryMap[key];
+    }
+    arr.push(`${queryKey}=${val}`);
+  });
+  return arr.join('&');
+}
+
 function getBizInfo(type) {
   let appInfo = bizInfo[type];
   if (appInfo) {
@@ -39,4 +72,19 @@ function getBizInfo(type) {
   }
 }
 
-export default getBizInfo;
+function getBizInfoUrl(type, query) {
+  let info = getBizInfo(type);
+  let getParamStr = queryToString(query, info.queryMap);
+  let infoUrl = info.url;
+  let url;
+  if (infoUrl.indexOf('?') >= 0) {
+    url = info.url + getParamStr;
+  } else {
+    url = info.url + '?' + getParamStr;
+  }
+  return url;
+}
+
+
+// getBizInfo, {}
+export default { getBizInfo, getBizInfoUrl };

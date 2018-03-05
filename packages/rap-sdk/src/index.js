@@ -15,7 +15,7 @@ import user from './user';
 import share from './biz/share';
 import aliwangwang from './biz/aliwangwang';
 import sso from './biz/sso';
-import getBizInfo from './biz/productinfo';
+import {getBizInfo, getBizInfoUrl} from './biz/productinfo';
 // request
 import aop from './aop';
 
@@ -42,7 +42,8 @@ const RAP = {
     isWeex, isWeb
   },
   biz: {
-    getBizInfo
+    getBizInfo,
+    getBizInfoUrl
   },
   plugin,
   // Event

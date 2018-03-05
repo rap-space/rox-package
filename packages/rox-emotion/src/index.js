@@ -26,6 +26,8 @@ const ICON_LIST = {
   'commonEmpty': '//gw.alicdn.com/tfs/TB1ShJfmY_I8KJjy1XaXXbsxpXa-340-340.png',
   'wangwang': '//gw.alicdn.com/tfs/TB18PLnmRfH8KJjy1XbXXbLdXXa-340-340.png',
   'connectError': '//gw.alicdn.com/tfs/TB1NhRfmY_I8KJjy1XaXXbsxpXa-340-340.png',
+  'orderInvalid': '//img.alicdn.com/tfs/TB1RznnbWmWBuNjy1XaXXXCbXXa-340-340.png',
+  'authInvalid': '//gw.alicdn.com/tfs/TB1ukm5bYGYBuNjy0FoXXciBFXa-340-340.png',
   'noNetwork': '//gw.alicdn.com/tfs/TB1VzTnmRfH8KJjy1XbXXbLdXXa-340-340.png',
   'coupon': '//gw.alicdn.com/tfs/TB1lN0fmY_I8KJjy1XaXXbsxpXa-340-340.png',
   'paySuccess': '//gw.alicdn.com/tfs/TB1Gh8fmY_I8KJjy1XaXXbsxpXa-340-340.png',

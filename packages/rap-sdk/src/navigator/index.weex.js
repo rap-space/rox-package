@@ -91,7 +91,12 @@ const Navigator = {
     if (param && param.index) {
       index = param.index;
     } else {
-      index = index;
+      index = param;
+    }
+
+    if (!index) {
+      index = 1;
+      console.log('index, 为必转参数');
     }
 
     const animated = param && param.animated;

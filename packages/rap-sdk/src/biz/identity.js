@@ -1,6 +1,5 @@
 import { requireModule } from '../rap/weex-module';
 import { isWeex } from '../env';
-import { reject } from 'any-promise';
 import {parse2json} from '../_util';
 
 

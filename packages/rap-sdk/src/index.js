@@ -14,8 +14,9 @@ import device from './device';
 import user from './user';
 import share from './biz/share';
 import aliwangwang from './biz/aliwangwang';
-import sso from './biz/sso';
+import { getIdentity } from './biz/identity';
 import {getBizInfo, getBizInfoUrl} from './biz/productinfo';
+import sso from './biz/sso';
 // request
 import aop from './aop';
 
@@ -43,7 +44,8 @@ const RAP = {
   },
   biz: {
     getBizInfo,
-    getBizInfoUrl
+    getBizInfoUrl,
+    getIdentity
   },
   plugin,
   // Event

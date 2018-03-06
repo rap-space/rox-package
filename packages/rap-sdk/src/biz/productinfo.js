@@ -6,11 +6,11 @@ import { each } from '../_util';
 //     if (iterator.call(context, obj[key], key, obj) === false) break;
 //   }
 // }
-
+// 未来
 const bizInfo = {
   'trade': {
     'url': 'https://trade.m.1688.com/page/sellerOrderList.html',
-    'name': '订管管理'
+    'name': '订单管理'
   },
   'popularize': {
     url: 'https://cui.m.1688.com/weex/page/5477.html?__positionId__=PRODUCT_1&__pageId__=5477&__native__=true',

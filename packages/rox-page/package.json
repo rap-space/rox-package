@@ -1,6 +1,6 @@
 {
   "name": "rox-page",
-  "version": "0.0.28",
+  "version": "0.0.29",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -11,7 +11,7 @@
     "rox-components"
   ],
   "dependencies": {
-    "rox-theme-provider": "^0.0.28",
+    "rox-theme-provider": "^0.0.29",
     "universal-env": "^0.5.2"
   },
   "peerDependencies": {

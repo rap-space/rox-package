@@ -27,7 +27,7 @@ const bizInfo = {
   },
   'publishOffer': {
     name: '发布商品',
-    url: 'https://offer.m.1688.com/page/postoffer.html'
+    url: 'https://h5.m.1688.com/offer/page/postoffer.html'
   },
   'refundDetail': {
     'name': '退款详情',
@@ -38,6 +38,11 @@ const bizInfo = {
     'name': '订单详情',
     'url': 'http://h5.m.1688.com/trade/page/orderDetail.html',
     'query': ['orderId']
+  },
+  changeDefaultApp: {
+    'name': '设置默认插件',
+    'url': 'https://air.1688.com/apps/alim/open/commodity-management.html',
+    'query': ['categoryName']
   }
 };
 

@@ -1,6 +1,6 @@
 {
   "name": "rox-search-bar",
-  "version": "0.0.29",
+  "version": "0.0.30",
   "description": "",
   "main": "lib/index.js",
   "files": [

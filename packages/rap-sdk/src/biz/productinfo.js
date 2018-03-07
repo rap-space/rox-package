@@ -36,7 +36,7 @@ const bizInfo = {
   },
   'orderDetail': {
     'name': '订单详情',
-    'url': 'http://h5.m.1688.com/trade/page/orderDetail.html',
+    'url': 'https://h5.m.1688.com/trade/page/orderDetail.html',
     'query': ['orderId']
   },
   changeDefaultApp: {

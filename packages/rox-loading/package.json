@@ -1,6 +1,6 @@
 {
   "name": "rox-loading",
-  "version": "0.0.30",
+  "version": "0.0.31",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -14,8 +14,8 @@
     "rax": "0.x"
   },
   "dependencies": {
-    "rox-mask": "^0.0.30",
-    "rox-text": "^0.0.30",
-    "rox-view": "^0.0.30"
+    "rox-mask": "^0.0.31",
+    "rox-text": "^0.0.31",
+    "rox-view": "^0.0.31"
   }
 }

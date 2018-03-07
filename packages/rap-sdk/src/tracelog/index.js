@@ -1,5 +1,6 @@
 import { isWeex } from '../env';
-import wpo from './retcode';
+import { requireModule } from '../rap/weex-module';
+import wpo from './src/log';
 
 export default {
   setConfig(spm = []) {
@@ -11,8 +12,8 @@ export default {
     };
 
     if (isWeex) {
-      retcodeConfig.user = require('@weex-module/user');
-      retcodeConfig.request = require('@weex-module/stream').fetch;
+      retcodeConfig.user = requireModule('@weex-module/user');
+      retcodeConfig.request = requireModule('@weex-module/stream').fetch;
     }
 
     wpo.setConfig(retcodeConfig);

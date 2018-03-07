@@ -5,8 +5,9 @@
 import Mtop from './mtop';
 import navi from './navigator';
 import { isWeex, isWeb } from './env';
-import { parse2json, each, logger } from './_util';
 import location from './location';
+import tracelog from './tracelog';
+import { parse2json, each, logger } from './_util';
 
 const RAP_SUCCESS = 'RAP_SUCCESS';
 const RAP_FAILURE = 'RAP_FAILURE';
@@ -120,6 +121,11 @@ function formatRetJson(retJson) {
   }
 }
 
+const before = action => func => (...args) => {
+  action(...args);
+  return func(...args);
+};
+
 const AOP = {
   request(options, successCallback, failureCallback) {
     const bizType = '3';
@@ -130,12 +136,34 @@ const AOP = {
     } else {
       params = options;
     }
-    return _promise(params, successCallback, failureCallback);
+    params.data = params.data || {};
+
+    const namespace = params.data.namespace;
+    const apiName = params.data.apiName;
+    const apiVersion = params.data.apiVersion;
+
+    const start = Date.now();
+    const beforeSuccess = before(() => {
+      tracelog.traceAopApi(namespace, apiName, apiVersion, true, Date.now() - start, 'success');
+    });
+    const beforeFailure = before((data) => {
+      tracelog.traceAopApi(namespace, apiName, apiVersion, false, Date.now() - start, data.errorCode);
+    });
+
+    return _promise(params, beforeSuccess(successCallback), beforeFailure(failureCallback));
   },
 
   proxy(options, successCallback, failureCallback) {
     const params = formatHttpProxyParams(options);
-    return _promise(params, successCallback, failureCallback);
+    const start = Date.now();
+    const beforeSuccess = before(() => {
+      tracelog.traceProxyApi(params.data.targetUrl, true, Date.now() - start, 'success');
+    });
+    const beforeFailure = before((data) => {
+      tracelog.traceProxyApi(params.data.targetUrl, false, Date.now() - start, data.errorCode);
+    });
+
+    return _promise(params, beforeSuccess(successCallback), beforeFailure(failureCallback));
   }
 };
 

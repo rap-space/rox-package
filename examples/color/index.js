@@ -1,6 +1,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { createElement, render, Component } from 'rax';
-import { View, Text, Theme, ThemeProvider } from 'rox-components';
+import { View, Text, Theme } from 'rox-components';
+import RoxPage from 'rox-page';
 import Page from 'nuke-page';
 
 const Core = Theme.Core;
@@ -46,7 +47,7 @@ const Palette = props => {
 let App = class NukeDemoIndex extends Component {
   render() {
     return (
-      <ThemeProvider>
+      <RoxPage>
         <Page title={'颜色 Color'}>
           <Page.Intro main={'主品牌色'} />
           <View style={styles.btnWithMargin}>
@@ -190,7 +191,7 @@ let App = class NukeDemoIndex extends Component {
             <Palette token="F5_3" color={Core['color-notice-3']} />
           </View>
         </Page>
-      </ThemeProvider>
+      </RoxPage>
     );
   }
 };

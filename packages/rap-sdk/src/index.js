@@ -35,6 +35,9 @@ import plugin from './biz/plugin-manage';
 // location
 import location from './location';
 
+// tracelog
+import tracelog from './tracelog';
+
 // 这里要设计 保护，不被外部 误干扰
 
 const RAP = {
@@ -66,7 +69,8 @@ const RAP = {
   hideLoading,
   clipboard,
   sso,
-  util
+  util,
+  tracelog
 };
 
 RAP.invoke = Rap.call;

@@ -91,6 +91,8 @@ function getBizInfoUrl(type, query) {
     } else {
       url = info.url + '?' + getParamStr;
     }
+  } else {
+    url = info.url;
   }
   return url;
 }

@@ -6,7 +6,7 @@ export default {
   setConfig(spm = []) {
     const retcodeConfig = {
       // 抽样分母，1代表100%上报，10代表10%上报，100代表1%上报
-      sample: 1,
+      sample: 5,
       // spmId必须设置,如果没写默认值,会自动抓页面的spm
       spmId: spm.join('.')
     };

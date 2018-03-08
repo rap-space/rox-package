@@ -121,9 +121,13 @@ function formatRetJson(retJson) {
   }
 }
 
-const before = action => func => (...args) => {
-  action(...args);
-  return func(...args);
+var before = function(action) {
+  return function(func) {
+    return function() {
+      action && action.apply(undefined, arguments);
+      func && func.apply(undefined, arguments);
+    };
+  };
 };
 
 const AOP = {

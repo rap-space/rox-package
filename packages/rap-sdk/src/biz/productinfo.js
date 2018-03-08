@@ -53,6 +53,9 @@ function copy(obj) {
 // 包含了 映射 逻辑
 function queryToString(query, queryMap) {
   let arr = [];
+  if (!query) {
+    return '';
+  }
   each(query, (val, key) => { // 用户
     let queryKey = key;
     if (queryMap && queryMap[key]) {

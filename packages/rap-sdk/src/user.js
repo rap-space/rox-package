@@ -55,7 +55,7 @@ function getUserExtraInfo(options) {
   // http://ocn.alibaba-inc.com/isp/apifactory/api/input.htm?name=alibaba.account.basic&namespace=com.alibaba.account&version=1
   return new Promise((resolve, reject) => {
     if (extraInfo) {
-      console.log('复用本地数据', extraInfo);
+      console.log('复用本地数据');
       return resolve(extraInfo);
     }
     // 先取一下本地的，再去请求线上的

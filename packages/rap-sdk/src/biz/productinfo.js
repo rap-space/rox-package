@@ -98,7 +98,7 @@ function getBizInfoUrl(type, query) {
 }
 
 function getBizInfo(type) {
-  console.warn('即将废弃, 请使用 getBizInfoUrl 代替');
+  console.error('getBizInfo 已废弃, 请立即使用 getBizInfoUrl 代替, 否则可能会引起页面异常');
   return getInfo(type);
 }
 

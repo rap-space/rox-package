@@ -12,8 +12,8 @@ export default {
     };
 
     if (isWeex) {
-      retcodeConfig.user = requireModule('@weex-module/user');
-      retcodeConfig.request = requireModule('@weex-module/stream').fetch;
+      retcodeConfig.user = requireModule('user');
+      retcodeConfig.request = requireModule('stream').fetch;
     }
 
     wpo.setConfig(retcodeConfig);

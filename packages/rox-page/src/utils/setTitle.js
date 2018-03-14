@@ -1,8 +1,11 @@
 import { isWeb } from 'universal-env';
+import getIn from 'lodash.get';
 
 const noop = () => {};
 
-export default function(title) {
+export default function(pageData = {}) {
+  const title = getIn('metaData.title', '');
+
   if (isWeb) {
     document.title = title;
   } else {

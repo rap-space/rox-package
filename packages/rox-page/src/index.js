@@ -1,7 +1,7 @@
 import { createElement, Component, PropTypes as T } from 'rax';
 import ThemeProvider from 'rox-theme-provider';
 import tracePVLog from './utils/tracePVLog';
-import setTitle from './utils/setTitle';
+// import setTitle from './utils/setTitle';
 import setRetcodeConfig from './utils/setRetcodeConfig';
 import { setIn } from './utils/xpath';
 
@@ -30,15 +30,15 @@ class RoxPage extends Component {
       setIn(pageData, 'metaData.title', title);
 
       tracePVLog(pageData);
-      setTitle(pageData);
+      // setTitle(pageData);
       setRetcodeConfig(pageData);
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if (this.props.title !== nextProps.title) {
-      setTitle(nextProps.title);
-    }
+    // if (this.props.title !== nextProps.title) {
+    //   setTitle(nextProps.title);
+    // }
   }
 
   render() {

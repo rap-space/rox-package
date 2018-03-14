@@ -16,6 +16,8 @@ function each(obj, iterator, context = null) {
     for (var i = 0; i < obj.length; i++) {
       if (iterator.call(context, obj[i], i, obj) === false) break;
     }
+  } else {
+    console.warn('must pass [object | array | number]');
   }
 }
 

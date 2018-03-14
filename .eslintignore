@@ -7,3 +7,6 @@ build
 coverage
 weex
 expected
+
+packages/rap-sdk/src/tracelog
+

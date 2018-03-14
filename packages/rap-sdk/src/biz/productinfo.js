@@ -41,7 +41,7 @@ const bizInfo = {
   },
   changeDefaultApp: {
     'name': '设置默认插件',
-    'url': 'https://air.1688.com/apps/alim/open/commodity-management.html',
+    'url': 'https://air.1688.com/apps/alim/open/commodity-management.html?wh_weex=true&',
     'query': ['categoryName']
   }
 };
@@ -53,6 +53,9 @@ function copy(obj) {
 // 包含了 映射 逻辑
 function queryToString(query, queryMap) {
   let arr = [];
+  if (!query) {
+    return '';
+  }
   each(query, (val, key) => { // 用户
     let queryKey = key;
     if (queryMap && queryMap[key]) {
@@ -64,7 +67,7 @@ function queryToString(query, queryMap) {
   return arr.join('&');
 }
 
-function getBizInfo(type) {
+function getInfo(type) {
   let appInfo = bizInfo[type];
   if (appInfo) {
     return copy(appInfo);
@@ -75,18 +78,29 @@ function getBizInfo(type) {
 }
 
 function getBizInfoUrl(type, query) {
-  let info = getBizInfo(type);
+  let info = getInfo(type);
+  if (!type) {// 如果不存在返回info 信息方便查看
+    return info;
+  }
   let getParamStr = queryToString(query, info.queryMap);
   let infoUrl = info.url;
   let url;
-  if (infoUrl.indexOf('?') >= 0) {
-    url = info.url + getParamStr;
+  if (getParamStr) {
+    if (infoUrl.indexOf('?') >= 0) {
+      url = info.url + '&' + getParamStr;
+    } else {
+      url = info.url + '?' + getParamStr;
+    }
   } else {
-    url = info.url + '?' + getParamStr;
+    url = info.url;
   }
   return url;
 }
 
+function getBizInfo(type) {
+  console.error('getBizInfo 已废弃, 请立即使用 getBizInfoUrl 代替, 否则可能会引起页面异常');
+  return getInfo(type);
+}
 
 // getBizInfo, {}
 export default { getBizInfo, getBizInfoUrl };

@@ -2,6 +2,10 @@
   "name": "rox-scrollview",
   "version": "0.0.32",
   "description": "",
+  "rapConfig": {
+    "subtitle": "滚动",
+    "group": "Layout"
+  },
   "main": "lib/index.js",
   "files": [
     "lib"

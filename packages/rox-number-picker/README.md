@@ -1,13 +1,17 @@
-# rox-number-picker
-
-- category: UI
-- chinese: 数量选择
-- english: NumberPicker
-- type: 基本
-
+---
+subtitle: 数字选择器
+group: Data Entry
+category: UI
+chinese: 数量选择
+english: Number Picker
+type: 基本
 ---
 
+# Number Picker
+
 数量选择
+
+---
 
 
 ## API

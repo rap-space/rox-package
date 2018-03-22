@@ -2,10 +2,6 @@
   "name": "rox-slider",
   "version": "0.0.32",
   "description": "",
-  "rapConfig": {
-    "subtitle": "按钮",
-    "group": "General"
-  },
   "main": "lib/index.js",
   "files": [
     "lib"

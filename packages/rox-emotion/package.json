@@ -2,10 +2,6 @@
   "name": "rox-emotion",
   "version": "0.0.32",
   "description": "",
-  "rapConfig": {
-    "subtitle": "情感化",
-    "group": "General"
-  },
   "main": "lib/index.js",
   "files": [
     "lib"

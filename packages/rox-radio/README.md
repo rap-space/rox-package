@@ -1,8 +1,12 @@
-# rox-radio
+---
+subtitle: 单选框
+group: Data Entry
+category: UI
+chinese: 单选框
+type: UI组件
+---
 
-- category: UI
-- chinese: 单选框
-- type: UI组件
+# Radio
 
 ---
 
@@ -12,7 +16,7 @@
 
 属性 | 说明 | 类型 | 默认值
 -----|-----|-----|------
-checked | 是否选中,group中的选中不适用该API，而是通过value设置 | boolean | 
+checked | 是否选中,group中的选中不适用该API，而是通过value设置 | boolean |
 disabled | 是否禁用 | boolean | false
 size | 大小  | string(small,medium) | medium
 onChange | 状态改变时的回调函数 | function(checked,e) |

@@ -1,13 +1,16 @@
+---
+subtitle: 开关
+group: Data Entry
+category: Component
+chinese: 开关
+type: 基础元件
+order:12
+---
+
 # rox-switch
 
-- category: Component
-- chinese: 开关
-- type: 基础元件
-- order:12
-
 ---
 
----
 ## API
 Switch 是状态切换的开关按钮组件。
 

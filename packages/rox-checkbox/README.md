@@ -1,8 +1,13 @@
+---
+subtitle: 多选框
+group: Data Entry
+category: UI
+chinese: 复选框
+type: UI组件
+---
+
 # rox-checkbox
 
-- category: UI
-- chinese: 复选框
-- type: UI组件
 
 ---
 
@@ -12,11 +17,11 @@
 
 属性 | 说明 | 类型 | 默认值
 -----|-----|-----|------
-checked | 是否选中，如果在group中需使用value设置是否选中 | boolean | 
+checked | 是否选中，如果在group中需使用value设置是否选中 | boolean |
 disabled | 是否禁用 | boolean | false
 onChange | 状态改变时的回调函数 | function(checked,e) |
 type     | 复选框类型 |string（'normal'，'list'）| normal |
-defaultChecked | 默认选中状态 | boolean | false 
+defaultChecked | 默认选中状态 | boolean | false
 ### Checkbox.group
 
 属性 | 说明 | 类型 | 默认值

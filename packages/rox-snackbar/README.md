@@ -1,6 +1,11 @@
+---
+subtitle: 搜索框
+group: General
+---
+
 # rox-snackbar
 
-
+---
 
 
 ## API
@@ -19,11 +24,11 @@ import Snackbar from 'rox-snackbar'
  * visibile Boolean 是否可视
  * actionTpl String 交互区域模板，不传则为不可交互
  * onAction Func 交互回调函数
- * 
+ *
  */
 
-<Snackbar 
-  message="测试提示文本" 
+<Snackbar
+  message="测试提示文本"
   actionTpl={actionTpl}
   visibile={this.state.showSnackBar}
   onAction={() => {

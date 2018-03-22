@@ -1,13 +1,11 @@
-# rox-page
-
-- category: 布局/表单/...
-- chinese: Rox 页面容器
-
+---
+subtitle: Rox 页面容器
+group: Layout
 ---
 
-## Guide
+# Page
 
-这里您可以编写组件的开发指南。
+---
 
 ## Capabilities
 

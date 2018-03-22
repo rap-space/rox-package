@@ -2,10 +2,6 @@
   "name": "rox-badge",
   "version": "0.0.32",
   "description": "",
-  "rapConfig": {
-    "subtitle": "徽章",
-    "group": "Other"
-  },
   "main": "lib/index.js",
   "files": [
     "lib"

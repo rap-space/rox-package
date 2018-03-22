@@ -1,13 +1,14 @@
-# {英文组件名}
-
-- category: 布局/表单/...
-- chinese: {中文描述}
-
+---
+subtitle: iconfont字体
+group: General
+category: API
+chinese: iconfont字体
+type: API
 ---
 
-## Guide
+# Iconfont
 
-这里您可以编写组件的开发指南。
+---
 
 ## API
 

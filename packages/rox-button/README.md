@@ -1,13 +1,16 @@
-# {英文组件名}
-
-- category: 布局/表单/...
-- chinese: {中文描述}
-
+---
+subtitle: 按钮
+group: General
+category: UI
+chinese: 按钮
+type: UI组件
 ---
 
-## Guide
+# Button
 
-这里您可以编写组件的开发指南。
+- 通过设置 Button 的属性来产生不同的按钮样式
+
+---
 
 ## API
 

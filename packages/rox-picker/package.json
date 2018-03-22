@@ -2,10 +2,6 @@
   "name": "rox-picker",
   "version": "0.0.32",
   "description": "",
-  "rapConfig": {
-    "subtitle": "选择期",
-    "group": "General"
-  },
   "main": "lib/index.js",
   "files": [
     "lib"

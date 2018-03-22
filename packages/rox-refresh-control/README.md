@@ -1,3 +1,11 @@
+---
+subtitle: 刷新
+group: Feedback
+---
+
 # rox-refresh-control
 
-组件描述...
+下拉刷新
+
+---
+

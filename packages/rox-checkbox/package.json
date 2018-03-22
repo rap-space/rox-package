@@ -2,10 +2,6 @@
   "name": "rox-checkbox",
   "version": "0.0.32",
   "description": "",
-  "rapConfig": {
-    "subtitle": "选择框",
-    "group": "Form"
-  },
   "main": "lib/index.js",
   "files": [
     "lib"

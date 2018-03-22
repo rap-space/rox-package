@@ -2,10 +2,6 @@
   "name": "rox-search-bar",
   "version": "0.0.32",
   "description": "",
-  "rapConfig": {
-    "subtitle": "搜索框",
-    "group": "General"
-  },
   "main": "lib/index.js",
   "files": [
     "lib"

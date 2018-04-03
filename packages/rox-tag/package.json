@@ -1,6 +1,6 @@
 {
   "name": "rox-tag",
-  "version": "0.0.32",
+  "version": "0.0.33",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -13,10 +13,10 @@
   "dependencies": {
     "nuke-core": "^1.0.5",
     "nuke-theme-provider": "^1.0.7",
-    "rox-icon": "^0.0.32",
-    "rox-text": "^0.0.32",
+    "rox-icon": "^0.0.33",
+    "rox-text": "^0.0.33",
     "rox-theme": "^0.0.2",
-    "rox-view": "^0.0.32"
+    "rox-view": "^0.0.33"
   },
   "peerDependencies": {
     "rax": "0.x"

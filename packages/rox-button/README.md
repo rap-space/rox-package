@@ -1,12 +1,14 @@
 ---
-subtitle: iconfont字体
+subtitle: 按钮
 group: General
-category: API
-chinese: iconfont字体
-type: API
+category: UI
+chinese: 按钮
+type: UI组件
 ---
 
-# Iconfont
+# Button
+
+- 通过设置 Button 的属性来产生不同的按钮样式
 
 ---
 

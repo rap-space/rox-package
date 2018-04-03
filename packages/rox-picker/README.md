@@ -1,8 +1,12 @@
-# rox-picker
+---
+subtitle: 选择器
+group: Data Entry
+category: UI
+chinese: 选择器
+type: UI组件
+---
 
-- category: UI
-- chinese: 选择器
-- type: UI组件
+# rox-picker
 
 ---
 

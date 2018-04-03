@@ -1,6 +1,13 @@
+---
+subtitle: 导航栏
+group: Layout
+---
+
 # rox-tabbar
 
 tab 切换，常用于业务的整个布局框架。 容器切换
+
+---
 
 ## API
 

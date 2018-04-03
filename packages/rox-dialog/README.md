@@ -1,7 +1,11 @@
-# rox-dialog
+---
+subtitle: 对话框
+group: General
+category: UI
+chinese: 对话框
+---
 
-- category: UI
-- chinese: 对话框
+# rox-dialog
 
 ---
 

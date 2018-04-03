@@ -1,13 +1,17 @@
-# {英文组件名}
-
-- category: 布局/表单/...
-- chinese: {中文描述}
-
+---
+subtitle: 徽章
+group: Data Display
+category: Components
+type: 展示
+chinese: 徽标数
+english: Badge
 ---
 
-## Guide
+# Badge
 
-这里您可以编写组件的开发指南。
+图标右上角的圆形徽标数字。
+
+---
 
 ## API
 

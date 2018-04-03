@@ -10,7 +10,13 @@ import configIconfont from 'nuke-iconfont';
 import { connectStyle } from 'nuke-theme-provider';
 
 import stylesProvider from '../styles';
-import iconConfigs from './code';
+import code from './code';
+
+let iconConfigs = code;
+
+export function setIconConfig(config) {
+  iconConfigs = config;
+}
 
 class Icon extends Component {
   componentDidMount() {

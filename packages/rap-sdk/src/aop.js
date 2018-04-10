@@ -18,6 +18,7 @@ const AOP_TRUE = 'true';
 const AOP_FALSE = 'false';
 const rCode = /FAIL_BIZ_/;
 const DISABLED_REFRESH_TOKEN = 'disabled_refreshToken';
+const EXPIRED_REFRESH_TOKEN = 'expired_refreshToken';
 
 /**
  *
@@ -203,15 +204,35 @@ function getEmotionPageURL(options) {
 }
 
 function _failureCallback(data, failureCallback, reject) {
-  let errorCode = data.errorCode;
+  // let errorCode = data.errorCode;
+  // if (errorCode === DISABLED_REFRESH_TOKEN) {
+  //   let targetURL = getTargetURL('DISABLED_REFRESH_TOKEN');
+  //   gotoEmotionPage(targetURL);
+  //   // 是否还要reject;
+  // } else if (typeof errorCode === 'undefined') {
+  //   let targetURL = getTargetURL('DISABLED_TOKEN');
+  //   console.error(`[aop response data]:: ${JSON.stringify(data)}, 为你跳转到: ${targetURL}`);
+  //   gotoEmotionPage(targetURL);
+  // } else {
+  //   failureCallback && failureCallback(data);
+  //   reject(data);
+  // }
+
+  var errorCode = data.errorCode;
   if (errorCode === DISABLED_REFRESH_TOKEN) {
-    let targetURL = getTargetURL('DISABLED_REFRESH_TOKEN');
+    // token 无效
+    var targetURL = getTargetURL('DISABLED_REFRESH_TOKEN');
     gotoEmotionPage(targetURL);
     // 是否还要reject;
-  } else if (typeof errorCode === 'undefined') {
-    let targetURL = getTargetURL('DISABLED_TOKEN');
-    console.error(`[aop response data]:: ${JSON.stringify(data)}, 为你跳转到: ${targetURL}`);
-    gotoEmotionPage(targetURL);
+  } else if (errorCode === EXPIRED_REFRESH_TOKEN) {
+    // token 过期
+    var _targetURL = getTargetURL('EXPIRED_REFRESH_TOKEN');
+    gotoEmotionPage(_targetURL);
+  // } else if (errorCode) {
+  //   // 其它错误
+  //   var _targetURL2 = getTargetURL('DISABLED_TOKEN', errorCode);
+  //   console.error('[aop response data]:: ' + JSON.stringify(data) + ', \u4E3A\u4F60\u8DF3\u8F6C\u5230: ' + _targetURL2);
+  //   gotoEmotionPage(_targetURL2);
   } else {
     failureCallback && failureCallback(data);
     reject(data);

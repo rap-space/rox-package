@@ -3,7 +3,7 @@
 import { createElement, Component, render } from 'rax';
 import { View, Text } from 'rox-components';
 import { MultiRow } from 'nuke-layout';
-import Page from 'nuke-page';
+import Page from '../rox-example-page';
 import Icon, { getTypeIconNames } from 'rox-icon';
 
 const App = class NukeDemoIndex extends Component {

@@ -4,7 +4,7 @@ import RoxStyleProvider from 'rox-theme-provider';
 import Menu from 'rox-menu';
 import Theme from 'rox-theme';
 // eslint-disable-next-line
-import Page from '../../packages/rox-example-componet/rox-example-page';
+import Page from '../rox-example-componet/rox-example-page';
 // eslint-disable-next-line
 import View from 'nuke-view';
 

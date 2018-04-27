@@ -44,7 +44,7 @@ class SnackBar extends Component {
 
     return contentDom;
   }
-  
+
   render() {
     let tpl = this.state.visibile ? this.getContent() : null;
     return tpl;

@@ -4,12 +4,12 @@ import Text from 'nuke-text';
 
 class PageIntro extends Component {
   static defaultProps = {
-    main: '', 
+    main: '',
     mainStyle: {},
     sub: '',
     subStyle: {}
   }
-  render () {
+  render() {
     const { main, mainStyle, sub, subStyle} = this.props;
 
     return (

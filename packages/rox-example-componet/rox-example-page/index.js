@@ -1,27 +1,27 @@
 import { createElement, Component, render } from 'rax';
 import View from 'nuke-view';
 import Text from 'nuke-text';
-import PageIntro from './page-intro'
+import PageIntro from './page-intro';
 
 class Page extends Component {
   static defaultProps = {
-    title: '', 
+    title: '',
     titleStyle: {},
     pageStyle: {}
   }
 
-  render () {
+  render() {
     const { children, title, titleStyle, pageStyle } = this.props;
 
     return (
       <View style={{
         ...initialStyle.pageStyle,
         pageStyle
-      }}> 
+      }}>
         <View style={{
-            ...initialStyle.titleStyle,
-            ...titleStyle
-          }}>
+          ...initialStyle.titleStyle,
+          ...titleStyle
+        }}>
           <Text>{ title }</Text>
         </View>
         { children }

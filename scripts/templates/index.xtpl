@@ -8,9 +8,13 @@
   <meta name="format-detection" content="telephone=no">
   <title>Rax Example - {{name}}</title>
   <style>
+    html {
+      height: 100%;
+    }
     body {
       margin: 0;
       padding: 0;
+      height: 100%;
     }
   </style>
 </head>

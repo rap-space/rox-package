@@ -5,7 +5,7 @@ import Button from 'rox-button';
 import Text from 'rox-text';
 import Dialog from 'rox-dialog';
 import View from 'rox-view';
-import Page from '../rox-example-page';
+import Page from '../../packages/rox-example-componet/rox-example-page';
 
 
 let App = class NukeDemoIndex extends Component {

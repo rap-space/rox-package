@@ -1,27 +1,27 @@
 import { createElement, Component, render } from 'rax';
 import View from 'nuke-view';
 import Text from 'nuke-text';
-import PageIntro from './rox-example-page-intro'
+import PageIntro from './page-intro';
 
 class Page extends Component {
   static defaultProps = {
-    title: '', 
+    title: '',
     titleStyle: {},
     pageStyle: {}
   }
 
-  render () {
+  render() {
     const { children, title, titleStyle, pageStyle } = this.props;
 
     return (
       <View style={{
         ...initialStyle.pageStyle,
         pageStyle
-      }}> 
+      }}>
         <View style={{
-            ...initialStyle.titleStyle,
-            ...titleStyle
-          }}>
+          ...initialStyle.titleStyle,
+          ...titleStyle
+        }}>
           <Text>{ title }</Text>
         </View>
         { children }
@@ -34,7 +34,9 @@ Page.Intro = PageIntro;
 
 const initialStyle = {
   pageStyle: {
-    backgroundColor: '#F5F5F5'
+    backgroundColor: '#F5F5F5',
+    width: '100%',
+    height: '100%'
   },
   titleStyle: {
     width: 750,

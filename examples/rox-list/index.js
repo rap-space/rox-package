@@ -5,7 +5,7 @@ import RoxStyleProvider from 'rox-theme-provider';
 // eslint-disable-next-line
 import ListView from 'rox-listview';
 import View from 'rox-view';
-import Page from '../rox-example-page';
+import Page from '../../packages/rox-example-componet/rox-example-page';
 import ListItem from 'rox-list';
 
 import Text from 'rox-text';

@@ -1,6 +1,6 @@
 import { createElement, render, Component } from 'rax';
 import { ThemeProvider, Emotion } from 'rox-components';
-import Page from '../rox-example-page';
+import Page from '../../packages/rox-example-componet/rox-example-page';
 
 let App = class NukeDemoIndex extends Component {
   render() {

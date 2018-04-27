@@ -1,7 +1,7 @@
 /** @jsx createElement */
 import {createElement, Component, render} from 'rax';
 import {ThemeProvider, Checkbox, Theme} from 'rox-components';
-import Page from '../rox-example-componet/rox-example-page';
+import Page from 'rox-example-page';
 import View from 'nuke-view';
 import Text from 'nuke-text';
 

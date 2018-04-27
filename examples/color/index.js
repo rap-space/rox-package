@@ -2,7 +2,7 @@
 import { createElement, render, Component } from 'rax';
 import { View, Text, Theme } from 'rox-components';
 import RoxPage from 'rox-page';
-import Page from '../../packages/rox-example-componet/rox-example-page';
+import Page from '../rox-example-componet/rox-example-page';
 
 const Core = Theme.Core;
 

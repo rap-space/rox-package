@@ -2,7 +2,7 @@
 import { createElement, Component, findDOMNode, render } from 'rax';
 import RoxStyleProvider from 'rox-theme-provider';
 // eslint-disable-next-line
-import Page from 'nuke-page';
+import Page from 'rox-example-page';
 // eslint-disable-next-line
 import View from 'nuke-view';
 import Input from 'rox-input';

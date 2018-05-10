@@ -13,7 +13,7 @@ function compare(v1, v2) {
     v1Arr = v1.toString().split('.');
     v2Arr = v2.toString().split('.');
   } catch (ex) {
-    throw('version argument is required and must be string or number');
+    throw 'version argument is required and must be string or number';
   }
   let len = Math.max(v1Arr.length, v2Arr.length);
   for (let i = 0; i < len; i++) {

@@ -1,10 +1,10 @@
 /** @jsx createElement */
-import {createElement, Component,render} from 'rax';
+import {createElement, Component, render} from 'rax';
 // eslint-disable-next-line
 import RoxStyleProvider from 'rox-theme-provider';
 import Theme from 'rox-theme';
 // eslint-disable-next-line
-import Page from 'nuke-page';
+import Page from 'rox-example-page';
 // eslint-disable-next-line
 import View from 'nuke-view';
 // eslint-disable-next-line
@@ -15,7 +15,7 @@ let gridData = [];
 for (var i = 0; i < 8; i++) {
   gridData.push({
     'name': 'cell' + i
-  })
+  });
 }
 
 let App = class NukeDemoIndex extends Component {
@@ -23,13 +23,12 @@ let App = class NukeDemoIndex extends Component {
     super();
     this.state = {
       gridData: gridData
-    }
+    };
   }
   renderGridCell = (item, index) => {
-
     return <View style={styles.gridcell}>
       <Text style={styles.funTitle}>{item.name}</Text>
-    </View>
+    </View>;
   }
 
   render() {
@@ -37,51 +36,51 @@ let App = class NukeDemoIndex extends Component {
     return (
       <RoxStyleProvider>
         <Page title="Layout">
-          <Page.Intro main="Grid"></Page.Intro>
+          <Page.Intro main="Grid" />
           <Grid style={{
             height: '300rem'
           }}>
             <Col
               style={{
-              flex: 3,
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: 'red'
-            }}>
+                flex: 3,
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: 'red'
+              }}>
               <Text>col1</Text>
               <Text>111</Text>
             </Col>
             <Col
               style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: 'white'
-            }}>
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: 'white'
+              }}>
               <Text>col2</Text>
               <Text>222</Text>
             </Col>
             <Col
               style={{
-              justifyContent: 'center',
-              alignItems: 'center',
-              backgroundColor: 'green'
-            }}>
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: 'green'
+              }}>
               <Text>col3</Text>
               <Text>333</Text>
             </Col>
           </Grid>
-          <Page.Intro main="MultiRow"></Page.Intro>
+          <Page.Intro main="MultiRow" />
           <View style={styles.lineWithMargin}>
             <MultiRow
               dataSource={self.state.gridData}
               rows={4}
-              renderCell={this.renderGridCell}/>
+              renderCell={this.renderGridCell} />
           </View>
         </Page>
       </RoxStyleProvider>
-    )
+    );
   }
-}
+};
 const styles = {
   lineWithMargin: {
     marginLeft: '25rem',
@@ -101,5 +100,5 @@ const styles = {
   sub: {
     color: '#999999'
   }
-}
-render(<App/>);
+};
+render(<App />);

@@ -4,7 +4,7 @@ import RoxStyleProvider from 'rox-theme-provider';
 import NumberPicker from 'rox-number-picker';
 import Theme from 'rox-theme';
 // eslint-disable-next-line
-import Page from 'nuke-page';
+import Page from 'rox-example-page';
 // eslint-disable-next-line
 import View from 'nuke-view';
 

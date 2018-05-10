@@ -2,7 +2,7 @@ import { createElement, render, Component } from 'rax';
 // eslint-disable-next-line
 import Theme from 'rox-theme';
 // eslint-disable-next-line
-import Page from 'nuke-page';
+import Page from 'rox-example-page';
 // eslint-disable-next-line
 import View from 'rox-view';
 import Image from 'rox-image';

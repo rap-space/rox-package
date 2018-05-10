@@ -4,7 +4,7 @@ import Button from 'rox-button';
 import Snackbar from 'rox-snackbar';
 import Theme from 'rox-theme';
 // eslint-disable-next-line
-import Page from 'nuke-page';
+import Page from 'rox-example-page';
 // eslint-disable-next-line
 import View from 'rox-view';
 import Image from 'rox-image';

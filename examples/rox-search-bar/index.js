@@ -2,7 +2,7 @@
 /* eslint-disable import/no-extraneous-dependencies */
 import { createElement, Component, render } from 'rax';
 import SearchBar from 'rox-search-bar';
-import Page from 'nuke-page';
+import Page from 'rox-example-page';
 import View from 'nuke-view';
 import Text from 'nuke-text';
 

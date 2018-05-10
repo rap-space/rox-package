@@ -1,0 +1,20 @@
+{
+  "name": "rox-example-page",
+  "version": "0.1.1",
+  "description": "",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "keywords": [
+    "rox",
+    "rox-example-components"
+  ],
+  "peerDependencies": {
+    "rax": "0.x"
+  },
+  "dependencies": {
+    "nuke-text": "^0.0.14",
+    "nuke-view": "^1.0.7"
+  }
+}

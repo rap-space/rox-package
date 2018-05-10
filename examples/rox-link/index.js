@@ -4,7 +4,7 @@ import { createElement, Component, render } from 'rax';
 import RoxStyleProvider from 'rox-theme-provider';
 import Theme from 'rox-theme';
 // eslint-disable-next-line
-import Page from 'nuke-page';
+import Page from 'rox-example-page';
 import Link from 'rox-link';
 
 let App = class NukeDemoIndex extends Component {

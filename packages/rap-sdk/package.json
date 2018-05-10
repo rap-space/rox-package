@@ -2,6 +2,12 @@
   "name": "rap-sdk",
   "version": "0.1.20",
   "description": "",
+  "clientVersion": {
+    "1688": {
+      "ios": "7.6.0~",
+      "android": "7.6.0~"
+    }
+  },
   "main": "lib/index.js",
   "scripts": {
     "clean": "../../node_modules/.bin/rimraf lib",

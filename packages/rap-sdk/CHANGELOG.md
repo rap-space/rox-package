@@ -27,4 +27,5 @@
 
 ### 0.1.24
 * 修复 Rap.user.getUserInfo 不传参数报错的 bug
-
+* 新申请 appkey 跳自动授权页面
+* 新申请 appkey 最大不超过 5 人的提示

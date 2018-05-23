@@ -8,6 +8,7 @@ import { isWeex, isWeb } from './env';
 import location from './location';
 import tracelog from './tracelog';
 import { parse2json, each, logger } from './_util';
+import sso from './biz/sso';
 
 const RAP_SUCCESS = 'RAP_SUCCESS';
 const RAP_FAILURE = 'RAP_FAILURE';
@@ -19,6 +20,7 @@ const AOP_FALSE = 'false';
 const rCode = /FAIL_BIZ_/;
 const DISABLED_REFRESH_TOKEN = 'disabled_refreshToken';
 const EXPIRED_REFRESH_TOKEN = 'expired_refreshToken';
+const NOT_EXIST_AUTH_RELATION = 'not_exist_auth_relation';
 
 /**
  *
@@ -220,8 +222,6 @@ function _promise(params, successCallback, failureCallback) {
   });
 };
 
-let emotionPageURL = 'https://air.1688.com/apps/alim/open/emotion-page.html?wh_weex=true';
-
 function getEmotionPageURL(options) {
   var arr = [];
   each(options, (val, key, obj) => {
@@ -230,7 +230,7 @@ function getEmotionPageURL(options) {
     }
   });
   let queryString = arr.join('&');
-  return `${emotionPageURL}&${queryString}`;
+  return `https://air.1688.com/apps/alim/open/emotion-page.html?wh_weex=true&${queryString}`;
 }
 
 function _failureCallback(data, failureCallback, reject) {
@@ -258,6 +258,11 @@ function _failureCallback(data, failureCallback, reject) {
     // token 过期
     var _targetURL = getTargetURL('EXPIRED_REFRESH_TOKEN');
     gotoEmotionPage(_targetURL);
+  } else if (errorCode === NOT_EXIST_AUTH_RELATION) {
+    // 用户未授权
+    // gotoEmotionPage(getTargetURL('NOT_EXIST_AUTH_RELATION'));
+    sso.goAuth();
+
   // } else if (errorCode) {
   //   // 其它错误
   //   var _targetURL2 = getTargetURL('DISABLED_TOKEN', errorCode);
@@ -272,11 +277,13 @@ function _failureCallback(data, failureCallback, reject) {
 function getTargetURL(errorCode) {
   let originalURL = location.href;
   let redirectURL = location.href;
+
   let targetURL = getEmotionPageURL({
     errorCode: errorCode,
     redirectURL: encodeURIComponent(redirectURL),
     originalURL: encodeURIComponent(originalURL),
   });
+
   return targetURL;
 }
 

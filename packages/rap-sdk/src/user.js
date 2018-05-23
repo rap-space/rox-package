@@ -83,7 +83,7 @@ function getUserExtraInfo(options) {
 }
 export default {
 
-  getUserInfo(options) {
+  getUserInfo(options = { extraInfo: false }) {
     return new Promise((resolve, reject) => {
       if (User.getUserInfo) {
         const getUserInfo = () => {

@@ -1,5 +1,6 @@
 
 import RapBridge from '../rap';
+import { isWeex, isWeb } from '../env';
 import { buildEventCenterByName, EventEmitter} from './emmiter';
 
 let eventEmitter = new EventEmitter();
@@ -10,6 +11,10 @@ let onPromises = {
 
 const Event = {
   on: function(eventName, callback) {
+    if (isWeb) {
+      eventEmitter.on(eventName, callback);
+      return;
+    }
     // back
     // Page.back
     // App.back
@@ -66,6 +71,10 @@ const Event = {
   },
 
   emit: function(eventName, options) {
+    if (isWeb) {
+      eventEmitter.emit(eventName, options);
+      return new Promise(resolve => resolve());
+    }
     let event = buildEventCenterByName(eventName);
     return RapBridge.call({
       className: event.center,

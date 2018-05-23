@@ -53,6 +53,33 @@ function formatOpenApiParams(options) {
 }
 
 /**
+ * web 端 fetch 模拟
+ * @param {Object} options fetch
+ * @param {function} successCallback 成功回调
+ * @param {function} failureCallback 错误回调
+ */
+function webFetch(options, successCallback, failureCallback) {
+  fetch(options.url, options).then(response => {
+    const headers = [];
+
+    for (const key of response.headers.keys()) {
+      headers.push({
+        [key]: response.headers.get(key),
+      });
+    }
+
+    return new Promise(resolve => {
+      response.text().then(d => {
+        resolve({
+          body: d,
+          header: headers,
+        });
+      });
+    });
+  }).then(successCallback).catch(failureCallback);
+}
+
+/**
  *
  * @param {Object} options
  * @param {String} options.url   请求地址
@@ -159,6 +186,9 @@ const AOP = {
   },
 
   proxy(options, successCallback, failureCallback) {
+    if (isWeb) {
+      return webFetch(options, successCallback, failureCallback);
+    }
     const params = formatHttpProxyParams(options);
     const start = Date.now();
     const beforeSuccess = before(() => {

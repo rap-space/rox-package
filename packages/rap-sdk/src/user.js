@@ -119,6 +119,9 @@ export default {
         };
 
         getUserInfo();
+      } else {
+        console.warn('请使用阿里巴巴-客户端打开');
+        reject(new Error('Please use Alibaba Client'));
       }
     });
   },

@@ -61,24 +61,32 @@ function formatOpenApiParams(options) {
  * @param {function} failureCallback 错误回调
  */
 function webFetch(options, successCallback, failureCallback) {
-  fetch(options.url, options).then(response => {
-    const headers = [];
+  return new Promise((resolve, reject) => {
+    fetch(options.url, options).then(response => {
+      const headers = [];
 
-    for (const key of response.headers.keys()) {
-      headers.push({
-        [key]: response.headers.get(key),
-      });
-    }
+      for (const key of response.headers.keys()) {
+        headers.push({
+          [key]: response.headers.get(key),
+        });
+      }
 
-    return new Promise(resolve => {
-      response.text().then(d => {
-        resolve({
-          body: d,
-          header: headers,
+      return new Promise(resolve => {
+        response.text().then(d => {
+          resolve({
+            body: d,
+            header: headers,
+          });
         });
       });
+    }).then(d => {
+      successCallback && successCallback(d);
+      resolve(d);
+    }).catch(e => {
+      failureCallback && failureCallback(e);
+      reject(e);
     });
-  }).then(successCallback).catch(failureCallback);
+  });
 }
 
 /**

@@ -21,9 +21,9 @@ function call(options, callback) {
       resolve(success);
     }, (error) => {
       error = parse2json(error);
-      logger.log('------start---------');
-      logger.error(`${MODULE_NAME}--call::  ${className}.${methodName}, params: ${params} \n \n error: ${error}`);
-      logger.log('------end---------');
+      // logger.log('------start---------');
+      logger.error(`rap-weex: ${MODULE_NAME}--call::  ${className}.${methodName}, params: ${params} \n \n error: ${error}`);
+      // logger.log('------end---------');
       // console.error('RAP_CALLER_FAILED::' + `[${className}.${methodName}]--failure, \n message:: ${error}`);
       reject(error);
     }, (notify) => {

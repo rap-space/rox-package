@@ -6,8 +6,9 @@ import Mtop from './mtop';
 import navi from './navigator';
 import { isWeex, isWeb } from './env';
 import location from './location';
-import tracelog from './tracelog';
-import { parse2json, each, logger } from './_util';
+// import tracelog from './tracelog';
+// import logger from './logger';
+import { parse2json, each, logger } from './util';
 import sso from './biz/sso';
 
 const RAP_SUCCESS = 'RAP_SUCCESS';
@@ -21,6 +22,7 @@ const rCode = /FAIL_BIZ_/;
 const DISABLED_REFRESH_TOKEN = 'disabled_refreshToken';
 const EXPIRED_REFRESH_TOKEN = 'expired_refreshToken';
 const NOT_EXIST_AUTH_RELATION = 'not_exist_auth_relation';
+const NO_ORDER = 'no_order';
 
 /**
  *
@@ -186,10 +188,12 @@ const AOP = {
 
     const start = Date.now();
     const beforeSuccess = before(() => {
-      tracelog.traceAopApi(namespace, apiName, apiVersion, true, Date.now() - start, 'success');
+      logger.api(`${namespace}#${apiName}#${apiVersion}`, params.data, Date.now() - start);
+      // tracelog.traceAopApi(namespace, apiName, apiVersion, true, Date.now() - start, 'success');
     });
     const beforeFailure = before((data) => {
-      tracelog.traceAopApi(namespace, apiName, apiVersion, false, Date.now() - start, data.errorCode);
+      logger.api(`${namespace}#${apiName}#${apiVersion}`, params.data, Date.now() - start, data);
+      // tracelog.traceAopApi(namespace, apiName, apiVersion, false, Date.now() - start, data.errorCode);
     });
 
     return _promise(params, beforeSuccess(successCallback), beforeFailure(failureCallback));
@@ -202,10 +206,12 @@ const AOP = {
     const params = formatHttpProxyParams(options);
     const start = Date.now();
     const beforeSuccess = before(() => {
-      tracelog.traceProxyApi(params.data.targetUrl, true, Date.now() - start, 'success');
+      logger.api(params.data.targetUrl, params, Date.now() - start);
+      // tracelog.traceProxyApi(params.data.targetUrl, true, Date.now() - start, 'success');
     });
     const beforeFailure = before((data) => {
-      tracelog.traceProxyApi(params.data.targetUrl, false, Date.now() - start, data.errorCode);
+      logger.api(params.data.targetUrl, params, Date.now() - start, data);
+      // tracelog.traceProxyApi(params.data.targetUrl, false, Date.now() - start, data.errorCode);
     });
 
     return _promise(params, beforeSuccess(successCallback), beforeFailure(failureCallback));
@@ -266,7 +272,7 @@ function _failureCallback(data, failureCallback, reject) {
     // token 过期
     var _targetURL = getTargetURL('EXPIRED_REFRESH_TOKEN');
     gotoEmotionPage(_targetURL);
-  } else if (errorCode === NOT_EXIST_AUTH_RELATION) {
+  } else if (errorCode === NOT_EXIST_AUTH_RELATION || errorCode === NO_ORDER) {
     // 用户未授权
     // gotoEmotionPage(getTargetURL('NOT_EXIST_AUTH_RELATION'));
     sso.goAuth();

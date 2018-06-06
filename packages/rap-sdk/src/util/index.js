@@ -3,8 +3,8 @@ import isNumber from 'lodash/isNumber';
 import isObject from 'lodash/isObject';
 import isArray from 'lodash/isArray';
 import Version from './version';
-import logger from './log';
-import Localtion from './location';
+import logger from './logger';
+import Localtion from '../location';
 
 function each(obj, iterator, context = null) {
   if (isObject(obj) && !isArray(obj)) {

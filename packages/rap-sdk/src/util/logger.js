@@ -1,5 +1,5 @@
-import Location from './location';
-import { isWeex } from './env';
+import Location from '../location';
+import { isWeex } from '../env';
 // import user from './user';
 
 let href = Location.href;
@@ -53,6 +53,8 @@ const postData2Server = item => {
       const item = cache.pop();
       item.uid = logItem.uid;
 
+      console.log('logger: ' + toQueryString(item));
+
       if (isWeex) {
         fetch(`http://gm.mmstat.com/fsp.1.1?${toQueryString(item)}`, { method: 'GET' });
       } else {
@@ -93,12 +95,12 @@ const logger = {
       c3: error.message,
     }));
   },
-  api(name, params, result, msg) {
+  api(name, params, time, result) {
     postData2Server(formatLog(14, name, {
       c1: name || '',
       c2: JSON.stringify(params) || '',
-      c3: JSON.stringify(result) || '',
-      c4: msg,
+      c3: time || '-1',
+      c4: JSON.stringify(result) || ''
     }));
   },
   debug(...args) {

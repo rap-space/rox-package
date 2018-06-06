@@ -1,4 +1,4 @@
-import Version from './version';
+import { Version } from './util';
 import { isWeex } from './env';
 
 const ua = navigator.userAgent;

@@ -1,6 +1,6 @@
 import { requireModule } from '../rap/weex-module';
 import { isWeex } from '../env';
-import {parse2json} from '../_util';
+import {parse2json} from '../util';
 
 
 function getIdentity() {

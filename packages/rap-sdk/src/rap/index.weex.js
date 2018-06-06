@@ -1,5 +1,5 @@
 import { requireModule } from './weex-module';
-import { parse2json, logger } from '../_util';
+import { parse2json, logger } from '../util';
 
 const MODULE_NAME = '@weex-module/rapcaller';
 

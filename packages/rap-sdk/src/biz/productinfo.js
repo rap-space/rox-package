@@ -1,4 +1,4 @@
-import { each } from '../_util';
+import { each } from '../util';
 
 // function each(obj, iterator, context = null) {
 //   for (var key in obj) {

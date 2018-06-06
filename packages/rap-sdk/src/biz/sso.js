@@ -1,5 +1,5 @@
 import navigator from '../navigator';
-import { getAppKey } from '../_util';
+import { getAppKey } from '../util';
 
 const authURL = 'https://air.1688.com/apps/alim/open/authorize.html?wh_weex=true&appKey=';
 const sso = {

@@ -1,5 +1,5 @@
 import { requireModule } from './rap';
-import { logger } from './_util';
+import { logger } from './util';
 
 const _clipboard = requireModule('clipboard');
 

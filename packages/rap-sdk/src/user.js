@@ -1,4 +1,4 @@
-import { parse2json } from './_util';
+import { parse2json } from './util';
 import AOP from './aop';
 import localStorage from './localstorage';
 

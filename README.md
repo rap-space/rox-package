@@ -3,13 +3,12 @@
 CBU 开放平台无线前端组件包。
 
 
-## 说明
+## 快速开始
 
 ```bash
-tnpm install 
-npm run link
-npm run watch:compile
-npm run start
+npm i
+npm run setup
+npm start
 ```
 
 访问方式

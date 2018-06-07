@@ -11,9 +11,10 @@
     "rox-components"
   ],
   "peerDependencies": {
-    "rax": "0.x"
+    "rax": "0.x",
+    "nuke-layout": "1.0.0"
   },
   "dependencies": {
-    "nuke-layout": "^1.0.0"
+    "nuke-layout": "1.0.0"
   }
 }

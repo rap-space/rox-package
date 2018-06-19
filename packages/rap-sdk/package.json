@@ -1,6 +1,6 @@
 {
   "name": "rap-sdk",
-  "version": "0.1.27",
+  "version": "0.1.28",
   "description": "",
   "clientVersion": {
     "1688": {
@@ -11,8 +11,10 @@
   "main": "lib/index.js",
   "scripts": {
     "clean": "../../node_modules/.bin/rimraf lib",
-    "build": "../../node_modules/.bin/babel src -d lib",
-    "watch": "../../node_modules/.bin/babel src -d lib -w",
+    "build": "../../node_modules/.bin/babel src -d lib --ignore '**/__mocks__'",
+    "watch": "../../node_modules/.bin/babel src -d lib -w --ignore '**/__mocks__'",
+    "test": "jest",
+    "test:coverage": "jest --coverage",
     "prepublish": "npm run clean && npm run build"
   },
   "files": [

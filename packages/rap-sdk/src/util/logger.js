@@ -1,5 +1,6 @@
 import Location from '../location';
 import { isWeex } from '../env';
+import { requireModule } from '../rap/weex-module';
 // import user from './user';
 
 let href = Location.href;
@@ -53,7 +54,7 @@ const postData2Server = item => {
       const item = cache.pop();
       item.uid = logItem.uid;
 
-      console.log('logger: ' + toQueryString(item));
+      // console.log('logger: ' + JSON.stringify(item));
 
       if (isWeex) {
         fetch(`http://gm.mmstat.com/fsp.1.1?${toQueryString(item)}`, { method: 'GET' });
@@ -112,7 +113,7 @@ const logger = {
 // 尝试获取 uid 并做标记
 try {
   const USER_MODULE = '@weex-module/user';
-  const User = window.require(USER_MODULE);
+  const User = requireModule(USER_MODULE);
 
   User.getUserInfo((data) => {
     try {

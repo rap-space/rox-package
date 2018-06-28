@@ -13,38 +13,149 @@ import Button from 'rox-button';
 import Loading from 'rox-loading';
 
 let App = class NukeDemoIndex extends Component {
+  
   constructor() {
     super();
-  }
-  renderHeader() {
 
+    this.renderItem = this.renderItem.bind(this);
   }
-  renderFooter() {
 
+  // render Header
+  renderBasicHeader() {
+    return <Text style={styles.headerText}>Basic List</Text>;
   }
+
+  renderSingleLineHeader() {
+    return <Text style={styles.headerText}>Single Line List</Text>;
+  }
+
+  renderTwoLinesHeader() {
+    return <Text style={styles.headerText}>Two Lines List</Text>;
+  }
+
+   handleListItemClick(ev, item) {
+    console.log('click list item', ev, item);
+  }
+
+  // render Item
   renderItem(props) {
-    console.log(props);
-    return (<ListItem title="abc" iconName="icon">
-      <View style={{ width: 50 }}><Text>1</Text>
-      </View>
-    </ListItem>);
+    return <ListItem {...props} clickHandle={this.handleListItemClick} />;
   }
 
-  onLoadMore() {
-
-  }
   render() {
-    let data = [{
-      abc: '1'
+    // basic config data
+    const basicList = [{
+      title: '标题'
+    }, {
+      title: '标题带链接',
+      type: 'href',
+      href: 'https://www.1688.com'
+    }, {
+      title: '禁止点击',
+      type: 'href',
+      href: 'https://www.1688.com',
+      disabled: true
+    }, {
+      title: '标题可选择',
+      type: 'select'
+    }, {
+      title: '禁止点击',
+      type: 'select',
+      disabled: true
     }];
+
+    // single line config data
+    const singleLineList = [{
+      title: '姓名',
+      rightEle: '请填写'
+    }, {
+      title: '电话',
+      rightEle: '请填写'
+    }, {
+      title: '备注',
+      type: 'href',
+      href: 'https://www.1688.com',
+      rightEle: '猫头怪'
+    }, {
+      title: '所属分组',
+      type: 'href',
+      href: 'https://www.1688.com',
+      rightEle: '零售客户'
+    }, {
+      title: '生意参谋',
+      type: 'href',
+      href: 'https://www.1688.com',
+      thumb: 'https://img.alicdn.com/tfs/TB1XewBxXOWBuNjy0FiXXXFxVXa-32-32.png',
+      thumbHeight: 32
+    }, {
+      title: '进货单',
+      type: 'href',
+      href: 'https://www.1688.com',
+      thumb: 'https://gw.alicdn.com/tfs/TB1WkExxbGYBuNjy0FoXXciBFXa-32-32.png',
+      thumbHeight: 32
+    }, {
+      title: '微分销',
+      type: 'href',
+      href: 'https://www.1688.com',
+      thumb: 'https://gw.alicdn.com/tfs/TB1WQExxbGYBuNjy0FoXXciBFXa-32-32.png',
+      thumbHeight: 32
+    }, {
+      title: '诚e赊',
+      type: 'select',
+      thumb: 'https://gw.alicdn.com/tfs/TB1WkExxbGYBuNjy0FoXXciBFXa-32-32.png',
+      thumbHeight: 32,
+      rightEle: '当前可用额度：12497元'
+    }, {
+      title: '支付宝',
+      type: 'select',
+      thumb: 'https://gw.alicdn.com/tfs/TB1WQExxbGYBuNjy0FoXXciBFXa-32-32.png',
+      thumbHeight: 32,
+      rightEle: '资金将直接付至对方账户'
+    }];
+
+    // two lines config data
+    const twoLinesList = [{
+      title: '诚e赊',
+      type: 'select',
+      brief: '当前可用额度：12497元',
+      thumb: 'https://gw.alicdn.com/tfs/TB1WkExxbGYBuNjy0FoXXciBFXa-32-32.png',
+      thumbHeight: 32,
+    }, {
+      title: '娃在旅途',
+      brief: '地理位置方便，附近很多逛的。',
+      thumb: 'https://gw.alicdn.com/tfs/TB1vbR5xv1TBuNjy0FjXXajyXXa-300-300.jpg',
+      thumbHeight: 32,
+      rightEle: <Button type="primary" size="small">按钮</Button>
+    }];
+
     return (
       <RoxStyleProvider>
-        {this.renderItem()}
+        {/* basic */}
         <ListView
-          renderHeader={this.renderHeader}
+          renderHeader={this.renderBasicHeader}
           renderFooter={this.renderFooter}
           renderRow={this.renderItem}
-          dataSource={data}
+          dataSource={basicList}
+          style={styles.listContainer}
+          onEndReached={this.onLoadMore}
+        />
+
+        {/*single line*/}
+        <ListView
+          renderHeader={this.renderSingleLineHeader}
+          renderFooter={this.renderFooter}
+          renderRow={this.renderItem}
+          dataSource={singleLineList}
+          style={styles.listContainer}
+          onEndReached={this.onLoadMore}
+        />
+
+        {/* two lines */}
+        <ListView
+          renderHeader={this.renderTwoLinesHeader}
+          renderFooter={this.renderFooter}
+          renderRow={this.renderItem}
+          dataSource={twoLinesList}
           style={styles.listContainer}
           onEndReached={this.onLoadMore}
         />
@@ -54,8 +165,12 @@ let App = class NukeDemoIndex extends Component {
 };
 
 const styles = {
-  listContainer: {
-
+  headerText: {
+    fontSize: 28,
+    color: '#666666',
+    marginLeft: 24,
+    marginTop: 20,
+    marginBottom: 20
   }
 };
 

@@ -4,7 +4,7 @@ import { sleep } from '../jest';
 import Navigator from '../src/navigator';
 
 describe('navigator.pop', () => {
-  it('pop()', async () => {
+  it('pop()', async() => {
     expect(await Navigator.pop()).toEqual({
       method: 'pop',
       name: 'navigator',
@@ -14,7 +14,7 @@ describe('navigator.pop', () => {
     });
   });
 
-  it('pop(1)', async () => {
+  it('pop(1)', async() => {
     expect(await Navigator.pop(1)).toEqual({
       method: 'pop',
       name: 'navigator',
@@ -25,7 +25,7 @@ describe('navigator.pop', () => {
     });
   });
 
-  it('pop("1") 这应该是个 bug, = =', async () => {
+  it('pop("1") 这应该是个 bug, = =', async() => {
     expect(await Navigator.pop('1')).toEqual({
       method: 'pop',
       name: 'navigator',
@@ -36,7 +36,7 @@ describe('navigator.pop', () => {
     });
   });
 
-  it('pop({index, animated})', async () => {
+  it('pop({index, animated})', async() => {
     expect(await Navigator.pop({
       index: 2,
       animated: false,
@@ -53,8 +53,7 @@ describe('navigator.pop', () => {
 
 
 describe('navigator.push', () => {
-
-  it('push("url")', async () => {
+  it('push("url")', async() => {
     expect(await Navigator.push('rap:///index', true)).toEqual({
       method: 'push',
       name: 'navigator',
@@ -69,7 +68,7 @@ describe('navigator.push', () => {
     });
   });
 
-  it('push({ url, titie })', async () => {
+  it('push({ url, titie })', async() => {
     expect(await Navigator.push({
       url: 'rap:///index',
       title: 'abc',
@@ -89,7 +88,7 @@ describe('navigator.push', () => {
     });
   });
 
-  it('push({ url, titie: {} })', async () => {
+  it('push({ url, titie: {} })', async() => {
     expect(await Navigator.push({
       url: 'rap:///index',
       title: {
@@ -113,7 +112,7 @@ describe('navigator.push', () => {
     });
   });
 
-  it('push mutiple', async () => {
+  it('push mutiple', async() => {
     expect(await Navigator.push('rap:///index')).toEqual({
       method: 'push',
       name: 'navigator',

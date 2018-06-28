@@ -3,7 +3,7 @@ import AOP from '../src/aop';
 
 
 describe('AOP', () => {
-  it('proxy', async () => {
+  it('proxy', async() => {
     expect(await AOP.proxy({
       method: 'POST',
       url: 'http://httpbin.org/post',

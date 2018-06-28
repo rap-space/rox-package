@@ -105,7 +105,7 @@ function formatHttpProxyParams(options) {
 
   data.targetUrl = options.url;
   data.method = options.method || 'GET';
-  data.headers = options.headers;
+  data.headers = typeof options.headers === 'object' ? JSON.stringify(options.headers) : options.headers;
   data.body = options.body;
 
   if (typeof options.body === 'object') {
@@ -188,11 +188,11 @@ const AOP = {
 
     const start = Date.now();
     const beforeSuccess = before(() => {
-      logger.api(`${namespace}#${apiName}#${apiVersion}`, params.data, Date.now() - start);
+      logger.api(`OK#${namespace}#${apiName}#${apiVersion}`, params.data, Date.now() - start);
       // tracelog.traceAopApi(namespace, apiName, apiVersion, true, Date.now() - start, 'success');
     });
     const beforeFailure = before((data) => {
-      logger.api(`${namespace}#${apiName}#${apiVersion}`, params.data, Date.now() - start, data);
+      logger.api(`ERROR#${namespace}#${apiName}#${apiVersion}`, params.data, Date.now() - start, data);
       // tracelog.traceAopApi(namespace, apiName, apiVersion, false, Date.now() - start, data.errorCode);
     });
 
@@ -206,11 +206,11 @@ const AOP = {
     const params = formatHttpProxyParams(options);
     const start = Date.now();
     const beforeSuccess = before(() => {
-      logger.api(params.data.targetUrl, params, Date.now() - start);
+      logger.api('OK#' + params.data.targetUrl, params, Date.now() - start);
       // tracelog.traceProxyApi(params.data.targetUrl, true, Date.now() - start, 'success');
     });
     const beforeFailure = before((data) => {
-      logger.api(params.data.targetUrl, params, Date.now() - start, data);
+      logger.api('ERROR#' + params.data.targetUrl, params, Date.now() - start, data);
       // tracelog.traceProxyApi(params.data.targetUrl, false, Date.now() - start, data.errorCode);
     });
 

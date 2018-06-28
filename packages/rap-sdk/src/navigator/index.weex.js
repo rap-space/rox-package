@@ -29,8 +29,31 @@ function formatTitle(options) {
   return options;
 }
 
+const doOnceInXs = (x) => {
+  let flag = true;
+
+  return () => {
+    if (flag) {
+      flag = false;
+      setTimeout(() => flag = true, x);
+      return true;
+    }
+    return false;
+  };
+};
+
+var hasNotPush = doOnceInXs(3);
+
 const Navigator = {
-  push(options) {
+  push(options, force = false) {
+    if (!force && !hasNotPush()) {
+      return new Promise(resolve => {
+        resolve({
+          msg: 'Do push only in 3 seconds',
+        });
+      });
+    }
+
     // 如果直接传一个String
     if (isString(options)) {
       options = {

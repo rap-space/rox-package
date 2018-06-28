@@ -9,7 +9,6 @@ import Image from 'rox-image';
 import styles from './styles';
 
 class List extends Component {
-
   static defaultProps = {
     type: 'normal', // href select normal
     href: 'https://www.1688.com',
@@ -38,7 +37,7 @@ class List extends Component {
   handleClick(ev) {
     let { clickHandle, disabled } = this.props;
     let { isSelect } = this.state;
-    
+
     if (disabled) {
       return;
     }
@@ -55,14 +54,14 @@ class List extends Component {
   renderRight() {
     const { type, rightEle } = this.props;
     const { isSelect } = this.state;
-    
+
     let iconName = '';
     if (type === 'href') {
       iconName = 'right';
     } else if (type === 'select') {
-      iconName = isSelect ? 'check_selected' : 'check_normal' ;
+      iconName = isSelect ? 'check_selected' : 'check_normal';
     }
-    
+
     if (type === 'href' || type === 'select') {
       return rightEle ? (
         <View>
@@ -71,7 +70,7 @@ class List extends Component {
               <Text style={styles.rightText}>{rightEle}</Text>
               <Icon style={{...styles.rightIcon, color: isSelect && type === 'select' ? '#ff6000' : '#999999' }} name={iconName} type="iconfont" />
             </View>
-            ).props.children : rightEle}
+          ).props.children : rightEle}
         </View>
       ).props.children : <Icon style={{...styles.rightIcon, color: isSelect && type === 'select' ? '#ff6000' : '#999999' }} name={iconName} type="iconfont" />;
     } else {
@@ -84,8 +83,8 @@ class List extends Component {
   }
 
   render() {
-    let { 
-      title, 
+    let {
+      title,
       titleAfterEle,
       thumb,
       brief,
@@ -98,34 +97,34 @@ class List extends Component {
 
     thumbHeight = thumbHeight ? thumbHeight * 2 : 30;
 
-    const CellComponent = (href && type === 'href' && !disabled) ? Link : View;
+    const CellComponent = href && type === 'href' && !disabled ? Link : View;
 
 
     return (
-      <CellComponent 
+      <CellComponent
         style={styles.listItem}
-        href={(href && type === 'href') ? href : ''}
+        href={href && type === 'href' ? href : ''}
         onClick={this.handleClick}
       >
         {/* 左侧图片,支持url和ele */}
         {thumb ? (
-          <View 
+          <View
             style={styles.thumbWrap}
           >
             {typeof thumb === 'string' ? <Image style={{...styles.thumb, height: thumbHeight, width: thumbHeight}} src={thumb} /> : thumb}
           </View>
         ) : null}
 
-        <View 
+        <View
           style={{
-            ...styles.listBody, 
+            ...styles.listBody,
             borderBottomWidth: hasBorder ? 1 : 0,
           }}
         >
           <View style={styles.bodyLeft}>
-            {/*title and tile afterEle*/}
+            {/* title and tile afterEle */}
             <View style={styles.titleWrap}>
-              <Text 
+              <Text
                 style={{...styles.titleText, color: disabled ? '#999999' : '#333333'}}
               >
                 {title}

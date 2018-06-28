@@ -12,8 +12,7 @@ import Text from 'rox-text';
 import Button from 'rox-button';
 import Loading from 'rox-loading';
 
-let App = class NukeDemoIndex extends Component {
-  
+class NukeDemoIndex extends Component {
   constructor() {
     super();
 
@@ -33,7 +32,7 @@ let App = class NukeDemoIndex extends Component {
     return <Text style={styles.headerText}>Two Lines List</Text>;
   }
 
-   handleListItemClick(ev, item) {
+  handleListItemClick(ev, item) {
     console.log('click list item', ev, item);
   }
 
@@ -140,7 +139,7 @@ let App = class NukeDemoIndex extends Component {
           onEndReached={this.onLoadMore}
         />
 
-        {/*single line*/}
+        {/* single line */}
         <ListView
           renderHeader={this.renderSingleLineHeader}
           renderFooter={this.renderFooter}
@@ -174,4 +173,4 @@ const styles = {
   }
 };
 
-render(<App />);
+render(<NukeDemoIndex />);

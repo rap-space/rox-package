@@ -1,3 +1,12 @@
+### 0.1.28
+* 修复用户首次授权会跳多次的问题
+* 修复 Android 下报缺少 appkey 的 bug
+
+### 0.1.24
+* 修复 Rap.user.getUserInfo 不传参数报错的 bug
+* 新申请 appkey 跳自动授权页面
+* 新申请 appkey 最大不超过 5 人的提示
+
 ### 0.1.23
 * 支持 web 端调试 RAP.aop.proxy
   > 请确保您的接口支持跨域请求
@@ -25,7 +34,4 @@
   });
   ```
 
-### 0.1.24
-* 修复 Rap.user.getUserInfo 不传参数报错的 bug
-* 新申请 appkey 跳自动授权页面
-* 新申请 appkey 最大不超过 5 人的提示
+

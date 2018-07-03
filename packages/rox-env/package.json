@@ -1,6 +1,6 @@
 {
-  "name": "rox-view",
-  "version": "0.0.34",
+  "name": "rox-env",
+  "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -14,6 +14,6 @@
     "rax": "0.x"
   },
   "dependencies": {
-    "rax-view": "^0.6.4"
+    "universal-env": "^0.6.4"
   }
 }

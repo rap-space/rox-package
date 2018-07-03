@@ -11,6 +11,7 @@
     "lint": "npm run lint:nofix -- --fix",
     "lint:nofix": "eslint --ext .js --ext .jsx ./",
     "test": "jest",
+    "ci": "jest",
     "coverage": "npm run test -- --coverage",
     "clean": "npm run clean:dist && npm run clean:compile && npm run clean:coverage && npm run clean:modules && npm run clean:package-lock",
     "clean:dist": "rm -rf ./packages/*/dist",

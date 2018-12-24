@@ -1,9 +1,15 @@
 function requireModule(moduleName) {
-  let weexModule;
-  if (window.require) {
-    weexModule = window.require('@weex-module/' + moduleName);
+  try {
+    let weexModule;
+    if (window.require) {
+      weexModule = window.require('@weex-module/' + moduleName);
+    }
+    return weexModule;
+  } catch (err) {
+    console.log(err);
+    console.log(`require ${moduleName} error`);
+    return {};
   }
-  return weexModule;
 }
 
 export default { requireModule };

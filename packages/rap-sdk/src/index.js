@@ -26,6 +26,7 @@ import { showLoading, hideLoading } from './loading';
 
 // system
 import clipboard from './clipboard';
+import album from './album';
 import app from './app';
 import util from './util';
 
@@ -570,6 +571,11 @@ const RAP = {
    * RAP.sso.goAuth();
    */
   sso,
+
+  /**
+   * 相册
+   */
+  album,
 
   util,
   tracelog,

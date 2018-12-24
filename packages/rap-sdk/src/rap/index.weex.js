@@ -28,18 +28,19 @@ function call(options, callback) {
 
     RBridge.call && RBridge.call(className, methodName, params, (success) => {
       success = parse2json(success);
-      // console.log(`RAP_CALLER_SUCCESS:: [${className}.${methodName}], params: ${JSON.stringify(params)}, success: ${success}}`);
+      // console.log(`RAP_CALLER_SUCCESS:: [${className}.${methodName}], params: ${JSON.stringify(params)}, success: ${JSON.stringify(success)}}`);
       clearTimeout(callbackTimeout);
       resolve(success);
     }, (error) => {
       error = parse2json(error);
-      // logger.log('------start---------');
-      logger.error(`rap-weex: ${MODULE_NAME}--call::  ${className}.${methodName}, params: ${params} \n \n error: ${error}`);
+      // console.log('------start---------');
+      // console.log(`rap-weex: ${MODULE_NAME}--call::  ${className}.${methodName}, params: ${JSON.stringify(params)} \n \n error: ${JSON.stringify(error)}`);
       // logger.log('------end---------');
       // console.error('RAP_CALLER_FAILED::' + `[${className}.${methodName}]--failure, \n message:: ${error}`);
       clearTimeout(callbackTimeout);
       reject(error);
     }, (notify) => {
+      // console.log('RAP_CALLER_NOTIFY::' + JSON.stringify(notify));
       clearTimeout(notifyCallback);
       if (notifyCallbackDone) return;
 

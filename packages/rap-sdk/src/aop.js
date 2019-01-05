@@ -215,6 +215,24 @@ const AOP = {
     });
 
     return _promise(params, beforeSuccess(successCallback), beforeFailure(failureCallback));
+  },
+
+  proxyV2(options, successCallback, failureCallback) {
+    if (isWeb) {
+      return webFetch(options, successCallback, failureCallback);
+    }
+    const params = formatHttpProxyParams(options);
+    const start = Date.now();
+    const beforeSuccess = before(() => {
+      logger.api('OK#' + params.data.targetUrl, params, Date.now() - start);
+      // tracelog.traceProxyApi(params.data.targetUrl, true, Date.now() - start, 'success');
+    });
+    const beforeFailure = before((data) => {
+      logger.api('ERROR#' + params.data.targetUrl, params, Date.now() - start, data);
+      // tracelog.traceProxyApi(params.data.targetUrl, false, Date.now() - start, data.errorCode);
+    });
+
+    return _promiseV2(params, beforeSuccess(successCallback), beforeFailure(failureCallback));
   }
 };
 
@@ -235,6 +253,25 @@ function _promise(params, successCallback, failureCallback) {
     });
   });
 };
+
+
+function _promiseV2(params, successCallback, failureCallback) {
+  return new Promise((resolve, reject) => {
+    Mtop.requestV2(params, (retJson) => {
+      const data = formatRetJson(retJson);
+      if (AOP_TRUE === String(data.success)) {
+        successCallback && successCallback(data.result);
+        resolve(data.result);
+      } else {
+        _failureCallback(data, failureCallback, reject);
+      }
+    }, (retJson) => {
+      const data = formatRetJson(retJson);
+      _failureCallback(data, failureCallback, reject);
+    });
+  });
+};
+
 
 function getEmotionPageURL(options) {
   var arr = [];

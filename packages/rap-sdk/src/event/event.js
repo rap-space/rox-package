@@ -25,7 +25,8 @@ const Event = {
         className: event.center,
         methodName: 'addListener',
         param: {
-          eventName: event.name
+          eventName: event.name,
+          timeout: null,
         }
       }, function(event) {
         // 设置默认 scope 为 app 级别
@@ -55,7 +56,8 @@ const Event = {
           className: event.center,
           methodName: 'removeListener',
           param: {
-            eventName: event.name
+            eventName: event.name,
+            timeout: null,
           }
         }).then(result => {
           delete onPromises[event.value];
@@ -82,7 +84,8 @@ const Event = {
       methodName: 'fireEvent',
       param: {
         eventName: event.name,
-        info: options
+        info: options,
+        timeout: null,
       }
     });
   }

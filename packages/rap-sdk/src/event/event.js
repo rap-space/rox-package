@@ -28,7 +28,8 @@ const Event = {
           eventName: event.name
         }
       }, function(event) {
-        event.value = event.scope.toLowerCase() + '.' + event.name;
+        // 设置默认 scope 为 app 级别
+        event.value = (event.scope && event.scope.toLowerCase() || 'app') + '.' + event.name;
         eventEmitter.emit(event.value, event.info);
       });
     }

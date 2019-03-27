@@ -23,7 +23,7 @@ function requestByRapV2(options, successCallback, failureCallback) {
     return null;
   }
 
-  let className = 'mtopV2';
+  let className = 'postmtop';
   if (App.isIOS) {
     className = 'mtop';
   }

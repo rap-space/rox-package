@@ -1,6 +1,6 @@
 {
   "name": "rox-page",
-  "version": "0.0.34",
+  "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -12,7 +12,7 @@
   ],
   "dependencies": {
     "rap-sdk": "^0.1.11",
-    "rox-theme-provider": "^0.0.34",
+    "rox-theme-provider": "^0.1.0",
     "universal-env": "^0.5.2"
   },
   "peerDependencies": {

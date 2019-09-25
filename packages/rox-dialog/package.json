@@ -1,6 +1,6 @@
 {
   "name": "rox-dialog",
-  "version": "0.0.34",
+  "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -15,9 +15,9 @@
   },
   "dependencies": {
     "nuke-dialog": "^1.0.2",
-    "rox-button": "^0.0.34",
-    "rox-scrollview": "^0.0.34",
-    "rox-text": "^0.0.34",
-    "rox-view": "^0.0.34"
+    "rox-button": "^0.1.0",
+    "rox-scrollview": "^0.1.0",
+    "rox-text": "^0.1.0",
+    "rox-view": "^0.1.0"
   }
 }

@@ -69,7 +69,8 @@ const Navigator = {
       backgroundColor,
       title,
       clearTop,
-      animated
+      animated,
+      timeout: null,
     };
 
     let resUrl = formatURL(url);
@@ -103,7 +104,8 @@ const Navigator = {
       methodName: 'pop',
       param: {
         index,
-        animated
+        animated,
+        timeout: null,
       }
     });
   },
@@ -129,7 +131,8 @@ const Navigator = {
       methodName: 'popTo',
       param: {
         index,
-        animated
+        animated,
+        timeout: null,
       }
     });
   },
@@ -143,7 +146,10 @@ const Navigator = {
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'setTitle',
-      param: formatTitle(param)
+      param: {
+        timeout: null,
+        ...formatTitle(param)
+      },
     });
   },
 
@@ -151,7 +157,10 @@ const Navigator = {
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'close',
-      param: {}
+      param: {
+        timeout: null,
+        ...param,
+      }
     });
   },
 
@@ -159,7 +168,10 @@ const Navigator = {
     return RapBridge.call({
       className: CLASS_NAME,
       methodName: 'addRightItem',
-      param: options
+      param: {
+        timeout: null,
+        ...options
+      }
     }, callback);
   },
 
@@ -168,6 +180,7 @@ const Navigator = {
       className: CLASS_NAME,
       methodName: 'removeRightItem',
       param: {
+        timeout: null,
         tag: tagName
       }
     });

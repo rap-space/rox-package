@@ -37,13 +37,18 @@ function parse2json(jsonStr) {
 
 function getAppKeyByRapURL(url) {
   let regAppKey = /rap:\/\/openplugin\/(\d+)\//g;
+  let regAppKeyNew = /rap:\/\/openplugin\/(\d+)/g;
   let regAirAppKey = /1688\.com\/rap\/(\d+)\//g;
+  let regCdnAppKey = /g\.alicdn\.com\/rap\/(\d+)/g
+  
   let res;
   if (url.indexOf('rap://openplugin') >= 0) {
-    res = regAppKey.exec(url);
+    res = regAppKey.exec(url) ||regAppKeyNew.exec(url);
   } else if (url.indexOf('1688.com/rap/') >= 0) {
     // http://air.1688.com/rap/123456/
     res = regAirAppKey.exec(url);
+  } else if (url.indexOf('g.alicdn.com/rap/')>=0) {
+    res = regCdnAppKey.exec(url);
   }
   let appKey;
   if (res && res[1]) {

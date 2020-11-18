@@ -4,7 +4,8 @@ const Location = Object.create(window.location);
 Object.defineProperty(Location, 'href', {
   get() {
     if (isWeex) {
-      return location._url;
+      // android is shit!
+      return location._url || location.href;
     } else {
       return location.href;
     }

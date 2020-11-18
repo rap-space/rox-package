@@ -1,6 +1,6 @@
 {
   "name": "rox-layout",
-  "version": "0.0.34",
+  "version": "0.1.0",
   "description": "",
   "main": "lib/index.js",
   "files": [
@@ -11,8 +11,8 @@
     "rox-components"
   ],
   "peerDependencies": {
-    "rax": "0.x",
-    "nuke-layout": "1.0.0"
+    "nuke-layout": "1.0.0",
+    "rax": "0.x"
   },
   "dependencies": {
     "nuke-layout": "1.0.0"

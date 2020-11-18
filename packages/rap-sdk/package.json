@@ -3,7 +3,7 @@
   "version": "0.2.5",
   "description": "",
   "clientVersion": {
-    "1688": {              
+    "1688": {
       "ios": "7.6.0~",
       "android": "7.6.0~"
     }

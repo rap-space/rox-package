@@ -9,7 +9,7 @@ import { each } from '../util';
 // 未来
 const bizInfo = {
   'trade': {
-    'url': 'https://trade.m.1688.com/page/sellerOrderList.html',
+    'url': 'https://trade2.m.1688.com/page/sellerOrderList.html',
     'name': '订单管理'
   },
   'popularize': {
@@ -31,12 +31,12 @@ const bizInfo = {
   },
   'refundDetail': {
     'name': '退款详情',
-    'url': 'https://refund.m.1688.com/page/refundDetail.html',
+    'url': 'https://refund2.m.1688.com/page/refundDetail.html',
     'query': ['refundId', 'userType']
   },
   'orderDetail': {
     'name': '订单详情',
-    'url': 'https://h5.m.1688.com/trade/page/orderDetail.html',
+    'url': 'https://trade2.m.1688.com/page/orderDetail.html',
     'query': ['orderId']
   },
   changeDefaultApp: {

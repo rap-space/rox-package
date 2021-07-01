@@ -39,6 +39,11 @@ const bizInfo = {
     'url': 'https://trade2.m.1688.com/page/orderDetail.html',
     'query': ['orderId']
   },
+  'offerDetail': {
+    'name': '商品详情',
+    'url': 'https://m.1688.com/offer/${offerId}.html',
+    'query': ['offerId']
+  },
   changeDefaultApp: {
     'name': '设置默认插件',
     'url': 'https://air.1688.com/apps/alim/open/commodity-management.html?wh_weex=true&',
@@ -82,18 +87,24 @@ function getBizInfoUrl(type, query) {
   if (!type) {// 如果不存在返回info 信息方便查看
     return info;
   }
-  let getParamStr = queryToString(query, info.queryMap);
   let infoUrl = info.url;
   let url;
-  if (getParamStr) {
-    if (infoUrl.indexOf('?') >= 0) {
-      url = info.url + '&' + getParamStr;
-    } else {
-      url = info.url + '?' + getParamStr;
-    }
+
+  if (type === 'offerDetail') {
+    url = infoUrl.replace(/\${offerId}/, typeof query === 'number' ? query : query.offerId);
   } else {
-    url = info.url;
+    let getParamStr = queryToString(query, info.queryMap);
+    if (getParamStr) {
+      if (infoUrl.indexOf('?') >= 0) {
+        url = info.url + '&' + getParamStr;
+      } else {
+        url = info.url + '?' + getParamStr;
+      }
+    } else {
+      url = info.url;
+    }
   }
+
   return url;
 }
 

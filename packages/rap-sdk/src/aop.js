@@ -107,6 +107,9 @@ function formatHttpProxyParams(options) {
   data.method = options.method || 'GET';
   data.headers = typeof options.headers === 'object' ? JSON.stringify(options.headers) : options.headers;
   data.body = options.body;
+  if (typeof options.timeout === 'number') {
+    data.timeout = options.timeout;
+  }
 
   if (typeof options.body === 'object') {
     data.body = JSON.stringify(options.body);

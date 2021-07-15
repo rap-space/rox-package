@@ -79,7 +79,7 @@ const bizInfo = {
   },
   distributionList: {
     name: '铺货单列表',
-    url: 'https://sale.1688.com/sale/distribution/d/distribution-list.html?wh_pha=true&__existtitle__1&__pageId__=227417&cms_id=227417'
+    url: 'https://sale.1688.com/sale/distribution/d/distribution-list.html?__pageId__=227417&cms_id=227417&wh_pha=true&__existtitle__=1',
   }
 };
 

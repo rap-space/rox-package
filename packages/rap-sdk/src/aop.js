@@ -154,7 +154,7 @@ function formatRetJson(retJson) {
       }
     } else {
       o.success = AOP_FALSE;
-      o.errorCode = RAP_FAILURE;
+      o.errorCode = `RAP_FAILURE ${retJson.code}`;
       o.errorMessage = '接口调用异常';
     }
 

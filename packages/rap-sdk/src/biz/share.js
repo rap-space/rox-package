@@ -23,8 +23,7 @@ let share = function(options, callback) {
   if (options.picUrl) {
     param.picUrl = options.picUrl;
   }
-  // 好像无用
-  // param.content = options.content;
+  param.content = options.content;
   param.webUrl = options.webUrl;
 
   param.formWhere = options.formWhere;

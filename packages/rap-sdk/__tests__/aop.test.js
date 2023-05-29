@@ -6,7 +6,7 @@ describe('AOP', () => {
   it('proxy', async() => {
     expect(await AOP.proxy({
       method: 'POST',
-      url: 'http://httpbin.org/post',
+      url: 'https://httpbin.org/post',
       dataType: 'json',
       headers: {
         'x-type': 'type-a',
@@ -20,7 +20,7 @@ describe('AOP', () => {
         v: '1.0',
         ecode: '1',
         data: {
-          targetUrl: 'http://httpbin.org/post',
+          targetUrl: 'https://httpbin.org/post',
           method: 'POST',
           headers: '{"x-type":"type-a"}',
           body: 'hello httpbin'

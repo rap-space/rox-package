@@ -25,7 +25,7 @@ var PATTERN = /^((fixup! |squash! )?(\w+)(?:\(([^\)\s]+)\))?: (.+))(?:\n|$)/;
 var MERGE_COMMIT_PATTERN = /^Merge /;
 var error = function() {
   // gitx does not display it
-  // http://gitx.lighthouseapp.com/projects/17830/tickets/294-feature-display-hook-error-message-when-hook-fails
+  // https://gitx.lighthouseapp.com/projects/17830/tickets/294-feature-display-hook-error-message-when-hook-fails
   // https://groups.google.com/group/gitx/browse_thread/thread/a03bcab60844b812
   console[config.warnOnFail ? 'warn' : 'error']('Invalid commit message: ' + util.format.apply(null, arguments));
   console.log('See our specific at:', '.github/GIT_COMMIT_SPECIFIC.md');

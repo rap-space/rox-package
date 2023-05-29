@@ -31,7 +31,7 @@ const goldlog = {
 
       let params = {
         logkey,
-        // http://velocity.alibaba-inc.com/issues/2883
+        // https://velocity.alibaba-inc.com/issues/2883
         // logkeyargs: objToParams(logkeyargs),
         weex: 1,
         autosend: 1,
@@ -88,7 +88,7 @@ const goldlog = {
     let checksum = makeChkSum(pageSPM.join('.'));
     // handle logConfig
     const logConfig = {
-      // checksum: http://on.alibaba.net/
+      // checksum: https://on.alibaba.net/
       checksum,
       is_auto: false,
       page_id: ''
@@ -126,7 +126,7 @@ const goldlog = {
 
       // only sendPV when aplus-waiting is already set in web
       if (waiting) {
-        // http://groups.alidemo.cn/alilog/manual-for-f2e/api/goldlog.html
+        // https://groups.alidemo.cn/alilog/manual-for-f2e/api/goldlog.html
         const q = window.goldlog_queue || (window.goldlog_queue = []);
 
         q.push({

@@ -72,8 +72,8 @@ export function simplifyURL(url = '') {
   const WEEX_PREFIX = '_wx_tpl=';
   const WEEX_SUFFIX = '.js';
 
-  // http://wapp.wapa.taobao.com/crowd/index-wx/index.html?groupId=57&_wx_tpl=http://g-assets.daily.taobao.net/tb/m-crowd/0.1.1/p/index-wx/index.js
-  // 截取 js 部分 http://g-assets.daily.taobao.net/tb/m-crowd/0.1.1/p/index-wx/index.js
+  // https://wapp.wapa.taobao.com/crowd/index-wx/index.html?groupId=57&_wx_tpl=https://g-assets.daily.taobao.net/tb/m-crowd/0.1.1/p/index-wx/index.js
+  // 截取 js 部分 https://g-assets.daily.taobao.net/tb/m-crowd/0.1.1/p/index-wx/index.js
   if (url.indexOf(WEEX_PREFIX) > -1) {
     url = url.substring(url.indexOf(WEEX_PREFIX) + WEEX_PREFIX.length, url.indexOf(WEEX_SUFFIX) + WEEX_SUFFIX.length);
   }

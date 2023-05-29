@@ -52,7 +52,7 @@ function getDataFromLocal(callback, options) {
 
 function getUserExtraInfo(options) {
   // getUserExtraInfo
-  // http://ocn.alibaba-inc.com/isp/apifactory/api/input.htm?name=alibaba.account.basic&namespace=com.alibaba.account&version=1
+  // https://ocn.alibaba-inc.com/isp/apifactory/api/input.htm?name=alibaba.account.basic&namespace=com.alibaba.account&version=1
   return new Promise((resolve, reject) => {
     if (extraInfo) {
       console.log('复用本地数据');

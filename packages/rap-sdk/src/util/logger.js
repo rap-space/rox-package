@@ -57,9 +57,9 @@ const postData2Server = item => {
       // console.log('logger: ' + JSON.stringify(item));
 
       if (isWeex) {
-        fetch(`http://gm.mmstat.com/fsp.1.1?${toQueryString(item)}`, { method: 'GET' });
+        fetch(`https://gm.mmstat.com/fsp.1.1?${toQueryString(item)}`, { method: 'GET' });
       } else {
-        new Image().src = `http://gm.mmstat.com/fsp.1.1?${toQueryString(item)}`;
+        new Image().src = `https://gm.mmstat.com/fsp.1.1?${toQueryString(item)}`;
       }
     }
   }, 500);

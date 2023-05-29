@@ -33,7 +33,7 @@ if (typeof window.__UNIVERSAL_SPM__ !== 'undefined') {
 
       if (isWeex) {
         // pageInfo module is now deprecated
-        // http://doc.weex.alibaba-inc.com/modules/oldModules.html
+        // https://doc.weex.alibaba-inc.com/modules/oldModules.html
       } else if (isWeb) {
         if (window.goldlog && window.goldlog.setPageSPM) {
           window.goldlog.setPageSPM(a, b);

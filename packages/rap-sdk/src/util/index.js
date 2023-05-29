@@ -45,7 +45,7 @@ function getAppKeyByRapURL(url) {
   if (url.indexOf('rap://openplugin') >= 0) {
     res = regAppKey.exec(url) || regAppKeyNew.exec(url);
   } else if (url.indexOf('1688.com/rap/') >= 0) {
-    // http://air.1688.com/rap/123456/
+    // https://air.1688.com/rap/123456/
     res = regAirAppKey.exec(url);
   } else if (url.indexOf('g.alicdn.com/rap/') >= 0) {
     res = regCdnAppKey.exec(url);

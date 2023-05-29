@@ -17,10 +17,10 @@ class ImageDemo extends Component {
     this.state = {
       data: [
         {
-          src: 'http://img.alicdn.com/tps/TB1SrmcOVXXXXXFXpXXXXXXXXXX-520-280.jpg',
+          src: 'https://img.alicdn.com/tps/TB1SrmcOVXXXXXFXpXXXXXXXXXX-520-280.jpg',
           autoFit: true
         }, {
-          src: 'http://img.alicdn.com/tfs/TB1xCFCPVXXXXchXXXXXXXXXXXX-160-160.gif',
+          src: 'https://img.alicdn.com/tfs/TB1xCFCPVXXXXchXXXXXXXXXXXX-160-160.gif',
           autoFit: true
         }, {
           src: 'https://ubanner.alicdn.com/7857/4348/7461.png?getAvatar=avatar',

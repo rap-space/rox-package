@@ -22,5 +22,5 @@ jumpLink|底部跳转链接|string|无
 ```javascript
 import EmptyPage from 'rox-empty-page'
 
-<EmptyPage type="404" feedbackText="出错了" btnText="我知道了" onPress={() => { console.log('press') }} jumpText="去首页看看" jumpLink="http://m.1688.com/" />
+<EmptyPage type="404" feedbackText="出错了" btnText="我知道了" onPress={() => { console.log('press') }} jumpText="去首页看看" jumpLink="https://m.1688.com/" />
 ```

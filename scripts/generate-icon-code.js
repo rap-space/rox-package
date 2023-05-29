@@ -4,10 +4,10 @@ const getIn = require('lodash.get');
 const urllib = require('urllib');
 
 /**
- * @see http://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=8788
+ * @see https://www.iconfont.cn/manage/index?manage_type=myprojects&projectId=8788
  */
 const PROJECT_ID = 8788;
-const ICONFONT_OPENAPI_URL = `http://www.iconfont.cn/open/project/detail.json?pid=${PROJECT_ID}`;
+const ICONFONT_OPENAPI_URL = `https://www.iconfont.cn/open/project/detail.json?pid=${PROJECT_ID}`;
 
 urllib.request(ICONFONT_OPENAPI_URL, {
   dataType: 'json'

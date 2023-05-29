@@ -1,7 +1,7 @@
 # @see https://lark.alipay.com/cise/204080374/335151529
-# @see http://gitlab.alibaba-inc.com/node/ci
-# @see http://gitlab.alibaba-inc.com/node/ci/blob/master/.gitlab-ci.yml
-# @see http://groups.alidemo.cn/alife/ci/docs/_book/dev-guide/intro.html
+# @see https://gitlab.alibaba-inc.com/node/ci
+# @see https://gitlab.alibaba-inc.com/node/ci/blob/master/.gitlab-ci.yml
+# @see https://groups.alidemo.cn/alife/ci/docs/_book/dev-guide/intro.html
 # - rpm -ql nodejs-8.9.1
 stage:
   cise-node-8:
@@ -20,13 +20,13 @@ stage:
     exec:
       - yum install -y -b current nodejs-8.9.1
       - PATH=/opt/taobao/install/node-v8.9.1/bin:$PATH node -v
-      - PATH=/opt/taobao/install/node-v8.9.1/bin:$PATH npm install tnpm -g --registry=http://registry.npm.alibaba-inc.com
+      - PATH=/opt/taobao/install/node-v8.9.1/bin:$PATH npm install tnpm -g --registry=https://registry.npm.alibaba-inc.com
       - PATH=/opt/taobao/install/node-v8.9.1/bin:$PATH tnpm i
       - "PATH=/opt/taobao/install/node-v8.9.1/bin:$PATH \
         CI_BUILD_REF=$source_version \
         CI_BUILD_REF_NAME=$scm_branch \
         CI_BUILD_REPO=$scm_url \
-        CI_BUILD_URL=http://cise.alibaba-inc.com/task/$task_id/build/$build_idx \
+        CI_BUILD_URL=https://cise.alibaba-inc.com/task/$task_id/build/$build_idx \
         npm run ci"
 pipeline:
   - cise-node-8

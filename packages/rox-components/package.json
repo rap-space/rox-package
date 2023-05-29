@@ -42,7 +42,7 @@
     "rox-tag": "^0.1.0",
     "rox-text": "^0.1.0",
     "rox-theme": "^0.1.0",
-    "rox-theme-provider": "^0.1.0",
+    "rox-theme-provider": "0.x",
     "rox-touchable": "^0.1.0",
     "rox-view": "^0.1.0",
     "rox-web": "^0.1.0"
